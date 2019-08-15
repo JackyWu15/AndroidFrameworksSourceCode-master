@@ -973,6 +973,7 @@ public class Activity extends ContextThemeWrapper
      *
      * @param savedInstanceState contains the saved state
      */
+    //恢复数据
     final void performRestoreInstanceState(Bundle savedInstanceState) {
         onRestoreInstanceState(savedInstanceState);
         restoreManagedDialogs(savedInstanceState);
@@ -1017,6 +1018,7 @@ public class Activity extends ContextThemeWrapper
      */
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (mWindow != null) {
+            //获取上次保存的Bundle对象
             Bundle windowState = savedInstanceState.getBundle(WINDOW_HIERARCHY_TAG);
             if (windowState != null) {
                 mWindow.restoreHierarchyState(windowState);
@@ -1293,7 +1295,9 @@ public class Activity extends ContextThemeWrapper
      *
      * @param outState The bundle to save the state to.
      */
+    //保存状态调用方法
     final void performSaveInstanceState(Bundle outState) {
+        //调用onSaveInstanceState执行保存
         onSaveInstanceState(outState);
         saveManagedDialogs(outState);
         mActivityTransitionState.saveState(outState);
@@ -1343,6 +1347,7 @@ public class Activity extends ContextThemeWrapper
      * killed during the lifetime of B since the state of the user interface of
      * A will stay intact.
      *
+     *
      * <p>The default implementation takes care of most of the UI per-instance
      * state for you by calling {@link android.view.View#onSaveInstanceState()} on each
      * view in the hierarchy that has an id, and by saving the id of the currently
@@ -1361,12 +1366,22 @@ public class Activity extends ContextThemeWrapper
      * @see #onRestoreInstanceState
      * @see #onPause
      */
+    //按下Home键
+    // 长按Home键
+    // 电源键熄屏
+    //Activity A中启动一个新的Activity
+    //横竖屏切换
+    //有电话拨入
+    //onSaveInstanceState会在调用onStop之前被调用,onStop在ActivityThread的performStopActivity中
     protected void onSaveInstanceState(Bundle outState) {
+        //通过mWindow存储当前窗口的视图树的状态，以确保UI结构和保存前一样
         outState.putBundle(WINDOW_HIERARCHY_TAG, mWindow.saveHierarchyState());
+        //存储fragment状态
         Parcelable p = mFragments.saveAllState();
         if (p != null) {
             outState.putParcelable(FRAGMENTS_TAG, p);
         }
+        //如果用户设置了ActivityLifecycleCallbacks，
         getApplication().dispatchActivitySaveInstanceState(this, outState);
     }
 
@@ -3731,13 +3746,13 @@ public class Activity extends ContextThemeWrapper
      *
      * @see #startActivity
      */
+    //跳转最终调用到此处
     public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
         if (mParent == null) {
-            Instrumentation.ActivityResult ar =
-                mInstrumentation.execStartActivity(
-                    this, mMainThread.getApplicationThread(), mToken, this,
-                    intent, requestCode, options);
+            //启动Activity准备
+            Instrumentation.ActivityResult ar = mInstrumentation.execStartActivity( this, mMainThread.getApplicationThread(), mToken, this, intent, requestCode, options);
             if (ar != null) {
+                //发送启动请求
                 mMainThread.sendActivityResult(
                     mToken, mEmbeddedID, requestCode, ar.getResultCode(),
                     ar.getResultData());
@@ -5937,6 +5952,7 @@ public class Activity extends ContextThemeWrapper
 
     //Activity调用onCreate
     final void performCreate(Bundle icicle, PersistableBundle persistentState) {
+        //onCreate被调用
         onCreate(icicle, persistentState);
         mActivityTransitionState.readState(icicle);
         performCreateCommon();

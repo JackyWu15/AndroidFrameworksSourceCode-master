@@ -3725,6 +3725,7 @@ public class TextView extends View implements ViewTreeObserver.OnPreDrawListener
         if (save) {
             SavedState ss = new SavedState(superState);
             // XXX Should also save the current scroll position!
+            //存储start、end和文本内容
             ss.selStart = start;
             ss.selEnd = end;
 
@@ -3747,6 +3748,7 @@ public class TextView extends View implements ViewTreeObserver.OnPreDrawListener
 
             ss.error = getError();
 
+            //返回存储的数据
             return ss;
         }
 

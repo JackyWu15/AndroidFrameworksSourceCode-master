@@ -130,11 +130,13 @@ public final class WindowManagerGlobal {
         }
     }
 
+    //获取WindowmanagerService
     public static IWindowManager getWindowManagerService() {
         synchronized (WindowManagerGlobal.class) {
             if (sWindowManagerService == null) {
+                //将IBinder对象转换成WindowManager对象
                 sWindowManagerService = IWindowManager.Stub.asInterface(
-                        ServiceManager.getService("window"));
+                        ServiceManager.getService("window"));//获取IBinder对象
             }
             return sWindowManagerService;
         }
@@ -145,7 +147,9 @@ public final class WindowManagerGlobal {
             if (sWindowSession == null) {
                 try {
                     InputMethodManager imm = InputMethodManager.getInstance();
+                    //获取WindowmanagerService
                     IWindowManager windowManager = getWindowManagerService();
+                    //和WindowmanagerService建立一个Session会话
                     sWindowSession = windowManager.openSession(
                             new IWindowSessionCallback.Stub() {
                                 @Override
@@ -258,17 +262,21 @@ public final class WindowManagerGlobal {
                 }
             }
 
+            //构建ViewRootImpl
             root = new ViewRootImpl(view.getContext(), display);
-
+            //给view设置布局参数
             view.setLayoutParams(wparams);
-
+            //将view添加到列表中
             mViews.add(view);
+            //将ViewRootImpl添加到列表中
             mRoots.add(root);
+            //将params添加到列表中
             mParams.add(wparams);
         }
 
         // do this last because it fires off messages to start doing things
         try {
+            //调用ViewRootImpl的setView将View显示到手机窗口
             root.setView(view, wparams, panelParentView);
         } catch (RuntimeException e) {
             // BadTokenException or InvalidDisplayException, clean up.

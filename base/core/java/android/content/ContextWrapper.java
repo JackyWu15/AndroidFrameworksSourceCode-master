@@ -482,9 +482,10 @@ public class ContextWrapper extends Context {
         mBase.removeStickyBroadcastAsUser(intent, user);
     }
 
+    //注册广播
     @Override
-    public Intent registerReceiver(
-        BroadcastReceiver receiver, IntentFilter filter) {
+    public Intent registerReceiver( BroadcastReceiver receiver, IntentFilter filter) {
+        //mBase为Context，看ContextImpl
         return mBase.registerReceiver(receiver, filter);
     }
 

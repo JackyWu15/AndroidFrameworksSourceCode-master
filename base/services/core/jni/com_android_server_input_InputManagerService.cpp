@@ -293,7 +293,9 @@ NativeInputManager::NativeInputManager(jobject contextObj,
         mLocked.showTouches = false;
     }
 
+    //创建EventHub
     sp<EventHub> eventHub = new EventHub();
+    //构造InputManager，让java层使用
     mInputManager = new InputManager(eventHub, this, this);
 }
 
@@ -1014,6 +1016,7 @@ static jlong nativeInit(JNIEnv* env, jclass clazz,
         return 0;
     }
 
+    //构造NativeInputManager
     NativeInputManager* im = new NativeInputManager(contextObj, serviceObj,
             messageQueue->getLooper());
     im->incStrong(0);

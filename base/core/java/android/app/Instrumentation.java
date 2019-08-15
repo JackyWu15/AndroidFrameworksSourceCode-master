@@ -1100,8 +1100,10 @@ public class Instrumentation {
      * @param activity The activity being created.
      * @param icicle The previously frozen state (or null) to pass through to onCreate().
      */
+    //onCreate执行
     public void callActivityOnCreate(Activity activity, Bundle icicle) {
         prePerformCreate(activity);
+        //调用Activity的performCreate
         activity.performCreate(icicle);
         postPerformCreate(activity);
     }
@@ -1116,6 +1118,7 @@ public class Instrumentation {
     public void callActivityOnCreate(Activity activity, Bundle icicle,
             PersistableBundle persistentState) {
         prePerformCreate(activity);
+        //调用Activity的performCreate
         activity.performCreate(icicle, persistentState);
         postPerformCreate(activity);
     }
@@ -1157,6 +1160,7 @@ public class Instrumentation {
      * @param activity The activity being restored.
      * @param savedInstanceState The previously saved state being restored.
      */
+
     public void callActivityOnRestoreInstanceState(Activity activity, Bundle savedInstanceState) {
         activity.performRestoreInstanceState(savedInstanceState);
     }
@@ -1169,8 +1173,8 @@ public class Instrumentation {
      * @param savedInstanceState The previously saved state being restored.
      * @param persistentState The previously persisted state (or null)
      */
-    public void callActivityOnRestoreInstanceState(Activity activity, Bundle savedInstanceState,
-            PersistableBundle persistentState) {
+    //恢复上一次的数据
+    public void callActivityOnRestoreInstanceState(Activity activity, Bundle savedInstanceState, PersistableBundle persistentState) {
         activity.performRestoreInstanceState(savedInstanceState, persistentState);
     }
 
@@ -1269,6 +1273,7 @@ public class Instrumentation {
      * @param outState The bundle to pass to the call.
      */
     public void callActivityOnSaveInstanceState(Activity activity, Bundle outState) {
+        //实际由activity执行
         activity.performSaveInstanceState(outState);
     }
 
@@ -1455,6 +1460,8 @@ public class Instrumentation {
      * 
      * {@hide}
      */
+
+
     public ActivityResult execStartActivity(
             Context who, IBinder contextThread, IBinder token, Activity target,
             Intent intent, int requestCode, Bundle options) {
@@ -1572,6 +1579,7 @@ public class Instrumentation {
      * 
      * {@hide}
      */
+    //Activity的启动请求
     public ActivityResult execStartActivity(
         Context who, IBinder contextThread, IBinder token, Fragment target,
         Intent intent, int requestCode, Bundle options) {
@@ -1592,13 +1600,16 @@ public class Instrumentation {
             }
         }
         try {
+            //将Intent中的数据迁移到粘贴板中
             intent.migrateExtraStreamToClipData();
+            //准备离开当前线程
             intent.prepareToLeaveProcess();
-            int result = ActivityManagerNative.getDefault()
-                .startActivity(whoThread, who.getBasePackageName(), intent,
+            //调用ActivityManager的startActivity
+            int result = ActivityManagerNative.getDefault().startActivity(whoThread, who.getBasePackageName(), intent,
                         intent.resolveTypeIfNeeded(who.getContentResolver()),
                         token, target != null ? target.mWho : null,
                         requestCode, 0, null, options);
+            //检出结果并回调给调用端
             checkStartActivityResult(result, intent);
         } catch (RemoteException e) {
         }

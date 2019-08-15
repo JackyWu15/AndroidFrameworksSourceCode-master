@@ -421,17 +421,21 @@ public class PackageManagerService extends IPackageManager.Stub {
             new HashMap<String, SharedLibraryEntry>();
 
     // All available activities, for your resolving pleasure.
+    //保存所有Activity节点
     final ActivityIntentResolver mActivities =
             new ActivityIntentResolver();
 
     // All available receivers, for your resolving pleasure.
+    //保存所有receiver节点
     final ActivityIntentResolver mReceivers =
             new ActivityIntentResolver();
 
     // All available services, for your resolving pleasure.
+    //保存所有Service节点
     final ServiceIntentResolver mServices = new ServiceIntentResolver();
 
     // All available providers, for your resolving pleasure.
+    //保存所有Provider节点
     final ProviderIntentResolver mProviders = new ProviderIntentResolver();
 
     // Mapping from provider base names (first directory in content URI codePath)
@@ -1246,8 +1250,8 @@ public class PackageManagerService extends IPackageManager.Stub {
 
     public static final PackageManagerService main(Context context, Installer installer,
             boolean factoryTest, boolean onlyCore) {
-        PackageManagerService m = new PackageManagerService(context, installer,
-                factoryTest, onlyCore);
+        //构造了PMS对象
+        PackageManagerService m = new PackageManagerService(context, installer,factoryTest, onlyCore);
         ServiceManager.addService("package", m);
         return m;
     }
@@ -1282,19 +1286,28 @@ public class PackageManagerService extends IPackageManager.Stub {
 
     public PackageManagerService(Context context, Installer installer,
             boolean factoryTest, boolean onlyCore) {
+        //向事件日志写入事件，标识PackageManagerService启动时间
         EventLog.writeEvent(EventLogTags.BOOT_PROGRESS_PMS_START,
                 SystemClock.uptimeMillis());
 
+        //版本检查
         if (mSdkVersion <= 0) {
             Slog.w(TAG, "**** ro.build.version.sdk not set!");
         }
 
         mContext = context;
+        //开机是否工厂模式
         mFactoryTest = factoryTest;
+        //是否启动内核
         mOnlyCore = onlyCore;
+        //如果编译版本为eng，则不要进行dex优化
         mLazyDexOpt = "eng".equals(SystemProperties.get("ro.build.type"));
+        //构造DisplayMetrics以便获得尺寸数据
         mMetrics = new DisplayMetrics();
+        //构造Settings存储系统运行时的设置信息
         mSettings = new Settings(context);
+
+        //添加一些用户id
         mSettings.addSharedUserLPw("android.uid.system", Process.SYSTEM_UID,
                 ApplicationInfo.FLAG_SYSTEM|ApplicationInfo.FLAG_PRIVILEGED);
         mSettings.addSharedUserLPw("android.uid.phone", RADIO_UID,
@@ -1308,6 +1321,7 @@ public class PackageManagerService extends IPackageManager.Stub {
         mSettings.addSharedUserLPw("android.uid.shell", SHELL_UID,
                 ApplicationInfo.FLAG_SYSTEM|ApplicationInfo.FLAG_PRIVILEGED);
 
+        //是否在不同的进程中
         String separateProcesses = SystemProperties.get("debug.separate_processes");
         if (separateProcesses != null && separateProcesses.length() > 0) {
             if ("*".equals(separateProcesses)) {
@@ -1325,8 +1339,10 @@ public class PackageManagerService extends IPackageManager.Stub {
             mSeparateProcesses = null;
         }
 
+        //installer是SystemServer构造的，该对象负责与底层通信，进行具体安装卸载等操作
         mInstaller = installer;
 
+        //测量显示对象
         getDefaultDisplayMetrics(context, mMetrics);
 
         SystemConfig systemConfig = SystemConfig.getInstance();
@@ -1337,26 +1353,34 @@ public class PackageManagerService extends IPackageManager.Stub {
         synchronized (mInstallLock) {
         // writer
         synchronized (mPackages) {
-            mHandlerThread = new ServiceThread(TAG,
-                    Process.THREAD_PRIORITY_BACKGROUND, true /*allowIo*/);
+            //启动处理线程
+            mHandlerThread = new ServiceThread(TAG, Process.THREAD_PRIORITY_BACKGROUND, true /*allowIo*/);
             mHandlerThread.start();
+            //启动PackageHandler
             mHandler = new PackageHandler(mHandlerThread.getLooper());
             Watchdog.getInstance().addThread(mHandler, WATCHDOG_TIMEOUT);
 
+            //获取data目录
             File dataDir = Environment.getDataDirectory();
+            //获取到/data/data目录
             mAppDataDir = new File(dataDir, "data");
+            //获取到/data/app目录，即第三方应用的安装目录
             mAppInstallDir = new File(dataDir, "app");
+            //获取到/data/app-lib目录
             mAppLib32InstallDir = new File(dataDir, "app-lib");
+            //获取到/data/app-asec目录
             mAsecInternalPath = new File(dataDir, "app-asec").getPath();
+            //获取到/data/user目录
             mUserAppDataDir = new File(dataDir, "user");
+            //获取到/data/app-private目录
             mDrmAppPrivateInstallDir = new File(dataDir, "app-private");
 
-            sUserManager = new UserManagerService(context, this,
-                    mInstallLock, mPackages);
+            //构造UserManagerService
+            sUserManager = new UserManagerService(context, this,mInstallLock, mPackages);
 
             // Propagate permission configuration in to package manager.
-            ArrayMap<String, SystemConfig.PermissionEntry> permConfig
-                    = systemConfig.getPermissions();
+            //读取设置的权限
+            ArrayMap<String, SystemConfig.PermissionEntry> permConfig= systemConfig.getPermissions();
             for (int i=0; i<permConfig.size(); i++) {
                 SystemConfig.PermissionEntry perm = permConfig.valueAt(i);
                 BasePermission bp = mSettings.mPermissions.get(perm.name);
@@ -1375,11 +1399,14 @@ public class PackageManagerService extends IPackageManager.Stub {
                         new SharedLibraryEntry(libConfig.valueAt(i), null));
             }
 
+            //读取并解析mac_permissions.xml
             mFoundPolicyFile = SELinuxMMAC.readInstallPolicy();
 
+            //读取并解析package.xml等配置
             mRestoredSettings = mSettings.readLPw(this, sUserManager.getUsers(false),
                     mSdkVersion, mOnlyCore);
 
+            //是否有自定义的解析界面
             String customResolverActivity = Resources.getSystem().getString(
                     R.string.config_customResolverActivity);
             if (TextUtils.isEmpty(customResolverActivity)) {
@@ -1389,15 +1416,17 @@ public class PackageManagerService extends IPackageManager.Stub {
                         customResolverActivity);
             }
 
+            //将扫描开始的时间戳写入Log系统
             long startTime = SystemClock.uptimeMillis();
-
             EventLog.writeEvent(EventLogTags.BOOT_PROGRESS_PMS_SYSTEM_SCAN_START,
                     startTime);
 
             // Set flag to monitor and not change apk file paths when
             // scanning install directories.
+            //扫描模式
             final int scanFlags = SCAN_NO_PATHS | SCAN_DEFER_DEX | SCAN_BOOTING;
 
+            //保存已dexopt优化的文件路径
             final HashSet<String> alreadyDexOpted = new HashSet<String>();
 
             /**
@@ -1426,15 +1455,16 @@ public class PackageManagerService extends IPackageManager.Stub {
                 Slog.w(TAG, "No SYSTEMSERVERCLASSPATH found!");
             }
 
+            //外部lib是否有dexopt优化
             boolean didDexOptLibraryOrTool = false;
 
             final List<String> allInstructionSets = getAllInstructionSets();
-            final String[] dexCodeInstructionSets =
-                getDexCodeInstructionSets(allInstructionSets.toArray(new String[allInstructionSets.size()]));
+            final String[] dexCodeInstructionSets = getDexCodeInstructionSets(allInstructionSets.toArray(new String[allInstructionSets.size()]));
 
             /**
              * Ensure all external libraries have had dexopt run on them.
              */
+            //确保所有外部lib都有dexopt优化
             if (mSharedLibraries.size() > 0) {
                 // NOTE: For now, we're compiling these system "shared libraries"
                 // (and framework jars) into all available architectures. It's possible
@@ -1471,16 +1501,18 @@ public class PackageManagerService extends IPackageManager.Stub {
                     }
                 }
             }
-
+            //获取/system/famework目录
             File frameworkDir = new File(Environment.getRootDirectory(), "framework");
 
             // Gross hack for now: we know this file doesn't contain any
             // code, so don't dexopt it to avoid the resulting log spew.
+            //加载framework资源
             alreadyDexOpted.add(frameworkDir.getPath() + "/framework-res.apk");
 
             // Gross hack for now: we know this file is only part of
             // the boot class path for art, so don't dexopt it to
             // avoid the resulting log spew.
+            //加载核心库
             alreadyDexOpted.add(frameworkDir.getPath() + "/core-libart.jar");
 
             /**
@@ -1498,17 +1530,17 @@ public class PackageManagerService extends IPackageManager.Stub {
                         File libPath = new File(frameworkDir, frameworkFiles[i]);
                         String path = libPath.getPath();
                         // Skip the file if we already did it.
+                        //跳过已优化的文件
                         if (alreadyDexOpted.contains(path)) {
                             continue;
                         }
                         // Skip the file if it is not a type we want to dexopt.
+                        //跳过不是apk或jar的文件
                         if (!path.endsWith(".apk") && !path.endsWith(".jar")) {
                             continue;
                         }
                         try {
-                            byte dexoptRequired = DexFile.isDexOptNeededInternal(path, null,
-                                                                                 dexCodeInstructionSet,
-                                                                                 false);
+                            byte dexoptRequired = DexFile.isDexOptNeededInternal(path, null, dexCodeInstructionSet, false);
                             if (dexoptRequired == DexFile.DEXOPT_NEEDED) {
                                 mInstaller.dexopt(path, Process.SYSTEM_UID, true, dexCodeInstructionSet);
                                 didDexOptLibraryOrTool = true;
@@ -1546,7 +1578,9 @@ public class PackageManagerService extends IPackageManager.Stub {
                     | PackageParser.PARSE_IS_PRIVILEGED, scanFlags, 0);
 
             // Collect ordinary system packages.
+            //加载系统的app安装路径
             final File systemAppDir = new File(Environment.getRootDirectory(), "app");
+            //扫描系统app的安装路径
             scanDirLI(systemAppDir, PackageParser.PARSE_IS_SYSTEM
                     | PackageParser.PARSE_IS_SYSTEM_DIR, scanFlags, 0);
 
@@ -1569,9 +1603,12 @@ public class PackageManagerService extends IPackageManager.Stub {
             mInstaller.moveFiles();
 
             // Prune any system packages that no longer exist.
+            //存储不存在的系统packages路径
             final List<String> possiblyDeletedUpdatedSystemApps = new ArrayList<String>();
             final ArrayMap<String, File> expectingBetter = new ArrayMap<>();
+
             if (!mOnlyCore) {
+                //遍历
                 Iterator<PackageSetting> psit = mSettings.mPackages.values().iterator();
                 while (psit.hasNext()) {
                     PackageSetting ps = psit.next();
@@ -1580,6 +1617,7 @@ public class PackageManagerService extends IPackageManager.Stub {
                      * If this is not a system app, it can't be a
                      * disable system app.
                      */
+                    //如果不是系统app，则跳过
                     if ((ps.pkgFlags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                         continue;
                     }
@@ -1587,6 +1625,7 @@ public class PackageManagerService extends IPackageManager.Stub {
                     /*
                      * If the package is scanned, it's not erased.
                      */
+                    //如果被扫描到了
                     final PackageParser.Package scannedPkg = mPackages.get(ps.name);
                     if (scannedPkg != null) {
                         /*
@@ -1596,25 +1635,29 @@ public class PackageManagerService extends IPackageManager.Stub {
                          * scanned package so the previously user-installed
                          * application can be scanned.
                          */
+                        //在disabled列表中，清除相应的数据
                         if (mSettings.isDisabledSystemPackageLPr(ps.name)) {
                             logCriticalInfo(Log.WARN, "Expecting better updated system app for "
                                     + ps.name + "; removing system app.  Last known codePath="
                                     + ps.codePathString + ", installStatus=" + ps.installStatus
                                     + ", versionCode=" + ps.versionCode + "; scanned versionCode="
                                     + scannedPkg.mVersionCode);
+                            //移除其信息
                             removePackageLI(ps, true);
                             expectingBetter.put(ps.name, ps.codePath);
                         }
 
                         continue;
                     }
-
+                    //不在disabled列表中，清除相应的数据
                     if (!mSettings.isDisabledSystemPackageLPr(ps.name)) {
                         psit.remove();
                         logCriticalInfo(Log.WARN, "System package " + ps.name
                                 + " no longer exists; wiping its data");
                         removeDataDirsLI(ps.name);
-                    } else {
+                    }
+                    //通过codePath判断是否有可能被更新或删除
+                    else {
                         final PackageSetting disabledPs = mSettings.getDisabledSystemPkgLPr(ps.name);
                         if (disabledPs.codePath == null || !disabledPs.codePath.exists()) {
                             possiblyDeletedUpdatedSystemApps.add(ps.name);
@@ -1624,21 +1667,26 @@ public class PackageManagerService extends IPackageManager.Stub {
             }
 
             //look for any incomplete package installations
+            //获取未按照的apk包PackageSetting列表
             ArrayList<PackageSetting> deletePkgsList = mSettings.getListOfIncompleteInstallPackagesLPr();
             //clean up list
+            //清除掉
             for(int i = 0; i < deletePkgsList.size(); i++) {
                 //clean up here
                 cleanupInstallFailedPackage(deletePkgsList.get(i));
             }
             //delete tmp files
+            //删掉临时文件
             deleteTempPackageFiles();
 
             // Remove any shared userIDs that have no associated packages
+            //清除在mSettings中没有被使用的ShareUserSettings
             mSettings.pruneSharedUsersLPw();
-
+            //普通应用
             if (!mOnlyCore) {
                 EventLog.writeEvent(EventLogTags.BOOT_PROGRESS_PMS_DATA_SCAN_START,
                         SystemClock.uptimeMillis());
+                //扫描第三方app安装路径
                 scanDirLI(mAppInstallDir, 0, scanFlags, 0);
 
                 scanDirLI(mDrmAppPrivateInstallDir, PackageParser.PARSE_FORWARD_LOCK,
@@ -1744,13 +1792,14 @@ public class PackageManagerService extends IPackageManager.Stub {
             // cases get permissions that the user didn't initially explicitly
             // allow...  it would be nice to have some better way to handle
             // this situation.
+            //权限设置，检查sdk版本
             final boolean regrantPermissions = mSettings.mInternalSdkPlatform
                     != mSdkVersion;
             if (regrantPermissions) Slog.i(TAG, "Platform changed from "
                     + mSettings.mInternalSdkPlatform + " to " + mSdkVersion
                     + "; regranting permissions for internal storage");
             mSettings.mInternalSdkPlatform = mSdkVersion;
-            
+            //分配权限
             updatePermissionsLPw(null, null, UPDATE_PERMISSIONS_ALL
                     | (regrantPermissions
                             ? (UPDATE_PERMISSIONS_REPLACE_PKG|UPDATE_PERMISSIONS_REPLACE_ALL)
@@ -1776,6 +1825,7 @@ public class PackageManagerService extends IPackageManager.Stub {
             mSettings.updateInternalDatabaseVersion();
 
             // can downgrade to reader
+            //将配置写入相关文件中
             mSettings.writeLPr();
 
             EventLog.writeEvent(EventLogTags.BOOT_PROGRESS_PMS_READY,
@@ -1791,6 +1841,7 @@ public class PackageManagerService extends IPackageManager.Stub {
         // Now after opening every single application zip, make sure they
         // are all flushed.  Not really needed, but keeps things nice and
         // tidy.
+        //GC回收资源
         Runtime.getRuntime().gc();
     }
 
@@ -3337,6 +3388,7 @@ public class PackageManagerService extends IPackageManager.Stub {
             String resolvedType, int flags, int userId) {
         if (!sUserManager.exists(userId)) return Collections.emptyList();
         enforceCrossUserPermission(Binder.getCallingUid(), userId, false, false, "query intent activities");
+        //获取Intent的组件
         ComponentName comp = intent.getComponent();
         if (comp == null) {
             if (intent.getSelector() != null) {
@@ -4121,6 +4173,7 @@ public class PackageManagerService extends IPackageManager.Stub {
     }
 
     private void scanDirLI(File dir, int parseFlags, int scanFlags, long currentTime) {
+        //遍历出所有文件
         final File[] files = dir.listFiles();
         if (ArrayUtils.isEmpty(files)) {
             Log.d(TAG, "No files in app dir " + dir);
@@ -4132,6 +4185,7 @@ public class PackageManagerService extends IPackageManager.Stub {
                     + " flags=0x" + Integer.toHexString(parseFlags));
         }
 
+        //取出所有apk文件进行解析
         for (File file : files) {
             final boolean isPackage = (isApkFile(file) || file.isDirectory())
                     && !PackageInstallerService.isStageName(file.getName());
@@ -4140,6 +4194,7 @@ public class PackageManagerService extends IPackageManager.Stub {
                 continue;
             }
             try {
+                //解析apk
                 scanPackageLI(file, parseFlags | PackageParser.PARSE_MUST_BE_APK,
                         scanFlags, currentTime, null);
             } catch (PackageManagerException e) {
@@ -4228,10 +4283,13 @@ public class PackageManagerService extends IPackageManager.Stub {
      *  Scan a package and return the newly parsed package.
      *  Returns null in case of errors and the error code is stored in mLastScanError
      */
+    //解析apk文件后再调用scanPackageLI(Package pkg.....)解析包，保存信息
     private PackageParser.Package scanPackageLI(File scanFile, int parseFlags, int scanFlags,
             long currentTime, UserHandle user) throws PackageManagerException {
         if (DEBUG_INSTALL) Slog.d(TAG, "Parsing: " + scanFile);
+        //设置解析标志mDefParseFlags默认为0
         parseFlags |= mDefParseFlags;
+        //创建一个包解析器
         PackageParser pp = new PackageParser();
         pp.setSeparateProcesses(mSeparateProcesses);
         pp.setOnlyCoreApps(mOnlyCore);
@@ -4243,6 +4301,7 @@ public class PackageManagerService extends IPackageManager.Stub {
 
         final PackageParser.Package pkg;
         try {
+            //PackageParser解析apk文件,实例化出Activity等组件
             pkg = pp.parsePackage(scanFile, parseFlags);
         } catch (PackageParserException e) {
             throw PackageManagerException.from(e);
@@ -4428,6 +4487,7 @@ public class PackageManagerService extends IPackageManager.Stub {
         pkg.applicationInfo.setSplitResourcePaths(pkg.splitCodePaths);
 
         // Note that we invoke the following method only if we are about to unpack an application
+        //解析后的信息保存至PMS
         PackageParser.Package scannedPkg = scanPackageLI(pkg, parseFlags, scanFlags
                 | SCAN_UPDATE_SIGNATURE, currentTime, user);
 
@@ -5243,6 +5303,7 @@ public class PackageManagerService extends IPackageManager.Stub {
             int scanFlags, long currentTime, UserHandle user) throws PackageManagerException {
         boolean success = false;
         try {
+            //scanPackageDirtyLI进行扫描
             final PackageParser.Package res = scanPackageDirtyLI(pkg, parseFlags, scanFlags,
                     currentTime, user);
             success = true;
@@ -6171,6 +6232,7 @@ public class PackageManagerService extends IPackageManager.Stub {
 
             N = pkg.activities.size();
             r = null;
+            //将所有activity添加到列表中
             for (i=0; i<N; i++) {
                 PackageParser.Activity a = pkg.activities.get(i);
                 a.info.processName = fixProcessName(pkg.applicationInfo.processName,

@@ -160,12 +160,17 @@ public class Dialog implements DialogInterface, Window.Callback,
         } else {
             mContext = context;
         }
-
+        //获取WindowManager
         mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        //创建一个Window
         Window w = PolicyManager.makeNewWindow(mContext);
         mWindow = w;
         w.setCallback(this);
         w.setOnWindowDismissedCallback(this);
+        //设置Window的WindowManager对象
+        //ContextImpl里registerService的WindowManager和这里的方式不同是：
+        //ContextImpl只传了display给WindowManagerImpl去构造
+        //而这里需要WindowManager和新建的Window进行关联，会传入Window和display
         w.setWindowManager(mWindowManager, null, null);
         w.setGravity(Gravity.CENTER);
         mListenersHandler = new ListenersHandler(this);
@@ -258,6 +263,7 @@ public class Dialog implements DialogInterface, Window.Callback,
      * that in {@link #onStart}.
      */
     public void show() {
+        //已经显示
         if (mShowing) {
             if (mDecor != null) {
                 if (mWindow.hasFeature(Window.FEATURE_ACTION_BAR)) {
@@ -269,12 +275,14 @@ public class Dialog implements DialogInterface, Window.Callback,
         }
 
         mCanceled = false;
-        
+
+        //调用AlertDialog的onCreate
         if (!mCreated) {
             dispatchOnCreate(null);
         }
 
         onStart();
+        //获取DecorView
         mDecor = mWindow.getDecorView();
 
         if (mActionBar == null && mWindow.hasFeature(Window.FEATURE_ACTION_BAR)) {
@@ -283,21 +291,20 @@ public class Dialog implements DialogInterface, Window.Callback,
             mWindow.setDefaultLogo(info.logo);
             mActionBar = new WindowDecorActionBar(this);
         }
-
+        //获取窗口布局
         WindowManager.LayoutParams l = mWindow.getAttributes();
-        if ((l.softInputMode
-                & WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION) == 0) {
+        if ((l.softInputMode& WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION) == 0) {
             WindowManager.LayoutParams nl = new WindowManager.LayoutParams();
             nl.copyFrom(l);
-            nl.softInputMode |=
-                    WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION;
+            nl.softInputMode |=WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION;
             l = nl;
         }
 
         try {
+            //将Dialog的DecorView添加到WindowManager中
             mWindowManager.addView(mDecor, l);
             mShowing = true;
-    
+            //发送显示Dialog的消息
             sendShowMessage();
         } finally {
         }

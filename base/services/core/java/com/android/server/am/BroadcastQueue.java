@@ -146,6 +146,7 @@ public final class BroadcastQueue {
                 case BROADCAST_INTENT_MSG: {
                     if (DEBUG_BROADCAST) Slog.v(
                             TAG, "Received BROADCAST_INTENT_MSG");
+                    //处理下一个广播
                     processNextBroadcast(true);
                 } break;
                 case BROADCAST_TIMEOUT_MSG: {
@@ -328,6 +329,7 @@ public final class BroadcastQueue {
         if (mBroadcastsScheduled) {
             return;
         }
+        //发送一个空消息
         mHandler.sendMessage(mHandler.obtainMessage(BROADCAST_INTENT_MSG, this));
         mBroadcastsScheduled = true;
     }

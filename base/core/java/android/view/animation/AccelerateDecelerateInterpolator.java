@@ -36,7 +36,8 @@ public class AccelerateDecelerateInterpolator implements Interpolator, NativeInt
     @SuppressWarnings({"UnusedDeclaration"})
     public AccelerateDecelerateInterpolator(Context context, AttributeSet attrs) {
     }
-    
+
+    //随之时间推移,变换越大
     public float getInterpolation(float input) {
         return (float)(Math.cos((input + 1) * Math.PI) / 2.0f) + 0.5f;
     }

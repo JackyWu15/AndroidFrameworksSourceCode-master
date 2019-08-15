@@ -27,12 +27,15 @@ public class DataSetObservable extends Observable<DataSetObserver> {
      * Called when the contents of the data set have changed.  The recipient
      * will obtain the new contents the next time it queries the data set.
      */
+
+    //调用每个观察者的onChaged通知他们，被观察者发生了变化
     public void notifyChanged() {
         synchronized(mObservers) {
             // since onChanged() is implemented by the app, it could do anything, including
             // removing itself from {@link mObservers} - and that could cause problems if
             // an iterator is used on the ArrayList {@link mObservers}.
             // to avoid such problems, just march thru the list in the reverse order.
+            //通知所有观察者
             for (int i = mObservers.size() - 1; i >= 0; i--) {
                 mObservers.get(i).onChanged();
             }

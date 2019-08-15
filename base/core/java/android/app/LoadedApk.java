@@ -683,6 +683,7 @@ public final class LoadedApk {
         //Slog.i(TAG, "Service registrations: " + mServices);
     }
 
+    //获取IIntentReceiver
     public IIntentReceiver getReceiverDispatcher(BroadcastReceiver r,
             Context context, Handler handler,
             Instrumentation instrumentation, boolean registered) {
@@ -701,6 +702,7 @@ public final class LoadedApk {
                 if (registered) {
                     if (map == null) {
                         map = new ArrayMap<BroadcastReceiver, LoadedApk.ReceiverDispatcher>();
+                        //以context为key，map为value，存到列表中
                         mReceivers.put(context, map);
                     }
                     map.put(r, rd);
@@ -763,6 +765,7 @@ public final class LoadedApk {
         }
     }
 
+    //广播接收器
     static final class ReceiverDispatcher {
 
         final static class InnerReceiver extends IIntentReceiver.Stub {
@@ -791,6 +794,7 @@ public final class LoadedApk {
                     // behalf so that the system's broadcast sequence can continue.
                     if (ActivityThread.DEBUG_BROADCAST) Slog.i(ActivityThread.TAG,
                             "Finishing broadcast to unregistered receiver");
+                    //获取代理
                     IActivityManager mgr = ActivityManagerNative.getDefault();
                     try {
                         if (extras != null) {
@@ -858,6 +862,7 @@ public final class LoadedApk {
                     intent.setExtrasClassLoader(cl);
                     setExtrasClassLoader(cl);
                     receiver.setPendingResult(this);
+                    //调用接收器的OnReceiver
                     receiver.onReceive(mContext, intent);
                 } catch (Exception e) {
                     if (mRegistered && ordered) {

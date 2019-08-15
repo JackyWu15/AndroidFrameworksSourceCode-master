@@ -147,6 +147,8 @@ sp<MediaPlayerBase> MediaPlayerFactory::createPlayer(
 
     factory = sFactoryMap.valueFor(playerType);
     CHECK(NULL != factory);
+
+    //通过IFactory内部类的不同实现类，创建不同的MediaPlayer
     p = factory->createPlayer();
 
     if (p == NULL) {
@@ -173,16 +175,14 @@ sp<MediaPlayerBase> MediaPlayerFactory::createPlayer(
  *                                                                           *
  *****************************************************************************/
 
-class StagefrightPlayerFactory :
-    public MediaPlayerFactory::IFactory {
+class StagefrightPlayerFactory : public MediaPlayerFactory::IFactory {
   public:
     virtual float scoreFactory(const sp<IMediaPlayer>& /*client*/,
                                int fd,
                                int64_t offset,
                                int64_t /*length*/,
                                float /*curScore*/) {
-        if (getDefaultPlayerType()
-                == STAGEFRIGHT_PLAYER) {
+        if (getDefaultPlayerType()  == STAGEFRIGHT_PLAYER) {
             char buf[20];
             lseek(fd, offset, SEEK_SET);
             read(fd, buf, sizeof(buf));

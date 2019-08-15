@@ -828,6 +828,7 @@ public abstract class LayoutInflater {
             }
         }
 
+
         if (finishInflate) parent.onFinishInflate();
     }
 

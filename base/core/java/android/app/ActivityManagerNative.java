@@ -66,8 +66,7 @@ public abstract class ActivityManagerNative extends Binder implements IActivityM
         if (obj == null) {
             return null;
         }
-        IActivityManager in =
-            (IActivityManager)obj.queryLocalInterface(descriptor);
+        IActivityManager in = (IActivityManager)obj.queryLocalInterface(descriptor);
         if (in != null) {
             return in;
         }
@@ -78,6 +77,7 @@ public abstract class ActivityManagerNative extends Binder implements IActivityM
     /**
      * Retrieve the system's default/global activity manager.
      */
+    //获取代理
     static public IActivityManager getDefault() {
         return gDefault.get();
     }
@@ -2344,6 +2344,7 @@ public abstract class ActivityManagerNative extends Binder implements IActivityM
             if (false) {
                 Log.v("ActivityManager", "default service binder = " + b);
             }
+            //获取ActivityManagerProxy代理类
             IActivityManager am = asInterface(b);
             if (false) {
                 Log.v("ActivityManager", "default service = " + am);
@@ -2391,6 +2392,7 @@ class ActivityManagerProxy implements IActivityManager
         } else {
             data.writeInt(0);
         }
+        //向AMS提交注册广播接收器的请求
         mRemote.transact(START_ACTIVITY_TRANSACTION, data, reply, 0);
         reply.readException();
         int result = reply.readInt();

@@ -637,15 +637,18 @@ public class PackageParser {
      */
     public static PackageLite parsePackageLite(File packageFile, int flags)
             throws PackageParserException {
+        //如果是文件夹，解析文件夹所有apk
         if (packageFile.isDirectory()) {
             return parseClusterPackageLite(packageFile, flags);
         } else {
+            //解析单个apk
             return parseMonolithicPackageLite(packageFile, flags);
         }
     }
 
     private static PackageLite parseMonolithicPackageLite(File packageFile, int flags)
             throws PackageParserException {
+        //构建资源
         final ApkLite baseApk = parseApkLite(packageFile, flags);
         final String packagePath = packageFile.getAbsolutePath();
         return new PackageLite(packagePath, baseApk, null, null);
@@ -737,8 +740,10 @@ public class PackageParser {
      */
     public Package parsePackage(File packageFile, int flags) throws PackageParserException {
         if (packageFile.isDirectory()) {
+            //解析多个apk
             return parseClusterPackage(packageFile, flags);
         } else {
+            //解析单个
             return parseMonolithicPackage(packageFile, flags);
         }
     }
@@ -807,18 +812,22 @@ public class PackageParser {
      *             {@link #parsePackage(File, int)}. Eventually this method will
      *             be marked private.
      */
+    //解析单个apk文件
     @Deprecated
     public Package parseMonolithicPackage(File apkFile, int flags) throws PackageParserException {
+        //是否核心应用
         if (mOnlyCoreApps) {
+            //先构建AssetManager等对象
             final PackageLite lite = parseMonolithicPackageLite(apkFile, flags);
             if (!lite.coreApp) {
                 throw new PackageParserException(INSTALL_PARSE_FAILED_MANIFEST_MALFORMED,
                         "Not a coreApp: " + apkFile);
             }
         }
-
+        //先构建AssetManager等对象
         final AssetManager assets = new AssetManager();
         try {
+            //开始解析
             final Package pkg = parseBaseApk(apkFile, assets, flags);
             pkg.codePath = apkFile.getAbsolutePath();
             return pkg;
@@ -845,6 +854,7 @@ public class PackageParser {
         return cookie;
     }
 
+    //开始解析apk文件
     private Package parseBaseApk(File apkFile, AssetManager assets, int flags)
             throws PackageParserException {
         final String apkPath = apkFile.getAbsolutePath();
@@ -865,6 +875,7 @@ public class PackageParser {
             parser = assets.openXmlResourceParser(cookie, ANDROID_MANIFEST_FILENAME);
 
             final String[] outError = new String[1];
+            //解析apk的res资源
             final Package pkg = parseBaseApk(res, parser, flags, outError);
             if (pkg == null) {
                 throw new PackageParserException(mParseError,
@@ -1135,6 +1146,7 @@ public class PackageParser {
         AssetManager assets = null;
         XmlResourceParser parser = null;
         try {
+            //构建资产目录AssetManager
             assets = new AssetManager();
             assets.setConfiguration(0, 0, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     Build.VERSION.RESOURCES_SDK_INT);
@@ -1147,8 +1159,9 @@ public class PackageParser {
 
             final DisplayMetrics metrics = new DisplayMetrics();
             metrics.setToDefaults();
-
+            //构建资源目录Resources
             final Resources res = new Resources(assets, metrics, null);
+            //获取Androidmanifest.xml中的元素
             parser = assets.openXmlResourceParser(cookie, ANDROID_MANIFEST_FILENAME);
 
             final Signature[] signatures;
@@ -1429,6 +1442,7 @@ public class PackageParser {
                 }
 
                 foundApp = true;
+                //开始真正解析AndroidManifest.xml
                 if (!parseBaseApplication(pkg, res, parser, attrs, flags, outError)) {
                     return null;
                 }
@@ -2386,12 +2400,16 @@ public class PackageParser {
     private boolean parseBaseApplication(Package owner, Resources res,
             XmlPullParser parser, AttributeSet attrs, int flags, String[] outError)
         throws XmlPullParserException, IOException {
+        //应用信息
         final ApplicationInfo ai = owner.applicationInfo;
+        //包名
         final String pkgName = owner.applicationInfo.packageName;
 
+        //标签属性
         TypedArray sa = res.obtainAttributes(attrs,
                 com.android.internal.R.styleable.AndroidManifestApplication);
 
+        //应用名
         String name = sa.getNonConfigurationString(
                 com.android.internal.R.styleable.AndroidManifestApplication_name, 0);
         if (name != null) {
@@ -2452,6 +2470,7 @@ public class PackageParser {
             ai.nonLocalizedLabel = v.coerceToString();
         }
 
+        //应用图标等
         ai.icon = sa.getResourceId(
                 com.android.internal.R.styleable.AndroidManifestApplication_icon, 0);
         ai.logo = sa.getResourceId(
@@ -2615,8 +2634,10 @@ public class PackageParser {
             return false;
         }
 
+
         final int innerDepth = parser.getDepth();
         int type;
+        //循环解析Application元素下所有子元素，如activity,service等
         while ((type = parser.next()) != XmlPullParser.END_DOCUMENT
                 && (type != XmlPullParser.END_TAG || parser.getDepth() > innerDepth)) {
             if (type == XmlPullParser.END_TAG || type == XmlPullParser.TEXT) {
@@ -2625,12 +2646,14 @@ public class PackageParser {
 
             String tagName = parser.getName();
             if (tagName.equals("activity")) {
+                //解析获得一个Activity实例
                 Activity a = parseActivity(owner, res, parser, attrs, flags, outError, false,
                         owner.baseHardwareAccelerated);
                 if (a == null) {
                     mParseError = PackageManager.INSTALL_PARSE_FAILED_MANIFEST_MALFORMED;
                     return false;
                 }
+                //将Activity添加到管理的列表当中
 
                 owner.activities.add(a);
 
@@ -2888,6 +2911,7 @@ public class PackageParser {
         return true;
     }
 
+
     private boolean parsePackageItemInfo(Package owner, PackageItemInfo outInfo,
             String[] outError, String tag, TypedArray sa,
             int nameRes, int labelRes, int iconRes, int logoRes, int bannerRes) {
@@ -2929,10 +2953,12 @@ public class PackageParser {
         return true;
     }
 
+    //解析等构建一个Activity
     private Activity parseActivity(Package owner, Resources res,
             XmlPullParser parser, AttributeSet attrs, int flags, String[] outError,
             boolean receiver, boolean hardwareAccelerated)
             throws XmlPullParserException, IOException {
+        //属性
         TypedArray sa = res.obtainAttributes(attrs,
                 com.android.internal.R.styleable.AndroidManifestActivity);
 
@@ -2948,7 +2974,8 @@ public class PackageParser {
                     com.android.internal.R.styleable.AndroidManifestActivity_description,
                     com.android.internal.R.styleable.AndroidManifestActivity_enabled);
         }
-        
+
+        //看到BroadcastReceiver实际上也是通过parseActivity解析
         mParseActivityArgs.tag = receiver ? "<receiver>" : "<activity>";
         mParseActivityArgs.sa = sa;
         mParseActivityArgs.flags = flags;

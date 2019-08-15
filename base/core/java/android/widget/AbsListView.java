@@ -6114,6 +6114,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     class AdapterDataSetObserver extends AdapterView<ListAdapter>.AdapterDataSetObserver {
         @Override
         public void onChanged() {
+            //调用父类onChanged
             super.onChanged();
             if (mFastScroll != null) {
                 mFastScroll.onSectionsChanged();

@@ -28,12 +28,15 @@ import android.view.ViewGroup;
  * specialized {@link SpinnerAdapter} interface).
  */
 public abstract class BaseAdapter implements ListAdapter, SpinnerAdapter {
+
+    //数据被观察者
     private final DataSetObservable mDataSetObservable = new DataSetObservable();
 
     public boolean hasStableIds() {
         return false;
     }
-    
+
+
     public void registerDataSetObserver(DataSetObserver observer) {
         mDataSetObservable.registerObserver(observer);
     }
@@ -46,6 +49,8 @@ public abstract class BaseAdapter implements ListAdapter, SpinnerAdapter {
      * Notifies the attached observers that the underlying data has been changed
      * and any View reflecting the data set should refresh itself.
      */
+
+    //通知所有观察者
     public void notifyDataSetChanged() {
         mDataSetObservable.notifyChanged();
     }

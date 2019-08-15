@@ -266,6 +266,7 @@ public class InputManagerService extends IInputManager.Stub
                 context.getResources().getBoolean(R.bool.config_useDevInputEventForAudioJack);
         Slog.i(TAG, "Initializing input manager, mUseDevInputEventForAudioJack="
                 + mUseDevInputEventForAudioJack);
+        //native层初始化-》构造NativeInputManager-》new InputManager(eventHub, this, this)
         mPtr = nativeInit(this, mContext, mHandler.getLooper().getQueue());
 
         LocalServices.addService(InputManagerInternal.class, new LocalService());
@@ -279,6 +280,7 @@ public class InputManagerService extends IInputManager.Stub
         mWiredAccessoryCallbacks = callbacks;
     }
 
+    //SystemServer调用，开始启动
     public void start() {
         Slog.i(TAG, "Starting input manager");
         nativeStart(mPtr);
@@ -294,6 +296,7 @@ public class InputManagerService extends IInputManager.Stub
             public void onReceive(Context context, Intent intent) {
                 updatePointerSpeedFromSettings();
                 updateShowTouchesFromSettings();
+
             }
         }, new IntentFilter(Intent.ACTION_USER_SWITCHED), null, mHandler);
 

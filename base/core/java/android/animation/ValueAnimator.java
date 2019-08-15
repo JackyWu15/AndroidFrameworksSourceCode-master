@@ -309,7 +309,9 @@ public class ValueAnimator extends Animator {
      * @return A ValueAnimator object that is set up to animate between the given values.
      */
     public static ValueAnimator ofFloat(float... values) {
+        //构建动画对象
         ValueAnimator anim = new ValueAnimator();
+        //设置属性值
         anim.setFloatValues(values);
         return anim;
     }
@@ -401,7 +403,9 @@ public class ValueAnimator extends Animator {
         if (mValues == null || mValues.length == 0) {
             setValues(PropertyValuesHolder.ofFloat("", values));
         } else {
+            //mValues是动画的各个属性的名称和setter，getter的集合
             PropertyValuesHolder valuesHolder = mValues[0];
+
             valuesHolder.setFloatValues(values);
         }
         // New property/values/target should cause re-initialization prior to starting
@@ -613,14 +617,18 @@ public class ValueAnimator extends Animator {
             // cause more to be added to the pending list (for example, if one animation
             // starting triggers another starting). So we loop until mPendingAnimations
             // is empty.
+
+            //mPendingAnimations:正要执行的动画列表
+            // mDelayedAnims:延迟执行的动画列表
             while (mPendingAnimations.size() > 0) {
-                ArrayList<ValueAnimator> pendingCopy =
-                        (ArrayList<ValueAnimator>) mPendingAnimations.clone();
+                //复制一份等待执行的动画列表
+                ArrayList<ValueAnimator> pendingCopy = (ArrayList<ValueAnimator>) mPendingAnimations.clone();
                 mPendingAnimations.clear();
                 int count = pendingCopy.size();
                 for (int i = 0; i < count; ++i) {
                     ValueAnimator anim = pendingCopy.get(i);
                     // If the animation has a startDelay, place it on the delayed list
+                    //如果这个动画设置了延迟，添加到延迟的列表里，否则直接开始动画
                     if (anim.mStartDelay == 0) {
                         anim.startAnimation(this);
                     } else {
@@ -941,26 +949,34 @@ public class ValueAnimator extends Animator {
      *
      * @param playBackwards Whether the ValueAnimator should start playing in reverse.
      */
+    //开始属性动画
     private void start(boolean playBackwards) {
+        //判断Looper是否为空，这是UI线程的Looper
         if (Looper.myLooper() == null) {
             throw new AndroidRuntimeException("Animators may only be run on Looper threads");
         }
+        //设置一些基本状态
         mPlayingBackwards = playBackwards;
         mCurrentIteration = 0;
         mPlayingState = STOPPED;
+        //是否启动动画
         mStarted = true;
+        //是否延迟启动
         mStartedDelay = false;
         mPaused = false;
         updateScaledDuration(); // in case the scale factor has changed since creation time
         AnimationHandler animationHandler = getOrCreateAnimationHandler();
+        //将动画加入到等待执行的动画列表中
         animationHandler.mPendingAnimations.add(this);
         if (mStartDelay == 0) {
             // This sets the initial value of the animation, prior to actually starting it running
             setCurrentPlayTime(0);
             mPlayingState = STOPPED;
             mRunning = true;
+            //触发动画监听
             notifyStartListeners();
         }
+        //开始动画
         animationHandler.start();
     }
 
@@ -1108,7 +1124,9 @@ public class ValueAnimator extends Animator {
             Trace.asyncTraceBegin(Trace.TRACE_TAG_VIEW, getNameForTrace(),
                     System.identityHashCode(this));
         }
+        //初始化动画
         initAnimation();
+        //将动画添加到列表中
         handler.mAnimations.add(this);
         if (mStartDelay > 0 && mListeners != null) {
             // Listeners were already notified in start() if startDelay is 0; this is

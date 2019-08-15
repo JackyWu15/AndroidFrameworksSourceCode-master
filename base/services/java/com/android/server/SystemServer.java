@@ -104,6 +104,8 @@ import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+//系统服务类
 public final class SystemServer {
     private static final String TAG = "SystemServer";
 
@@ -165,6 +167,7 @@ public final class SystemServer {
 
     /**
      * The main entry point from zygote.
+     * zygote的入口，开启运行系统服务
      */
     public static void main(String[] args) {
         new SystemServer().run();
@@ -175,6 +178,7 @@ public final class SystemServer {
         mFactoryTestMode = FactoryTest.getMode();
     }
 
+    //运行
     private void run() {
         // If a device's clock is before 1970 (before 0), a lot of
         // APIs crash dealing with negative numbers, notably
@@ -246,13 +250,17 @@ public final class SystemServer {
         createSystemContext();
 
         // Create the system service manager.
+        //创建SystemServiceManager
         mSystemServiceManager = new SystemServiceManager(mSystemContext);
         LocalServices.addService(SystemServiceManager.class, mSystemServiceManager);
 
         // Start services.
         try {
+            //启动服务，创建PMS，AMS等
             startBootstrapServices();
+            // 启动核心服务
             startCoreServices();
+            //启动IputManagerService等
             startOtherServices();
         } catch (Throwable ex) {
             Slog.e("System", "******************************************");
@@ -312,6 +320,7 @@ public final class SystemServer {
         mInstaller = mSystemServiceManager.startService(Installer.class);
 
         // Activity manager runs the show.
+        //开启mActivityManagerService
         mActivityManagerService = mSystemServiceManager.startService(
                 ActivityManagerService.Lifecycle.class).getService();
         mActivityManagerService.setSystemServiceManager(mSystemServiceManager);
@@ -320,6 +329,7 @@ public final class SystemServer {
         // Native daemons may be watching for it to be registered so it must be ready
         // to handle incoming binder calls immediately (including being able to verify
         // the permissions for those calls).
+        //开启mPowerManagerService
         mPowerManagerService = mSystemServiceManager.startService(PowerManagerService.class);
 
         // Now that the power manager has been started, let the activity manager
@@ -328,6 +338,7 @@ public final class SystemServer {
 
         // Display manager is needed to provide display metrics before package manager
         // starts up.
+        //开启mDisplayManagerService
         mDisplayManagerService = mSystemServiceManager.startService(DisplayManagerService.class);
 
         // We need the default display before we can initialize the package manager.
@@ -345,6 +356,8 @@ public final class SystemServer {
 
         // Start the package manager.
         Slog.i(TAG, "Package Manager");
+
+        //构建PackageManagerService
         mPackageManagerService = PackageManagerService.main(mSystemContext, mInstaller,
                 mFactoryTestMode != FactoryTest.FACTORY_TEST_OFF, mOnlyCore);
         mFirstBoot = mPackageManagerService.isFirstBoot();
@@ -468,13 +481,18 @@ public final class SystemServer {
             watchdog.init(context, mActivityManagerService);
 
             Slog.i(TAG, "Input Manager");
+            //构建InputManagerService
             inputManager = new InputManagerService(context);
 
             Slog.i(TAG, "Window Manager");
+           // 构建WindowManagerService
+            //启动InputManagerService前，关联WindowManagerService
             wm = WindowManagerService.main(context, inputManager,
                     mFactoryTestMode != FactoryTest.FACTORY_TEST_LOW_LEVEL,
                     !mFirstBoot, mOnlyCore);
+            //WindowManagerService添加到ServiceManager列表中
             ServiceManager.addService(Context.WINDOW_SERVICE, wm);
+            //InputManagerService添加到ServiceManager列表中
             ServiceManager.addService(Context.INPUT_SERVICE, inputManager);
 
             mActivityManagerService.setWindowManager(wm);

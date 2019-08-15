@@ -40,6 +40,7 @@ public abstract class Observable<T> {
      * @throws IllegalArgumentException the observer is null
      * @throws IllegalStateException the observer is already registered
      */
+    //注册添加观察者
     public void registerObserver(T observer) {
         if (observer == null) {
             throw new IllegalArgumentException("The observer is null.");
@@ -48,6 +49,7 @@ public abstract class Observable<T> {
             if (mObservers.contains(observer)) {
                 throw new IllegalStateException("Observer " + observer + " is already registered.");
             }
+            //添加观察者
             mObservers.add(observer);
         }
     }

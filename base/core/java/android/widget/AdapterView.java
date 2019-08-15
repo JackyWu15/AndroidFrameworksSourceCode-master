@@ -795,14 +795,17 @@ public abstract class AdapterView<T extends Adapter> extends ViewGroup {
         dispatchThawSelfOnly(container);
     }
 
+    //被不同的子类AdapterDataSetObserver继承
     class AdapterDataSetObserver extends DataSetObserver {
 
         private Parcelable mInstanceState = null;
 
+        //调用notifyDataSetChanged时，被观察者调用观察者的onChanged
         @Override
         public void onChanged() {
             mDataChanged = true;
             mOldItemCount = mItemCount;
+            //获取Adapter中数据的数据量
             mItemCount = getAdapter().getCount();
 
             // Detect the case where a cursor that was previously invalidated has
@@ -815,6 +818,7 @@ public abstract class AdapterView<T extends Adapter> extends ViewGroup {
                 rememberSyncState();
             }
             checkFocus();
+            //重绘布局
             requestLayout();
         }
 

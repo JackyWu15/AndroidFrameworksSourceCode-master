@@ -475,6 +475,7 @@ class ContextImpl extends Context {
 
         registerService(LAYOUT_INFLATER_SERVICE, new ServiceFetcher() {
                 public Object createService(ContextImpl ctx) {
+                    //看Policy知道，实际构造了PhoneLayoutInflater
                     return PolicyManager.makeNewLayoutInflater(ctx.getOuterContext());
                 }});
 
@@ -625,6 +626,7 @@ class ContextImpl extends Context {
                     return new EthernetManager(ctx.getOuterContext(), service);
                 }});
 
+        //构造WindowManager
         registerService(WINDOW_SERVICE, new ServiceFetcher() {
                 Display mDefaultDisplay;
                 public Object getService(ContextImpl ctx) {
@@ -637,6 +639,7 @@ class ContextImpl extends Context {
                         }
                         display = mDefaultDisplay;
                     }
+                    //构造WindowManagerImpl
                     return new WindowManagerImpl(display);
                 }});
 
@@ -1606,6 +1609,7 @@ class ContextImpl extends Context {
         }
     }
 
+    //注册广播
     @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
         return registerReceiver(receiver, filter, null, null);
@@ -1614,8 +1618,7 @@ class ContextImpl extends Context {
     @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter,
             String broadcastPermission, Handler scheduler) {
-        return registerReceiverInternal(receiver, getUserId(),
-                filter, broadcastPermission, scheduler, getOuterContext());
+        return registerReceiverInternal(receiver, getUserId(), filter, broadcastPermission, scheduler, getOuterContext());
     }
 
     @Override
@@ -1625,6 +1628,7 @@ class ContextImpl extends Context {
                 filter, broadcastPermission, scheduler, getOuterContext());
     }
 
+    //注册广播的逻辑处理
     private Intent registerReceiverInternal(BroadcastReceiver receiver, int userId,
             IntentFilter filter, String broadcastPermission,
             Handler scheduler, Context context) {
@@ -1632,23 +1636,22 @@ class ContextImpl extends Context {
         if (receiver != null) {
             if (mPackageInfo != null && context != null) {
                 if (scheduler == null) {
-                    scheduler = mMainThread.getHandler();
+                    //mMainThread为ActivityThread
+                    scheduler = mMainThread.getHandler();//获取Handler用于消息投递
                 }
-                rd = mPackageInfo.getReceiverDispatcher(
-                    receiver, context, scheduler,
-                    mMainThread.getInstrumentation(), true);
+                //通过LoadedApk获取IIntentReceiver与AMS交互，通过Handler来传递消息
+                rd = mPackageInfo.getReceiverDispatcher( receiver, context, scheduler, mMainThread.getInstrumentation(), true);
             } else {
                 if (scheduler == null) {
                     scheduler = mMainThread.getHandler();
                 }
-                rd = new LoadedApk.ReceiverDispatcher(
-                        receiver, context, scheduler, null, true).getIIntentReceiver();
+
+                rd = new LoadedApk.ReceiverDispatcher( receiver, context, scheduler, null, true).getIIntentReceiver();
             }
         }
         try {
-            return ActivityManagerNative.getDefault().registerReceiver(
-                    mMainThread.getApplicationThread(), mBasePackageName,
-                    rd, filter, broadcastPermission, userId);
+            //把IIntentReceiver类型的Binder注册到AMS中
+            return ActivityManagerNative.getDefault().registerReceiver( mMainThread.getApplicationThread(), mBasePackageName, rd, filter, broadcastPermission, userId);
         } catch (RemoteException e) {
             return null;
         }

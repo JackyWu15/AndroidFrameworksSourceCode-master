@@ -182,7 +182,7 @@ public class AlertController {
         TypedArray a = context.obtainStyledAttributes(null,
                 com.android.internal.R.styleable.AlertDialog,
                 com.android.internal.R.attr.alertDialogStyle, 0);
-
+        //Dialog的实际布局
         mAlertDialogLayout = a.getResourceId(com.android.internal.R.styleable.AlertDialog_layout,
                 com.android.internal.R.layout.alert_dialog);
         mButtonPanelSideLayout = a.getResourceId(
@@ -227,10 +227,13 @@ public class AlertController {
     }
 
     public void installContent() {
+        //设置窗口，没有title
         /* We use a custom title so never request a window title */
         mWindow.requestFeature(Window.FEATURE_NO_TITLE);
         int contentView = selectContentView();
+        //设置窗口的内容和布局
         mWindow.setContentView(contentView);
+        //自定义内容布局
         setupView();
         setupDecor();
     }
@@ -448,11 +451,14 @@ public class AlertController {
         }
     }
 
+    //显示用户自定义的内容视图
     private void setupView() {
+        //获取并初始化内容区域
         final LinearLayout contentPanel = (LinearLayout) mWindow.findViewById(R.id.contentPanel);
         setupContent(contentPanel);
+        //初始化按钮
         final boolean hasButtons = setupButtons();
-
+        //title区域
         final LinearLayout topPanel = (LinearLayout) mWindow.findViewById(R.id.topPanel);
         final TypedArray a = mContext.obtainStyledAttributes(
                 null, R.styleable.AlertDialog, R.attr.alertDialogStyle, 0);
@@ -468,6 +474,7 @@ public class AlertController {
             mWindow.setCloseOnTouchOutsideIfNotSet(true);
         }
 
+        //自定义的内容区域
         final FrameLayout customPanel = (FrameLayout) mWindow.findViewById(R.id.customPanel);
         final View customView;
         if (mView != null) {
@@ -485,6 +492,7 @@ public class AlertController {
                     WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         }
 
+        //显示自定义的视图
         if (hasCustomView) {
             final FrameLayout custom = (FrameLayout) mWindow.findViewById(R.id.custom);
             custom.addView(customView, new LayoutParams(MATCH_PARENT, MATCH_PARENT));
@@ -880,6 +888,7 @@ public class AlertController {
             mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
+        //将成员参数设置到AlertController中
         public void apply(AlertController dialog) {
             if (mCustomTitleView != null) {
                 dialog.setCustomTitle(mCustomTitleView);

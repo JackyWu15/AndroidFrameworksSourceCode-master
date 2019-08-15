@@ -15160,6 +15160,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         return didSomething;
     }
 
+    //通过Binder方式，ActivityManagerProxy代理类transact到这里，注册广播
     public Intent registerReceiver(IApplicationThread caller, String callerPackage,
             IIntentReceiver receiver, IntentFilter filter, String permission, int userId) {
         enforceNotIsolatedCaller("registerReceiver");
@@ -15196,9 +15197,12 @@ public final class ActivityManagerService extends ActivityManagerNative
 
             // Look for any matching sticky broadcasts...
             Iterator actions = filter.actionsIterator();
+            //根据Action查找匹配的sticky接收器
             if (actions != null) {
                 while (actions.hasNext()) {
                     String action = (String)actions.next();
+                    //根据action查找有没sticky inten存在
+                    //sticky intent即保留最后一次接收的广播，以便下一个注册的还能接收
                     allSticky = getStickiesLocked(action, filter, allSticky,
                             UserHandle.USER_ALL);
                     allSticky = getStickiesLocked(action, filter, allSticky,
@@ -15222,8 +15226,8 @@ public final class ActivityManagerService extends ActivityManagerNative
                 return sticky;
             }
 
-            ReceiverList rl
-                = (ReceiverList)mRegisteredReceivers.get(receiver.asBinder());
+            //获取广播列表
+            ReceiverList rl  = (ReceiverList)mRegisteredReceivers.get(receiver.asBinder());
             if (rl == null) {
                 rl = new ReceiverList(this, callerApp, callingPid, callingUid,
                         userId, receiver);
@@ -15251,8 +15255,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                         "Receiver requested to register for user " + userId
                         + " was previously registered for user " + rl.userId);
             }
-            BroadcastFilter bf = new BroadcastFilter(filter, rl, callerPackage,
-                    permission, callingUid, userId);
+
+            //构建过滤器，并添加到列表中
+            BroadcastFilter bf = new BroadcastFilter(filter, rl, callerPackage, permission, callingUid, userId);
             rl.add(bf);
             if (!bf.debugCheck()) {
                 Slog.w(TAG, "==> For Dynamic broadast");
@@ -15273,6 +15278,7 @@ public final class ActivityManagerService extends ActivityManagerNative
                             null, -1, -1, null, null, AppOpsManager.OP_NONE, receivers, null, 0,
                             null, null, false, true, true, -1);
                     queue.enqueueParallelBroadcastLocked(r);
+                    //分发广播给ReceiverDispatcher
                     queue.scheduleBroadcastsLocked();
                 }
             }

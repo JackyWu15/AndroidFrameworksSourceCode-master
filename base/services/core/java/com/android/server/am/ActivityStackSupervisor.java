@@ -812,6 +812,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
                 0, 0, 0, null, false, null, null, null);
     }
 
+    //Activity跳转时Instrumentation执行execStartActivity时调用
     final int startActivityMayWait(IApplicationThread caller, int callingUid,
             String callingPackage, Intent intent, String resolvedType,
             IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
@@ -912,12 +913,14 @@ public final class ActivityStackSupervisor implements DisplayListener {
                         callingPid = Binder.getCallingPid();
                         componentSpecified = true;
                         try {
-                            ResolveInfo rInfo =
-                                AppGlobals.getPackageManager().resolveIntent(
+                            //通过PackageManager得到ActivityInfo列表，每个ActivityInfo是一个Activity的档案对象，记录了Activity相关信息
+                            //通过列表对象，跳转相应的Activity
+                            ResolveInfo rInfo = AppGlobals.getPackageManager().resolveIntent(
                                         intent, null,
                                         PackageManager.MATCH_DEFAULT_ONLY
                                         | ActivityManagerService.STOCK_PM_FLAGS, userId);
                             aInfo = rInfo != null ? rInfo.activityInfo : null;
+
                             aInfo = mService.getActivityInfoForUser(aInfo, userId);
                         } catch (RemoteException e) {
                             aInfo = null;
@@ -1063,12 +1066,14 @@ public final class ActivityStackSupervisor implements DisplayListener {
     final boolean realStartActivityLocked(ActivityRecord r,
             ProcessRecord app, boolean andResume, boolean checkConfig)
             throws RemoteException {
-
+        //冻结未启动的其他Activity
         r.startFreezingScreenLocked(app, 0);
         if (false) Slog.d(TAG, "realStartActivity: setting app visibility true");
+        //向WindowManager设置Token，标识当前App要位于前台显示
         mWindowManager.setAppVisibility(r.appToken, true);
 
         // schedule launch ticks to collect information about slow apps.
+        //搜索启动较慢的App的信息
         r.startLaunchTickingLocked();
 
         // Have the window manager re-evaluate the orientation of
@@ -1077,6 +1082,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         // manager with a new orientation.  We don't care about that,
         // because the activity is not currently running so we are
         // just restarting it anyway.
+        //检查配置信息
         if (checkConfig) {
             Configuration config = mWindowManager.updateOrientationFromAppTokens(
                     mService.mConfiguration,
@@ -1084,6 +1090,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
             mService.updateConfigurationLocked(config, r, false, false);
         }
 
+        //设置相关参数
         r.app = app;
         app.waitingToKill = null;
         r.launchCount++;
@@ -1120,6 +1127,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
                         r.userId, System.identityHashCode(r),
                         r.task.taskId, r.shortComponentName);
             }
+            //是否桌面Activity，如果是，添加到Activity栈底部
             if (r.isHomeActivity() && r.isNotResolverActivity()) {
                 // Home process is the root process of the task.
                 mService.mHomeProcess = r.task.mActivities.get(0).app;
@@ -1159,7 +1167,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
                     mService.mAutoStopProfiler) : null;
             app.forceProcessStateUpTo(ActivityManager.PROCESS_STATE_TOP);
 
-            //回到ActivityThread开启Activity
+            //回到ActivityThread的ApplicationThread调用scheduleLaunchActivity，设置所有参数
             app.thread.scheduleLaunchActivity(new Intent(r.intent), r.appToken,
                     System.identityHashCode(r), r.info, new Configuration(mService.mConfiguration),
                     r.compat, r.task.voiceInteractor, app.repProcState, r.icicle, r.persistentState,

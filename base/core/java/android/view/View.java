@@ -13529,6 +13529,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * @see #dispatchSaveInstanceState(android.util.SparseArray)
      * @see #onSaveInstanceState()
      */
+    //保存视图树状态
     public void saveHierarchyState(SparseArray<Parcelable> container) {
         dispatchSaveInstanceState(container);
     }
@@ -13544,9 +13545,12 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * @see #saveHierarchyState(android.util.SparseArray)
      * @see #onSaveInstanceState()
      */
+    //实际保存视图树状态的方法
     protected void dispatchSaveInstanceState(SparseArray<Parcelable> container) {
+        //如果View没有设置id，这个View的状态不会被保存
         if (mID != NO_ID && (mViewFlags & SAVE_DISABLED_MASK) == 0) {
             mPrivateFlags &= ~PFLAG_SAVE_STATE_CALLED;
+            //获取自身的状态，因为onSaveInstanceState默认是空，需要重写改方法，让其不为空，看TextView的实现
             Parcelable state = onSaveInstanceState();
             if ((mPrivateFlags & PFLAG_SAVE_STATE_CALLED) == 0) {
                 throw new IllegalStateException(
@@ -13555,6 +13559,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
             if (state != null) {
                 // Log.i("View", "Freezing #" + Integer.toHexString(mID)
                 // + ": " + state);
+                //将自身状态放到container中
                 container.put(mID, state);
             }
         }
@@ -13581,6 +13586,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * @see #dispatchSaveInstanceState(android.util.SparseArray)
      * @see #setSaveEnabled(boolean)
      */
+    //自身状态，默认存储的状态为空
     protected Parcelable onSaveInstanceState() {
         mPrivateFlags |= PFLAG_SAVE_STATE_CALLED;
         return BaseSavedState.EMPTY_STATE;
@@ -14615,19 +14621,24 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * Utility function, called by draw(canvas, parent, drawingTime) to handle the less common
      * case of an active Animation being run on the view.
      */
+    //绘制动画信息
     private boolean drawAnimation(ViewGroup parent, long drawingTime,
             Animation a, boolean scalingRequired) {
         Transformation invalidationTransform;
         final int flags = parent.mGroupFlags;
+        //动画是否有初始化
         final boolean initialized = a.isInitialized();
+        //没有将进行初始化
         if (!initialized) {
             a.initialize(mRight - mLeft, mBottom - mTop, parent.getWidth(), parent.getHeight());
             a.initializeInvalidateRegion(0, 0, mRight - mLeft, mBottom - mTop);
+            //如果设置动画监听，则触发 onAnimationStart回调
             if (mAttachInfo != null) a.setListenerHandler(mAttachInfo.mHandler);
             onAnimationStart();
         }
-
+        //获取Transformation存储动画信息
         final Transformation t = parent.getChildTransformation();
+        //在此处让Animation计算动画相关值
         boolean more = a.getTransformation(drawingTime, t, 1f);
         if (scalingRequired && mAttachInfo.mApplicationScale != 1f) {
             if (parent.mInvalidationTransformation == null) {
@@ -14640,6 +14651,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
         }
 
         if (more) {
+            //判断当前动画类型是否需要调整位置大小，再刷新不同区域
             if (!a.willChangeBounds()) {
                 if ((flags & (ViewGroup.FLAG_OPTIMIZE_INVALIDATE | ViewGroup.FLAG_ANIMATION_DONE)) ==
                         ViewGroup.FLAG_OPTIMIZE_INVALIDATE) {
@@ -14655,6 +14667,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                     parent.mInvalidateRegion = new RectF();
                 }
                 final RectF region = parent.mInvalidateRegion;
+                //获取重绘区域
                 a.getInvalidateRegion(0, 0, mRight - mLeft, mBottom - mTop, region,
                         invalidationTransform);
 
@@ -14662,8 +14675,10 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                 // make sure we do not cancel invalidate requests
                 parent.mPrivateFlags |= PFLAG_DRAW_ANIMATION;
 
+                //重新计算有效区域
                 final int left = mLeft + (int) region.left;
                 final int top = mTop + (int) region.top;
+                //父view刷新这块区域
                 parent.invalidate(left, top, left + (int) (region.width() + .5f),
                         top + (int) (region.height() + .5f));
             }
@@ -14723,10 +14738,12 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * This draw() method is an implementation detail and is not intended to be overridden or
      * to be called from anywhere else other than ViewGroup.drawChild().
      */
+    //绘制
     boolean draw(Canvas canvas, ViewGroup parent, long drawingTime) {
         boolean usingRenderNodeProperties = mAttachInfo != null && mAttachInfo.mHardwareAccelerated;
         boolean more = false;
         final boolean childHasIdentityMatrix = hasIdentityMatrix();
+        //是否需要清除动画信息
         final int flags = parent.mGroupFlags;
 
         if ((flags & ViewGroup.FLAG_CLEAR_TRANSFORMATION) == ViewGroup.FLAG_CLEAR_TRANSFORMATION) {
@@ -14751,8 +14768,11 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
             caching = (layerType != LAYER_TYPE_NONE) || hardwareAccelerated;
         }
 
+        //获取设置的动画信息
         final Animation a = getAnimation();
+        //如果设置了动画信息，将绘制动画
         if (a != null) {
+            //绘制动画
             more = drawAnimation(parent, drawingTime, a, scalingRequired);
             concatMatrix = a.willChangeTransformationMatrix();
             if (concatMatrix) {
@@ -17736,9 +17756,13 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * @param animation the animation to start now
      */
     public void startAnimation(Animation animation) {
+        //设置动画开始时间
         animation.setStartTime(Animation.START_ON_FIRST_FRAME);
+        //对view设置动画信息
         setAnimation(animation);
+        //刷新父类的缓存，父类会调用dispatchDraw->drawChild让子View调用draw(Canvas canvas, ViewGroup parent, long drawingTime)方法进行更新重绘
         invalidateParentCaches();
+        //刷新View本身和子View
         invalidate(true);
     }
 

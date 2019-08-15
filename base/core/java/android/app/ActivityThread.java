@@ -613,6 +613,7 @@ public final class ActivityThread {
 
             updateProcessState(procState, false);
 
+            //构造一个ActivityClientRecord，将所有参数设置进去
             ActivityClientRecord r = new ActivityClientRecord();
 
             r.token = token;
@@ -634,7 +635,8 @@ public final class ActivityThread {
 
             updatePendingConfiguration(curConfig);
 
-            //Handler发送消息开启Activity
+
+            //参数设置完毕，Handler发送LAUNCH_ACTIVITY消息-》1277行，handleLaunchActivity实例化Activity
             sendMessage(H.LAUNCH_ACTIVITY, r);
         }
 
@@ -1276,8 +1278,7 @@ public final class ActivityThread {
                     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "activityStart");
                     final ActivityClientRecord r = (ActivityClientRecord) msg.obj;
 
-                    r.packageInfo = getPackageInfoNoCheck(
-                            r.activityInfo.applicationInfo, r.compatInfo);
+                    r.packageInfo = getPackageInfoNoCheck(r.activityInfo.applicationInfo, r.compatInfo);
                     //通过反射实例化Activity
                     handleLaunchActivity(r, null);
                     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
@@ -2178,8 +2179,9 @@ public final class ActivityThread {
 
     private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
         // System.out.println("##### [" + System.currentTimeMillis() + "] ActivityThread.performLaunchActivity(" + r + ")");
-
+        //获取ActivityInfo
         ActivityInfo aInfo = r.activityInfo;
+        //获取PackageInfo
         if (r.packageInfo == null) {
             r.packageInfo = getPackageInfo(aInfo.applicationInfo, r.compatInfo,
                     Context.CONTEXT_INCLUDE_CODE);
@@ -2198,6 +2200,7 @@ public final class ActivityThread {
                     r.activityInfo.targetActivity);
         }
 
+        //开始反射构造Activity
         Activity activity = null;
         try {
             //通过类加载器
@@ -2237,7 +2240,7 @@ public final class ActivityThread {
                 Configuration config = new Configuration(mCompatConfiguration);
                 if (DEBUG_CONFIGURATION) Slog.v(TAG, "Launching activity "
                         + r.activityInfo.name + " with config " + config);
-                //将appContext等对象attach 到Activity中
+                //将appContext，Application等对象绑定到Activity中
                 activity.attach(appContext, this, getInstrumentation(), r.token,
                         r.ident, app, r.intent, r.activityInfo, title, r.parent,
                         r.embeddedID, r.lastNonConfigurationInstances, config,
@@ -2253,7 +2256,7 @@ public final class ActivityThread {
                     activity.setTheme(theme);
                 }
 
-                //mInstrumentation调用Activity的OnCreate方法
+                //Instrumentation调用callActivityOnCreate，让Activity去调用OnCreate方法
                 activity.mCalled = false;
                 if (r.isPersistable()) {
                     mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);
@@ -2267,15 +2270,16 @@ public final class ActivityThread {
                 }
                 r.activity = activity;
                 r.stopped = true;
+
                 if (!r.activity.mFinished) {
                     activity.performStart();
                     r.stopped = false;
                 }
                 if (!r.activity.mFinished) {
                     if (r.isPersistable()) {
+                        //如果state,即Bundle不为空，调用callActivityOnRestoreInstanceState恢复之前的状态
                         if (r.state != null || r.persistentState != null) {
-                            mInstrumentation.callActivityOnRestoreInstanceState(activity, r.state,
-                                    r.persistentState);
+                            mInstrumentation.callActivityOnRestoreInstanceState(activity, r.state, r.persistentState);
                         }
                     } else if (r.state != null) {
                         mInstrumentation.callActivityOnRestoreInstanceState(activity, r.state);
@@ -2297,7 +2301,7 @@ public final class ActivityThread {
                 }
             }
             r.paused = true;
-
+            //保存到Activities管理列表中
             mActivities.put(r.token, r);
 
         } catch (SuperNotCalledException e) {
@@ -3258,7 +3262,10 @@ public final class ActivityThread {
     }
 
     final void performStopActivity(IBinder token, boolean saveState) {
+        //获取ActivityClientRecord，记录了Activity的信息，这个ActivityClientRecord保存在系统维护的一个Activities列表中，重新恢复时会查询这个列表，取到相应的ActivityClientRecord，而bundle就保存在ActivityClientRecord中
+        //当Activity重新oncreate前（即调用performLaunchActivity方法)，如果这个ActivityClientRecord有保存状态信息，那么会调用onResoreInstanceState进行恢复
         ActivityClientRecord r = mActivities.get(token);
+        //saveState是否存储状态
         performStopActivityInner(r, null, false, saveState);
     }
 
@@ -3345,6 +3352,7 @@ public final class ActivityThread {
             // Next have the activity save its current state and managed dialogs...
             if (!r.activity.mFinished && saveState) {
                 if (r.state == null) {
+                    //执行Activity的OnSaveInstanceState
                     callCallActivityOnSaveInstanceState(r);
                 }
             }
@@ -3352,6 +3360,7 @@ public final class ActivityThread {
             if (!keepShown) {
                 try {
                     // Now we are idle.
+                    //执行onStop方法
                     r.activity.performStop();
                 } catch (Exception e) {
                     if (!mInstrumentation.onException(r.activity, e)) {
@@ -3931,9 +3940,9 @@ public final class ActivityThread {
         r.state.setAllowFds(false);
         if (r.isPersistable()) {
             r.persistentState = new PersistableBundle();
-            mInstrumentation.callActivityOnSaveInstanceState(r.activity, r.state,
-                    r.persistentState);
+            mInstrumentation.callActivityOnSaveInstanceState(r.activity, r.state, r.persistentState);
         } else {
+            //mInstrumentation来调用
             mInstrumentation.callActivityOnSaveInstanceState(r.activity, r.state);
         }
     }

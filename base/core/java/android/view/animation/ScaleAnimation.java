@@ -237,6 +237,7 @@ public class ScaleAnimation extends Animation {
         }
     }
 
+    //动画的应用
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
         float sx = 1.0f;
@@ -250,6 +251,7 @@ public class ScaleAnimation extends Animation {
             sy = mFromY + ((mToY - mFromY) * interpolatedTime);
         }
 
+        //通过矩阵实现缩放
         if (mPivotX == 0 && mPivotY == 0) {
             t.getMatrix().setScale(sx, sy);
         } else {

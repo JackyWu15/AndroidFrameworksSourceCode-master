@@ -42,12 +42,12 @@ public class PropertyValuesHolder implements Cloneable {
      * unless this object is being used with ObjectAnimator. But this is the name by which
      * aniamted values are looked up with getAnimatedValue(String) in ValueAnimator.
      */
-    String mPropertyName;
+    String mPropertyName;//属性名
 
     /**
      * @hide
      */
-    protected Property mProperty;
+    protected Property mProperty;//属性对象
 
     /**
      * The setter function, if needed. ObjectAnimator hands off this functionality to
@@ -55,7 +55,7 @@ public class PropertyValuesHolder implements Cloneable {
      * property is automatically
      * derived when the animation starts in setupSetterAndGetter() if using ObjectAnimator.
      */
-    Method mSetter = null;
+    Method mSetter = null;//属性的setter方法
 
     /**
      * The getter function, if needed. ObjectAnimator hands off this functionality to
@@ -64,18 +64,18 @@ public class PropertyValuesHolder implements Cloneable {
      * derived when the animation starts in setupSetterAndGetter() if using ObjectAnimator.
      * The getter is only derived and used if one of the values is null.
      */
-    private Method mGetter = null;
+    private Method mGetter = null;//属性的getter方法
 
     /**
      * The type of values supplied. This information is used both in deriving the setter/getter
      * functions and in deriving the type of TypeEvaluator.
      */
-    Class mValueType;
+    Class mValueType;//属性值的类类型，如float，int等
 
     /**
      * The set of keyframes (time/value pairs) that define this animation.
      */
-    Keyframes mKeyframes = null;
+    Keyframes mKeyframes = null;//关键帧的集合，在duration内的动画帧集合，保存了每个视口该属性的值
 
 
     // type evaluators for the primitive types handled by this implementation
@@ -287,6 +287,7 @@ public class PropertyValuesHolder implements Cloneable {
      * @return PropertyValuesHolder The constructed PropertyValuesHolder object.
      */
     public static PropertyValuesHolder ofFloat(Property<?, Float> property, float... values) {
+        //构建FloatPropertyValuesHolder
         return new FloatPropertyValuesHolder(property, values);
     }
 
@@ -606,6 +607,7 @@ public class PropertyValuesHolder implements Cloneable {
      *
      * @param values One or more values that the animation will animate between.
      */
+    //设置属性值
     public void setFloatValues(float... values) {
         mValueType = float.class;
         mKeyframes = KeyframeSet.ofFloat(values);
@@ -1211,15 +1213,16 @@ public class PropertyValuesHolder implements Cloneable {
         }
     }
 
+    //Float类型的PropertyValuesHolder
     static class FloatPropertyValuesHolder extends PropertyValuesHolder {
 
         // Cache JNI functions to avoid looking them up twice
         private static final HashMap<Class, HashMap<String, Long>> sJNISetterPropertyMap =
                 new HashMap<Class, HashMap<String, Long>>();
         long mJniSetter;
-        private FloatProperty mFloatProperty;
+        private FloatProperty mFloatProperty;//float型属性
 
-        Keyframes.FloatKeyframes mFloatKeyframes;
+        Keyframes.FloatKeyframes mFloatKeyframes;//关键帧
         float mFloatAnimatedValue;
 
         public FloatPropertyValuesHolder(String propertyName, Keyframes.FloatKeyframes keyframes) {
@@ -1246,18 +1249,22 @@ public class PropertyValuesHolder implements Cloneable {
 
         public FloatPropertyValuesHolder(Property property, float... values) {
             super(property);
+            //设置目标属性值
             setFloatValues(values);
             if (property instanceof  FloatProperty) {
                 mFloatProperty = (FloatProperty) mProperty;
             }
         }
 
+        //设置动画的目标值
         @Override
         public void setFloatValues(float... values) {
+            //调用父类方法
             super.setFloatValues(values);
+            //获取关键帧
             mFloatKeyframes = (Keyframes.FloatKeyframes) mKeyframes;
         }
-
+        //计算当前的动画值
         @Override
         void calculateValue(float fraction) {
             mFloatAnimatedValue = mFloatKeyframes.getFloatValue(fraction);

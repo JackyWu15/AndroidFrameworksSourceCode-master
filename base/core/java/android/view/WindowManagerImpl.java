@@ -56,6 +56,7 @@ public final class WindowManagerImpl implements WindowManager {
         mParentWindow = parentWindow;
     }
 
+    //这里构建的WindowManagerImpl与Window相关
     public WindowManagerImpl createLocalWindowManager(Window parentWindow) {
         return new WindowManagerImpl(mDisplay, parentWindow);
     }

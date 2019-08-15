@@ -61,6 +61,7 @@ import android.widget.ListView;
  * </div>
  */
 public class AlertDialog extends Dialog implements DialogInterface {
+    //用于接收Builder成员变量P的参数
     private AlertController mAlert;
 
     /**
@@ -125,6 +126,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
         super(context, resolveDialogTheme(context, theme), createThemeContextWrapper);
 
         mWindow.alwaysReadCloseOnTouchAttr();
+        //构造AlertController
         mAlert = new AlertController(getContext(), this, getWindow());
     }
 
@@ -183,6 +185,8 @@ public class AlertDialog extends Dialog implements DialogInterface {
     @Override
     public void setTitle(CharSequence title) {
         super.setTitle(title);
+        //实际上调用AlertController的setTitle，为TextView设置内容
+        // 其他set实际上都通过AlertController进行设置
         mAlert.setTitle(title);
     }
 
@@ -353,6 +357,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //通过AlertController构建
         mAlert.installContent();
     }
 
@@ -367,8 +372,12 @@ public class AlertDialog extends Dialog implements DialogInterface {
         if (mAlert.onKeyUp(keyCode, event)) return true;
         return super.onKeyUp(keyCode, event);
     }
-    
+
+    /**
+     * AlertDialog的builder类，一般为静态内部类
+     */
     public static class Builder {
+        //通过Builder.setXXX()方式，最后都存储在AlertDialog的AlertParams中，如title，message,icon等等
         private final AlertController.AlertParams P;
         private int mTheme;
         
@@ -391,8 +400,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
          * {@link AlertDialog#THEME_HOLO_LIGHT AlertDialog.THEME_HOLO_LIGHT}.
          */
         public Builder(Context context, int theme) {
-            P = new AlertController.AlertParams(new ContextThemeWrapper(
-                    context, resolveDialogTheme(context, theme)));
+            P = new AlertController.AlertParams(new ContextThemeWrapper(context, resolveDialogTheme(context, theme)));
             mTheme = theme;
         }
         
@@ -963,8 +971,11 @@ public class AlertDialog extends Dialog implements DialogInterface {
          * before displaying the dialog. Use {@link #show()} if you don't have any other processing
          * to do and want this to be created and displayed.
          */
+
+        //创建真正的AlertDialog,并把AlertParams设置的参数传递进去
         public AlertDialog create() {
             final AlertDialog dialog = new AlertDialog(P.mContext, mTheme, false);
+            //把AlertParams的参数设置到AlertController中
             P.apply(dialog.mAlert);
             dialog.setCancelable(P.mCancelable);
             if (P.mCancelable) {

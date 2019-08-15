@@ -460,8 +460,10 @@ public class ListView extends AbsListView {
      *
      * @see #getAdapter() 
      */
+    //设置adapter
     @Override
     public void setAdapter(ListAdapter adapter) {
+        //如果已有一个Adapter，注销掉改Adapter对应的观察者
         if (mAdapter != null && mDataSetObserver != null) {
             mAdapter.unregisterDataSetObserver(mDataSetObserver);
         }
@@ -484,10 +486,13 @@ public class ListView extends AbsListView {
         if (mAdapter != null) {
             mAreAllItemsSelectable = mAdapter.areAllItemsEnabled();
             mOldItemCount = mItemCount;
+            //获取数据的数量
             mItemCount = mAdapter.getCount();
             checkFocus();
 
+            //构建观察者，在AbsListView中
             mDataSetObserver = new AdapterDataSetObserver();
+            //将这个观察者添加到DataSetObservable的List中
             mAdapter.registerDataSetObserver(mDataSetObserver);
 
             mRecycler.setViewTypeCount(mAdapter.getViewTypeCount());

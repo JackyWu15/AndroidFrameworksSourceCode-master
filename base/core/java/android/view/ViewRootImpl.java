@@ -352,12 +352,15 @@ public final class ViewRootImpl implements ViewParent,
 
     public ViewRootImpl(Context context, Display display) {
         mContext = context;
+        //WMS是运行在Native层的，而ViewRootImpl是运行在Framework层，两者通过Binder机制取得关联
+        //获取Window Session，通过aidl与WindowManagerService建立连接
         mWindowSession = WindowManagerGlobal.getWindowSession();
         mDisplay = display;
         mBasePackageName = context.getBasePackageName();
 
         mDisplayAdjustments = display.getDisplayAdjustments();
 
+        //保存当前线程，更新UI的线程只能是创建ViewRootImpl的线程，之所以只能在主线程中更新UI，是因为ViewRootImpl是在主线程中创建的，如果子线程创建了ViewRootImpl
         mThread = Thread.currentThread();
         mLocation = new WindowLeaked(null);
         mLocation.fillInStackTrace();
@@ -439,6 +442,7 @@ public final class ViewRootImpl implements ViewParent,
     }
 
     /**
+     * WMS管理的并不是Window，而是View，它管理的是属于某个Window下的View
      * We have one child
      */
     public void setView(View view, WindowManager.LayoutParams attrs, View panelParentView) {
@@ -515,6 +519,7 @@ public final class ViewRootImpl implements ViewParent,
                 // Schedule the first layout -before- adding to the window
                 // manager, to make sure we do the relayout before receiving
                 // any other events from the system.
+                //请求布局
                 requestLayout();
                 if ((mWindowAttributes.inputFeatures
                         & WindowManager.LayoutParams.INPUT_FEATURE_NO_INPUT_CHANNEL) == 0) {
@@ -524,6 +529,7 @@ public final class ViewRootImpl implements ViewParent,
                     mOrigWindowType = mWindowAttributes.type;
                     mAttachInfo.mRecomputeGlobalAttributes = true;
                     collectViewAttributes();
+                    //向WMS发起当前的Window请求
                     res = mWindowSession.addToDisplay(mWindow, mSeq, mWindowAttributes,
                             getHostVisibility(), mDisplay.getDisplayId(),
                             mAttachInfo.mContentInsets, mInputChannel);
@@ -866,6 +872,7 @@ public final class ViewRootImpl implements ViewParent,
         if (!mHandlingLayoutInLayoutRequest) {
             checkThread();
             mLayoutRequested = true;
+            //发送do_traversal消息
             scheduleTraversals();
         }
     }
@@ -1018,12 +1025,13 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
+
     void scheduleTraversals() {
         if (!mTraversalScheduled) {
             mTraversalScheduled = true;
             mTraversalBarrier = mHandler.getLooper().postSyncBarrier();
-            mChoreographer.postCallback(
-                    Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
+            //发送消息调用doTraversal()
+            mChoreographer.postCallback( Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
             if (!mUnbufferedInputDispatch) {
                 scheduleConsumeBatchedInput();
             }
@@ -1040,6 +1048,7 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
+
     void doTraversal() {
         if (mTraversalScheduled) {
             mTraversalScheduled = false;
@@ -1051,6 +1060,7 @@ public final class ViewRootImpl implements ViewParent,
 
             Trace.traceBegin(Trace.TRACE_TAG_VIEW, "performTraversals");
             try {
+                //开始整个视图的绘制
                 performTraversals();
             } finally {
                 Trace.traceEnd(Trace.TRACE_TAG_VIEW);
@@ -1207,6 +1217,12 @@ public final class ViewRootImpl implements ViewParent,
                 mDispatchStableInsets, isRound));
     }
 
+    /**
+     * 执行这个视图的绘制
+     * 1，获取Surface对象，用于图形绘制
+     * 2，测量performMeasure,performLayout,performDraw
+     *
+     */
     private void performTraversals() {
         // cache mView since it is used so much below...
         final View host = mView;
@@ -1471,6 +1487,7 @@ public final class ViewRootImpl implements ViewParent,
                 insetsPending = computesInternalInsets && (mFirst || viewVisibilityChanged);
             }
 
+            //锁定SurfaceHolder
             if (mSurfaceHolder != null) {
                 mSurfaceHolder.mSurfaceLock.lock();
                 mDrawingAllowed = true;
@@ -1754,6 +1771,7 @@ public final class ViewRootImpl implements ViewParent,
                         (relayoutResult&WindowManagerGlobal.RELAYOUT_RES_IN_TOUCH_MODE) != 0);
                 if (focusChangedDueToTouchMode || mWidth != host.getMeasuredWidth()
                         || mHeight != host.getMeasuredHeight() || contentInsetsChanged) {
+                    //获取根视图宽和高的MeasureSpec
                     int childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);
                     int childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);
 
@@ -1764,6 +1782,7 @@ public final class ViewRootImpl implements ViewParent,
                             + " coveredInsetsChanged=" + contentInsetsChanged);
 
                      // Ask host how big it wants to be
+                    //根据MeasureSpec测量子控件
                     performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
 
                     // Implementation of weights from WindowManager.LayoutParams
@@ -1786,10 +1805,12 @@ public final class ViewRootImpl implements ViewParent,
                         measureAgain = true;
                     }
 
+                    //是否需要再测测量
                     if (measureAgain) {
                         if (DEBUG_LAYOUT) Log.v(TAG,
                                 "And hey let's measure once more: width=" + width
                                 + " height=" + height);
+                        //根据MeasureSpec测量子控件
                         performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
                     }
 
@@ -1825,6 +1846,8 @@ public final class ViewRootImpl implements ViewParent,
         final boolean didLayout = layoutRequested && !mStopped;
         boolean triggerGlobalLayoutListener = didLayout
                 || mAttachInfo.mRecomputeGlobalAttributes;
+
+        //上面performMeasure测量完毕，开始performLayout进行摆放
         if (didLayout) {
             performLayout(lp, desiredWindowWidth, desiredWindowHeight);
 
@@ -1964,7 +1987,7 @@ public final class ViewRootImpl implements ViewParent,
                     }
                     mPendingTransitions.clear();
                 }
-
+                //上面performLayout摆放完成，开始performDraw进行绘制
                 performDraw();
             }
         } else {
@@ -2069,6 +2092,7 @@ public final class ViewRootImpl implements ViewParent,
 
         Trace.traceBegin(Trace.TRACE_TAG_VIEW, "layout");
         try {
+            //调用View的layout设置位置
             host.layout(0, 0, host.getMeasuredWidth(), host.getMeasuredHeight());
 
             mInLayout = false;
@@ -2334,6 +2358,7 @@ public final class ViewRootImpl implements ViewParent,
         mIsDrawing = true;
         Trace.traceBegin(Trace.TRACE_TAG_VIEW, "draw");
         try {
+            //调用draw进行绘制
             draw(fullRedrawNeeded);
         } finally {
             mIsDrawing = false;
@@ -2379,6 +2404,7 @@ public final class ViewRootImpl implements ViewParent,
     }
 
     private void draw(boolean fullRedrawNeeded) {
+        //获取Surface
         Surface surface = mSurface;
         if (!surface.isValid()) {
             return;
@@ -2474,7 +2500,9 @@ public final class ViewRootImpl implements ViewParent,
             dirty.offset(surfaceInsets.left, surfaceInsets.right);
         }
 
+        //绘制刷星
         if (!dirty.isEmpty() || mIsAnimating) {
+            //使用GPU绘制，即硬件加速，通常会使用下面的CPU绘制
             if (mAttachInfo.mHardwareRenderer != null && mAttachInfo.mHardwareRenderer.isEnabled()) {
                 // Draw with hardware renderer.
                 mIsAnimating = false;
@@ -2482,6 +2510,7 @@ public final class ViewRootImpl implements ViewParent,
                 if (mHardwareYOffset != yOffset || mHardwareXOffset != xOffset) {
                     mHardwareYOffset = yOffset;
                     mHardwareXOffset = xOffset;
+                    //使用硬件渲染器绘制
                     mAttachInfo.mHardwareRenderer.invalidateRoot();
                 }
                 mResizeAlpha = resizeAlpha;
@@ -2516,6 +2545,7 @@ public final class ViewRootImpl implements ViewParent,
                     return;
                 }
 
+                //使用CPU绘制
                 if (!drawSoftware(surface, mAttachInfo, xOffset, yOffset, scalingRequired, dirty)) {
                     return;
                 }
@@ -2542,6 +2572,7 @@ public final class ViewRootImpl implements ViewParent,
             final int right = dirty.right;
             final int bottom = dirty.bottom;
 
+            //锁定指定区域的Canvas对象，用于Framework层绘制
             canvas = mSurface.lockCanvas(dirty);
 
             // The dirty rectangle can be modified by Surface.lockCanvas()
@@ -2603,6 +2634,7 @@ public final class ViewRootImpl implements ViewParent,
                 canvas.setScreenDensity(scalingRequired ? mNoncompatDensity : 0);
                 attachInfo.mSetIgnoreDirtyState = false;
 
+                //从DecorView开始绘制，即整个Window根视图，会引起整个View树重绘
                 mView.draw(canvas);
             } finally {
                 if (!attachInfo.mSetIgnoreDirtyState) {
@@ -2612,6 +2644,8 @@ public final class ViewRootImpl implements ViewParent,
             }
         } finally {
             try {
+                //释放Canvas锁，通知SurfaceFlinger更新这块区域，绘制完毕后，请求WMS显示该窗口上的内容，Activity，Dialog等组件便显示到屏幕上了
+
                 surface.unlockCanvasAndPost(canvas);
             } catch (IllegalArgumentException e) {
                 Log.e(TAG, "Could not unlock surface", e);

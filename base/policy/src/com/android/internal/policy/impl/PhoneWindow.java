@@ -1930,20 +1930,25 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
     static private final String ACTION_BAR_TAG = "android:ActionBar";
 
     /** {@inheritDoc} */
+
     @Override
     public Bundle saveHierarchyState() {
         Bundle outState = new Bundle();
         if (mContentParent == null) {
             return outState;
         }
-
+        //相当于一个key为整形的map
         SparseArray<Parcelable> states = new SparseArray<Parcelable>();
+        //调用mContentParent的saveHierarchyState，mContentParent即setContentView(mContentParent)，而saveHierarchyState是View的方法，而不是ViewGroup的方法
         mContentParent.saveHierarchyState(states);
+        //将视图树结构放到outState中
         outState.putSparseParcelableArray(VIEWS_TAG, states);
 
         // save the focused view id
+        //保存当前界面获取焦点的View
         View focusedView = mContentParent.findFocus();
         if (focusedView != null) {
+            //存储下焦点View的id，以便恢复他的焦点状态
             if (focusedView.getId() != View.NO_ID) {
                 outState.putInt(FOCUSED_ID_TAG, focusedView.getId());
             } else {
@@ -1955,12 +1960,14 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         }
 
         // save the panels
+        //存储整个面板的状态
         SparseArray<Parcelable> panelStates = new SparseArray<Parcelable>();
         savePanelState(panelStates);
         if (panelStates.size() > 0) {
             outState.putSparseParcelableArray(PANELS_TAG, panelStates);
         }
 
+        //存储ActionBar的状态
         if (mDecorContentParent != null) {
             SparseArray<Parcelable> actionBarStates = new SparseArray<Parcelable>();
             mDecorContentParent.saveToolbarHierarchyState(actionBarStates);
@@ -2003,8 +2010,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         }
 
         if (mDecorContentParent != null) {
-            SparseArray<Parcelable> actionBarStates =
-                    savedInstanceState.getSparseParcelableArray(ACTION_BAR_TAG);
+            SparseArray<Parcelable> actionBarStates = savedInstanceState.getSparseParcelableArray(ACTION_BAR_TAG);
             if (actionBarStates != null) {
                 doPendingInvalidatePanelMenu();
                 mDecorContentParent.restoreToolbarHierarchyState(actionBarStates);

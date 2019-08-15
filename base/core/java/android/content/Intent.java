@@ -3892,6 +3892,7 @@ public class Intent implements Parcelable, Cloneable {
     /**
      * Copy constructor.
      */
+    //拷贝构造函数
     public Intent(Intent o) {
         this.mAction = o.mAction;
         this.mData = o.mData;

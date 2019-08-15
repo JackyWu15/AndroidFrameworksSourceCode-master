@@ -46,6 +46,7 @@ public final class ServiceManager {
      * @param name the name of the service to get
      * @return a reference to the service, or <code>null</code> if the service doesn't exist
      */
+    //获取到IBinder对象
     public static IBinder getService(String name) {
         try {
             IBinder service = sCache.get(name);
