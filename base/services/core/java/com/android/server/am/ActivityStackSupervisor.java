@@ -16,38 +16,19 @@
 
 package com.android.server.am;
 
-import static android.Manifest.permission.START_ANY_ACTIVITY;
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static android.content.Intent.FLAG_ACTIVITY_TASK_ON_HOME;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static com.android.server.am.ActivityManagerService.localLOGV;
-import static com.android.server.am.ActivityManagerService.DEBUG_CONFIGURATION;
-import static com.android.server.am.ActivityManagerService.DEBUG_FOCUS;
-import static com.android.server.am.ActivityManagerService.DEBUG_PAUSE;
-import static com.android.server.am.ActivityManagerService.DEBUG_RESULTS;
-import static com.android.server.am.ActivityManagerService.DEBUG_STACK;
-import static com.android.server.am.ActivityManagerService.DEBUG_SWITCH;
-import static com.android.server.am.ActivityManagerService.DEBUG_TASKS;
-import static com.android.server.am.ActivityManagerService.DEBUG_USER_LEAVING;
-import static com.android.server.am.ActivityManagerService.FIRST_SUPERVISOR_STACK_MSG;
-import static com.android.server.am.ActivityManagerService.TAG;
-import static com.android.server.am.ActivityRecord.HOME_ACTIVITY_TYPE;
-import static com.android.server.am.ActivityRecord.RECENTS_ACTIVITY_TYPE;
-import static com.android.server.am.ActivityRecord.APPLICATION_ACTIVITY_TYPE;
-
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.app.ActivityManager.StackInfo;
 import android.app.ActivityOptions;
 import android.app.AppGlobals;
 import android.app.IActivityContainer;
 import android.app.IActivityContainerCallback;
 import android.app.IActivityManager;
+import android.app.IActivityManager.WaitResult;
 import android.app.IApplicationThread;
 import android.app.PendingIntent;
 import android.app.ProfilerInfo;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.app.IActivityManager.WaitResult;
 import android.app.ResultInfo;
 import android.app.StatusBarManager;
 import android.app.admin.IDevicePolicyManager;
@@ -89,12 +70,12 @@ import android.util.ArraySet;
 import android.util.EventLog;
 import android.util.Slog;
 import android.util.SparseArray;
-
 import android.util.SparseIntArray;
 import android.view.Display;
 import android.view.DisplayInfo;
 import android.view.InputEvent;
 import android.view.Surface;
+
 import com.android.internal.app.HeavyWeightSwitcherActivity;
 import com.android.internal.app.IVoiceInteractor;
 import com.android.internal.os.TransferPipe;
@@ -104,12 +85,30 @@ import com.android.server.LocalServices;
 import com.android.server.am.ActivityStack.ActivityState;
 import com.android.server.wm.WindowManagerService;
 
-
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.Manifest.permission.START_ANY_ACTIVITY;
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static android.content.Intent.FLAG_ACTIVITY_TASK_ON_HOME;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static com.android.server.am.ActivityManagerService.DEBUG_CONFIGURATION;
+import static com.android.server.am.ActivityManagerService.DEBUG_FOCUS;
+import static com.android.server.am.ActivityManagerService.DEBUG_PAUSE;
+import static com.android.server.am.ActivityManagerService.DEBUG_RESULTS;
+import static com.android.server.am.ActivityManagerService.DEBUG_STACK;
+import static com.android.server.am.ActivityManagerService.DEBUG_SWITCH;
+import static com.android.server.am.ActivityManagerService.DEBUG_TASKS;
+import static com.android.server.am.ActivityManagerService.DEBUG_USER_LEAVING;
+import static com.android.server.am.ActivityManagerService.FIRST_SUPERVISOR_STACK_MSG;
+import static com.android.server.am.ActivityManagerService.TAG;
+import static com.android.server.am.ActivityManagerService.localLOGV;
+import static com.android.server.am.ActivityRecord.APPLICATION_ACTIVITY_TYPE;
+import static com.android.server.am.ActivityRecord.HOME_ACTIVITY_TYPE;
+import static com.android.server.am.ActivityRecord.RECENTS_ACTIVITY_TYPE;
 
 public final class ActivityStackSupervisor implements DisplayListener {
     static final boolean DEBUG = ActivityManagerService.DEBUG || false;

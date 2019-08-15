@@ -67,11 +67,11 @@ import android.util.Property;
 import android.util.SparseArray;
 import android.util.SuperNotCalledException;
 import android.util.TypedValue;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.AccessibilityIterators.TextSegmentIterator;
 import android.view.AccessibilityIterators.CharacterTextSegmentIterator;
-import android.view.AccessibilityIterators.WordTextSegmentIterator;
 import android.view.AccessibilityIterators.ParagraphTextSegmentIterator;
+import android.view.AccessibilityIterators.TextSegmentIterator;
+import android.view.AccessibilityIterators.WordTextSegmentIterator;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityEventSource;
 import android.view.accessibility.AccessibilityManager;
@@ -84,9 +84,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ScrollBarDrawable;
-
-import static android.os.Build.VERSION_CODES.*;
-import static java.lang.Math.max;
 
 import com.android.internal.R;
 import com.android.internal.util.Predicate;
@@ -110,6 +107,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static android.os.Build.VERSION_CODES.*;
+import static java.lang.Math.max;
 
 /**
  * <p>

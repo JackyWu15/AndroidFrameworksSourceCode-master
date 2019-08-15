@@ -23,8 +23,8 @@ import android.content.ComponentName;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.content.IContentProvider;
-import android.content.Intent;
 import android.content.IIntentReceiver;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.IPackageManager;
@@ -71,6 +71,8 @@ import android.os.SystemProperties;
 import android.os.Trace;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.renderscript.RenderScript;
+import android.security.AndroidKeyStoreProvider;
 import android.util.AndroidRuntimeException;
 import android.util.ArrayMap;
 import android.util.DisplayMetrics;
@@ -90,8 +92,6 @@ import android.view.ViewRootImpl;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
-import android.renderscript.RenderScript;
-import android.security.AndroidKeyStoreProvider;
 
 import com.android.internal.app.IVoiceInteractor;
 import com.android.internal.os.BinderInternal;
@@ -119,13 +119,13 @@ import java.util.Objects;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
 
+import dalvik.system.CloseGuard;
+import dalvik.system.VMDebug;
+import dalvik.system.VMRuntime;
 import libcore.io.DropBox;
 import libcore.io.EventLogger;
 import libcore.io.IoUtils;
 import libcore.net.event.NetworkEventDispatcher;
-import dalvik.system.CloseGuard;
-import dalvik.system.VMDebug;
-import dalvik.system.VMRuntime;
 
 final class RemoteServiceException extends AndroidRuntimeException {
     public RemoteServiceException(String msg) {

@@ -15,32 +15,9 @@
 
 package com.android.internal.policy.impl;
 
-import static android.view.View.MeasureSpec.AT_MOST;
-import static android.view.View.MeasureSpec.EXACTLY;
-import static android.view.View.MeasureSpec.getMode;
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import static android.view.WindowManager.LayoutParams.*;
-
-import android.app.SearchManager;
-import android.os.UserHandle;
-import com.android.internal.R;
-import com.android.internal.view.RootViewSurfaceTaker;
-import com.android.internal.view.StandaloneActionMode;
-import com.android.internal.view.menu.ContextMenuBuilder;
-import com.android.internal.view.menu.IconMenuPresenter;
-import com.android.internal.view.menu.ListMenuPresenter;
-import com.android.internal.view.menu.MenuBuilder;
-import com.android.internal.view.menu.MenuDialogHelper;
-import com.android.internal.view.menu.MenuPresenter;
-import com.android.internal.view.menu.MenuView;
-import com.android.internal.widget.ActionBarContextView;
-import com.android.internal.widget.BackgroundFallback;
-import com.android.internal.widget.DecorContentParent;
-import com.android.internal.widget.SwipeDismissLayout;
-
 import android.app.ActivityManager;
 import android.app.KeyguardManager;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -61,6 +38,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.UserHandle;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
@@ -107,8 +85,30 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.internal.R;
+import com.android.internal.view.RootViewSurfaceTaker;
+import com.android.internal.view.StandaloneActionMode;
+import com.android.internal.view.menu.ContextMenuBuilder;
+import com.android.internal.view.menu.IconMenuPresenter;
+import com.android.internal.view.menu.ListMenuPresenter;
+import com.android.internal.view.menu.MenuBuilder;
+import com.android.internal.view.menu.MenuDialogHelper;
+import com.android.internal.view.menu.MenuPresenter;
+import com.android.internal.view.menu.MenuView;
+import com.android.internal.widget.ActionBarContextView;
+import com.android.internal.widget.BackgroundFallback;
+import com.android.internal.widget.DecorContentParent;
+import com.android.internal.widget.SwipeDismissLayout;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+
+import static android.view.View.MeasureSpec.AT_MOST;
+import static android.view.View.MeasureSpec.EXACTLY;
+import static android.view.View.MeasureSpec.getMode;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static android.view.WindowManager.LayoutParams.*;
 
 /**
  * Android-specific Window.

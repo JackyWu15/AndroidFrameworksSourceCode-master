@@ -50,6 +50,7 @@ import android.service.voice.IVoiceInteractionSession;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Singleton;
+
 import com.android.internal.app.IVoiceInteractor;
 
 import java.util.ArrayList;

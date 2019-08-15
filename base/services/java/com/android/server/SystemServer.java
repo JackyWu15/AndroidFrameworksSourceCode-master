@@ -26,16 +26,12 @@ import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.IPackageManager;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.media.AudioService;
-import android.media.tv.TvInputManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.FactoryTest;
-import android.os.Handler;
-import android.os.IBinder;
 import android.os.IPowerManager;
 import android.os.Looper;
 import android.os.RemoteException;
@@ -44,22 +40,18 @@ import android.os.StrictMode;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserHandle;
-import android.service.dreams.DreamService;
 import android.util.DisplayMetrics;
 import android.util.EventLog;
-import android.util.Log;
 import android.util.Slog;
 import android.view.WindowManager;
 import android.webkit.WebViewFactory;
 
 import com.android.internal.R;
 import com.android.internal.os.BinderInternal;
-import com.android.internal.os.Zygote;
 import com.android.internal.os.SamplingProfilerIntegration;
 import com.android.server.accessibility.AccessibilityManagerService;
 import com.android.server.accounts.AccountManagerService;
 import com.android.server.am.ActivityManagerService;
-import com.android.server.am.BatteryStatsService;
 import com.android.server.clipboard.ClipboardService;
 import com.android.server.content.ContentService;
 import com.android.server.devicepolicy.DevicePolicyManagerService;
@@ -69,7 +61,6 @@ import com.android.server.fingerprint.FingerprintService;
 import com.android.server.hdmi.HdmiControlService;
 import com.android.server.input.InputManagerService;
 import com.android.server.job.JobSchedulerService;
-import com.android.server.lights.LightsManager;
 import com.android.server.lights.LightsService;
 import com.android.server.media.MediaRouterService;
 import com.android.server.media.MediaSessionService;
@@ -98,11 +89,11 @@ import com.android.server.wallpaper.WallpaperManagerService;
 import com.android.server.webkit.WebViewUpdateService;
 import com.android.server.wm.WindowManagerService;
 
-import dalvik.system.VMRuntime;
-
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import dalvik.system.VMRuntime;
 
 
 //系统服务类

@@ -16,15 +16,6 @@
 
 package android.content.pm;
 
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_MANIFEST;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_MANIFEST_MALFORMED;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NOT_APK;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NO_CERTIFICATES;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION;
-
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -51,8 +42,6 @@ import android.util.TypedValue;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.XmlUtils;
-
-import libcore.io.IoUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -81,6 +70,17 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.jar.StrictJarFile;
 import java.util.zip.ZipEntry;
+
+import libcore.io.IoUtils;
+
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_MANIFEST;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_MANIFEST_MALFORMED;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NOT_APK;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NO_CERTIFICATES;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION;
 
 /**
  * Parser for package files (APKs) on disk. This supports apps packaged either

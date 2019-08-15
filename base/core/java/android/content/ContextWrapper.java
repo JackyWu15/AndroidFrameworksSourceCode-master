@@ -31,8 +31,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
-import android.view.DisplayAdjustments;
 import android.view.Display;
+import android.view.DisplayAdjustments;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -16,14 +16,11 @@
 
 package android.app;
 
-import android.content.pm.ApplicationInfo;
-import com.android.internal.app.WindowDecorActionBar;
-import com.android.internal.policy.PolicyManager;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
+import android.content.pm.ApplicationInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,6 +46,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
+
+import com.android.internal.app.WindowDecorActionBar;
+import com.android.internal.policy.PolicyManager;
 
 import java.lang.ref.WeakReference;
 

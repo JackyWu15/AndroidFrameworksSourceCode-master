@@ -16,9 +16,6 @@
 
 package android.app;
 
-import android.text.TextUtils;
-import android.util.ArrayMap;
-
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -39,13 +36,14 @@ import android.os.RemoteException;
 import android.os.StrictMode;
 import android.os.Trace;
 import android.os.UserHandle;
+import android.text.TextUtils;
 import android.util.AndroidRuntimeException;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.util.Slog;
 import android.util.SparseArray;
-import android.view.DisplayAdjustments;
 import android.view.Display;
-import dalvik.system.VMRuntime;
+import android.view.DisplayAdjustments;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,6 +56,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Objects;
+
+import dalvik.system.VMRuntime;
 
 final class IntentReceiverLeaked extends AndroidRuntimeException {
     public IntentReceiverLeaked(String msg) {

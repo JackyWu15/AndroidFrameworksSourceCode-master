@@ -16,15 +16,6 @@
 
 package com.android.server.input;
 
-import android.view.Display;
-import com.android.internal.R;
-import com.android.internal.util.XmlUtils;
-import com.android.server.DisplayThread;
-import com.android.server.LocalServices;
-import com.android.server.Watchdog;
-
-import org.xmlpull.v1.XmlPullParser;
-
 import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -39,8 +30,8 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.content.res.TypedArray;
@@ -71,6 +62,7 @@ import android.util.Log;
 import android.util.Slog;
 import android.util.SparseArray;
 import android.util.Xml;
+import android.view.Display;
 import android.view.IInputFilter;
 import android.view.IInputFilterHost;
 import android.view.InputChannel;
@@ -82,6 +74,14 @@ import android.view.Surface;
 import android.view.ViewConfiguration;
 import android.view.WindowManagerPolicy;
 import android.widget.Toast;
+
+import com.android.internal.R;
+import com.android.internal.util.XmlUtils;
+import com.android.server.DisplayThread;
+import com.android.server.LocalServices;
+import com.android.server.Watchdog;
+
+import org.xmlpull.v1.XmlPullParser;
 
 import java.io.File;
 import java.io.FileDescriptor;

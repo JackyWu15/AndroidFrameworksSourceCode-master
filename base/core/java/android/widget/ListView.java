@@ -16,11 +16,6 @@
 
 package android.widget;
 
-import android.os.Trace;
-import com.android.internal.R;
-import com.android.internal.util.Predicate;
-import com.google.android.collect.Lists;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -29,6 +24,7 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Trace;
 import android.util.AttributeSet;
 import android.util.MathUtils;
 import android.util.SparseBooleanArray;
@@ -46,6 +42,10 @@ import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 import android.view.accessibility.AccessibilityNodeInfo.CollectionItemInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 import android.widget.RemoteViews.RemoteView;
+
+import com.android.internal.R;
+import com.android.internal.util.Predicate;
+import com.google.android.collect.Lists;
 
 import java.util.ArrayList;
 

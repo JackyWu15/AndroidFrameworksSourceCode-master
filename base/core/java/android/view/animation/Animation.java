@@ -23,6 +23,7 @@ import android.os.Handler;
 import android.os.SystemProperties;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+
 import dalvik.system.CloseGuard;
 
 /**

@@ -16,22 +16,21 @@
 
 package android.view;
 
-import android.graphics.Canvas;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Trace;
-import android.widget.FrameLayout;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
+import android.graphics.Canvas;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Trace;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Xml;
+import android.widget.FrameLayout;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;

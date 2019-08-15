@@ -16,21 +16,12 @@
 
 package android.content;
 
-import android.content.pm.ApplicationInfo;
-import android.provider.MediaStore;
-import android.util.ArraySet;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.annotation.IntDef;
 import android.annotation.SdkConstant;
-import android.annotation.SystemApi;
 import android.annotation.SdkConstant.SdkConstantType;
+import android.annotation.SystemApi;
 import android.content.pm.ActivityInfo;
-
-import static android.content.ContentProvider.maybeAddUserId;
-
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -45,12 +36,16 @@ import android.os.StrictMode;
 import android.os.UserHandle;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsProvider;
+import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.util.ArraySet;
 import android.util.AttributeSet;
 import android.util.Log;
 
 import com.android.internal.util.XmlUtils;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.IOException;
@@ -63,6 +58,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
+
+import static android.content.ContentProvider.maybeAddUserId;
 
 /**
  * An intent is an abstract description of an operation to be performed.  It

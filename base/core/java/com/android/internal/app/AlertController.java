@@ -16,17 +16,12 @@
 
 package com.android.internal.app;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-
-import com.android.internal.R;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -56,7 +51,11 @@ import android.widget.ScrollView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import com.android.internal.R;
+
 import java.lang.ref.WeakReference;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 public class AlertController {
 
