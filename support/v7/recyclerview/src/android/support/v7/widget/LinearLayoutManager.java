@@ -517,6 +517,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
             endOffset = mLayoutState.mOffset;
         } else {
             // fill towards end
+            //从上到下布局
             updateLayoutStateToFillEnd(mAnchorInfo);
             mLayoutState.mExtra = extraForEnd;
             fill(recycler, mLayoutState, state, false);
@@ -528,6 +529,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
             updateLayoutStateToFillStart(mAnchorInfo);
             mLayoutState.mExtra = extraForStart;
             mLayoutState.mCurrentPosition += mLayoutState.mItemDirection;
+            //填充Item View
             fill(recycler, mLayoutState, state, false);
             startOffset = mLayoutState.mOffset;
         }
@@ -1250,6 +1252,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
     int fill(RecyclerView.Recycler recycler, LayoutState layoutState,
             RecyclerView.State state, boolean stopOnFocusable) {
         // max offset we should set is mFastScroll + available
+        //存储当前可用空间
         final int start = layoutState.mAvailable;
         if (layoutState.mScrollingOffset != LayoutState.SCOLLING_OFFSET_NaN) {
             // TODO ugly bug fix. should not happen
@@ -1258,14 +1261,18 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
             }
             recycleByLayoutState(recycler, layoutState);
         }
+        //计算RecyclerView的可用布局宽或高
         int remainingSpace = layoutState.mAvailable + layoutState.mExtra;
         LayoutChunkResult layoutChunkResult = new LayoutChunkResult();
+        //迭代布局
         while (remainingSpace > 0 && layoutState.hasMore(state)) {
             layoutChunkResult.resetInternal();
+            //布局item
             layoutChunk(recycler, state, layoutState, layoutChunkResult);
             if (layoutChunkResult.mFinished) {
                 break;
             }
+            //计算布局偏移量
             layoutState.mOffset += layoutChunkResult.mConsumed * layoutState.mLayoutDirection;
             /**
              * Consume the available space if:
@@ -1277,6 +1284,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
                     || !state.isPreLayout()) {
                 layoutState.mAvailable -= layoutChunkResult.mConsumed;
                 // we keep a separate remaining space because mAvailable is important for recycling
+                //计算剩余可用空间
                 remainingSpace -= layoutChunkResult.mConsumed;
             }
 
@@ -1299,6 +1307,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
 
     void layoutChunk(RecyclerView.Recycler recycler, RecyclerView.State state,
             LayoutState layoutState, LayoutChunkResult result) {
+        //获取item view
         View view = layoutState.next(recycler);
         if (view == null) {
             if (DEBUG && layoutState.mScrapList == null) {
@@ -1309,6 +1318,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
             result.mFinished = true;
             return;
         }
+        //获取item view布局参数
         RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) view.getLayoutParams();
         if (layoutState.mScrapList == null) {
             if (mShouldReverseLayout == (layoutState.mLayoutDirection
@@ -1325,9 +1335,13 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
                 addDisappearingView(view, 0);
             }
         }
+        //测量item view
         measureChildWithMargins(view, 0, 0);
+        //计算该item消耗的宽度或高度
         result.mConsumed = mOrientationHelper.getDecoratedMeasurement(view);
+        //item view的坐标位置
         int left, top, right, bottom;
+        //按照方向，计算上下左右坐标
         if (mOrientation == VERTICAL) {
             if (isLayoutRTL()) {
                 right = getWidth() - getPaddingRight();
@@ -1357,8 +1371,8 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
         }
         // We calculate everything with View's bounding box (which includes decor and margins)
         // To calculate correct layout position, we subtract margins.
-        layoutDecorated(view, left + params.leftMargin, top + params.topMargin,
-                right - params.rightMargin, bottom - params.bottomMargin);
+        //调用LayoutManager的layoutDecorated布局item view
+        layoutDecorated(view, left + params.leftMargin, top + params.topMargin, right - params.rightMargin, bottom - params.bottomMargin);
         if (DEBUG) {
             Log.d(TAG, "laid out child at position " + getPosition(view) + ", with l:"
                     + (left + params.leftMargin) + ", t:" + (top + params.topMargin) + ", r:"
@@ -1800,6 +1814,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager {
             if (mScrapList != null) {
                 return nextFromLimitedList();
             }
+            //getViewForPosition获取item view
             final View view = recycler.getViewForPosition(mCurrentPosition);
             mCurrentPosition += mItemDirection;
             return view;

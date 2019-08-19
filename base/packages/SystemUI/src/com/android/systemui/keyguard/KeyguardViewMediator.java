@@ -164,6 +164,7 @@ public class KeyguardViewMediator extends SystemUI {
     /** The stream type that the lock sounds are tied to. */
     private int mMasterStreamType;
 
+    //定义各种Manager，这些Manager就是中介模式中的同事类
     private AlarmManager mAlarmManager;
     private AudioManager mAudioManager;
     private StatusBarManager mStatusBarManager;
@@ -1177,6 +1178,7 @@ public class KeyguardViewMediator extends SystemUI {
         }
     }
 
+    //锁屏时播放声音
     private void playSounds(boolean locked) {
         // User feedback for keyguard.
 

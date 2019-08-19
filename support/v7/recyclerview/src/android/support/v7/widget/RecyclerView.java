@@ -496,6 +496,7 @@ public class RecyclerView extends ViewGroup {
      * @param adapter The new adapter to set, or null to set no adapter.
      * @see #swapAdapter(Adapter, boolean)
      */
+    //设置Adapter
     public void setAdapter(Adapter adapter) {
         setAdapterInternal(adapter, false, true);
         requestLayout();
@@ -533,13 +534,16 @@ public class RecyclerView extends ViewGroup {
         final Adapter oldAdapter = mAdapter;
         mAdapter = adapter;
         if (adapter != null) {
+            //注册观察者
             adapter.registerAdapterDataObserver(mObserver);
         }
         if (mLayout != null) {
             mLayout.onAdapterChanged(oldAdapter, mAdapter);
         }
         mRecycler.onAdapterChanged(oldAdapter, mAdapter, compatibleWithPrevious);
+        //设置结构发生变化的标志位
         mState.mStructureChanged = true;
+        //刷新视图
         markKnownViewsInvalid();
     }
 
@@ -579,6 +583,7 @@ public class RecyclerView extends ViewGroup {
      *
      * @param layout LayoutManager to use
      */
+    //设置布局管理器
     public void setLayoutManager(LayoutManager layout) {
         if (layout == mLayout) {
             return;
@@ -604,6 +609,7 @@ public class RecyclerView extends ViewGroup {
                 mLayout.onAttachedToWindow(this);
             }
         }
+        //设置布局管理器后重新布局
         requestLayout();
     }
 
@@ -1812,6 +1818,7 @@ public class RecyclerView extends ViewGroup {
      * DISAPPEARING views are moved off screen
      * APPEARING views are moved on screen
      */
+    //分发layout
     void dispatchLayout() {
         if (mAdapter == null) {
             Log.e(TAG, "No adapter attached; skipping layout");
@@ -1869,6 +1876,7 @@ public class RecyclerView extends ViewGroup {
             final boolean didStructureChange = mState.mStructureChanged;
             mState.mStructureChanged = false;
             // temporarily disable flag because we are asking for previous layout
+            //执行布局，调用LayoutManager的onLayoutChildren
             mLayout.onLayoutChildren(mRecycler, mState);
             mState.mStructureChanged = didStructureChange;
 
@@ -1923,6 +1931,7 @@ public class RecyclerView extends ViewGroup {
         // onLayoutChildren may have caused client code to disable item animations; re-check
         mState.mRunSimpleAnimations = mState.mRunSimpleAnimations && mItemAnimator != null;
 
+        //是否有动画
         if (mState.mRunSimpleAnimations) {
             // Step 3: Find out where things are now, post-layout
             ArrayMap<Long, ViewHolder> newChangedHolders = mState.mOldChangedHolders != null ?
@@ -2149,9 +2158,11 @@ public class RecyclerView extends ViewGroup {
         }
     }
 
+    //布局item
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         eatRequestLayout();
+        //分发layout
         dispatchLayout();
         resumeRequestLayout(false);
         mFirstLayoutComplete = true;
@@ -2894,7 +2905,9 @@ public class RecyclerView extends ViewGroup {
 
     }
 
+    //观察者
     private class RecyclerViewDataObserver extends AdapterDataObserver {
+        //notifyDataSetChanged时调用onChanged
         @Override
         public void onChanged() {
             assertNotInLayoutOrScroll(null);
@@ -2908,6 +2921,7 @@ public class RecyclerView extends ViewGroup {
                 mState.mStructureChanged = true;
                 mDataSetHasChangedAfterLayout = true;
             }
+            //需要重新布局
             if (!mAdapterHelper.hasPendingUpdates()) {
                 requestLayout();
             }
@@ -3254,10 +3268,12 @@ public class RecyclerView extends ViewGroup {
          * @param position Position to obtain a view for
          * @return A view representing the data at <code>position</code> from <code>adapter</code>
          */
+
         public View getViewForPosition(int position) {
             return getViewForPosition(position, false);
         }
 
+        //根据position获取该位置对应的view
         View getViewForPosition(int position, boolean dryRun) {
             if (position < 0 || position >= mState.getItemCount()) {
                 throw new IndexOutOfBoundsException("Invalid item position " + position
@@ -3266,11 +3282,13 @@ public class RecyclerView extends ViewGroup {
             boolean fromScrap = false;
             ViewHolder holder = null;
             // 0) If there is a changed scrap, try to find from there
+            //从mChangedScrap中获取ViewHolder缓存
             if (mState.isPreLayout()) {
                 holder = getChangedScrapViewForPosition(position);
                 fromScrap = holder != null;
             }
             // 1) Find from scrap by position
+            //从mAttachedScrap获取ViewHolder缓存
             if (holder == null) {
                 holder = getScrapViewForPosition(position, INVALID_TYPE, dryRun);
                 if (holder != null) {
@@ -3301,7 +3319,7 @@ public class RecyclerView extends ViewGroup {
                             + "position " + position + "(offset:" + offsetPosition + ")."
                             + "state:" + mState.getItemCount());
                 }
-
+                //获取type类型
                 final int type = mAdapter.getItemViewType(offsetPosition);
                 // 2) Find from scrap via stable ids, if exists
                 if (mAdapter.hasStableIds()) {
@@ -3315,8 +3333,7 @@ public class RecyclerView extends ViewGroup {
                 if (holder == null && mViewCacheExtension != null) {
                     // We are NOT sending the offsetPosition because LayoutManager does not
                     // know it.
-                    final View view = mViewCacheExtension
-                            .getViewForPositionAndType(this, position, type);
+                    final View view = mViewCacheExtension.getViewForPositionAndType(this, position, type);
                     if (view != null) {
                         holder = getChildViewHolder(view);
                         if (holder == null) {
@@ -3336,8 +3353,7 @@ public class RecyclerView extends ViewGroup {
                         Log.d(TAG, "getViewForPosition(" + position + ") fetching from shared "
                                 + "pool");
                     }
-                    holder = getRecycledViewPool()
-                            .getRecycledView(mAdapter.getItemViewType(offsetPosition));
+                    holder = getRecycledViewPool().getRecycledView(mAdapter.getItemViewType(offsetPosition));
                     if (holder != null) {
                         holder.resetInternal();
                         if (FORCE_INVALIDATE_DISPLAY_LIST) {
@@ -3346,8 +3362,8 @@ public class RecyclerView extends ViewGroup {
                     }
                 }
                 if (holder == null) {
-                    holder = mAdapter.createViewHolder(RecyclerView.this,
-                            mAdapter.getItemViewType(offsetPosition));
+                    //这里调用了createViewHolder
+                    holder = mAdapter.createViewHolder(RecyclerView.this,mAdapter.getItemViewType(offsetPosition));
                     if (DEBUG) {
                         Log.d(TAG, "getViewForPosition created new ViewHolder");
                     }
@@ -3363,6 +3379,7 @@ public class RecyclerView extends ViewGroup {
                             + " come here only in pre-layout. Holder: " + holder);
                 }
                 final int offsetPosition = mAdapterHelper.findPositionOffset(position);
+                //绑定数据，在这里调用了bindViewHolder
                 mAdapter.bindViewHolder(holder, offsetPosition);
                 attachAccessibilityDelegate(holder.itemView);
                 bound = true;
@@ -4045,7 +4062,9 @@ public class RecyclerView extends ViewGroup {
             if (hasStableIds()) {
                 holder.mItemId = getItemId(position);
             }
+            //调用onBindViewHolder绑定数据
             onBindViewHolder(holder, position);
+            //设置holder的flags
             holder.setFlags(ViewHolder.FLAG_BOUND,
                     ViewHolder.FLAG_BOUND | ViewHolder.FLAG_UPDATE | ViewHolder.FLAG_INVALID);
         }
@@ -5545,8 +5564,7 @@ public class RecyclerView extends ViewGroup {
          */
         public void layoutDecorated(View child, int left, int top, int right, int bottom) {
             final Rect insets = ((LayoutParams) child.getLayoutParams()).mDecorInsets;
-            child.layout(left + insets.left, top + insets.top, right - insets.right,
-                    bottom - insets.bottom);
+            child.layout(left + insets.left, top + insets.top, right - insets.right, bottom - insets.bottom);
         }
 
         /**

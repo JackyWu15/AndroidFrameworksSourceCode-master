@@ -546,6 +546,7 @@ public final class ActivityThread {
 
     private native void dumpGraphicsInfo(FileDescriptor fd);
 
+    //ApplicationThread是ActivityThread的内部类
     private class ApplicationThread extends ApplicationThreadNative {
         private static final String ONE_COUNT_COLUMN = "%21s %8d";
         private static final String TWO_COUNT_COLUMNS = "%21s %8d %21s %8d";
@@ -564,8 +565,7 @@ public final class ActivityThread {
 
         public final void schedulePauseActivity(IBinder token, boolean finished,
                 boolean userLeaving, int configChanges, boolean dontReport) {
-            sendMessage(
-                    finished ? H.PAUSE_ACTIVITY_FINISHING : H.PAUSE_ACTIVITY,
+            sendMessage( finished ? H.PAUSE_ACTIVITY_FINISHING : H.PAUSE_ACTIVITY,
                     token,
                     (userLeaving ? 1 : 0) | (dontReport ? 2 : 0),
                     configChanges);
@@ -588,6 +588,7 @@ public final class ActivityThread {
             sendMessage(H.SLEEPING, token, sleeping ? 1 : 0);
         }
 
+        //向UI线程发送resume activity的消息
         public final void scheduleResumeActivity(IBinder token, int processState,
                 boolean isForward, Bundle resumeArgs) {
             updateProcessState(processState, false);
@@ -603,7 +604,7 @@ public final class ActivityThread {
 
         // we use token to identify this activity without having to send the
         // activity itself back to the activity manager. (matters more with ipc)
-        //调用Handler开启Activity
+        //发送开启Activity消息
         public final void scheduleLaunchActivity(Intent intent, IBinder token, int ident,
                 ActivityInfo info, Configuration curConfig, CompatibilityInfo compatInfo,
                 IVoiceInteractor voiceInteractor, int procState, Bundle state,
@@ -1162,6 +1163,7 @@ public final class ActivityThread {
         }
     }
 
+    //ApplicatonThread通过这个Handler发送消息到UI线程
     private class H extends Handler {
         public static final int LAUNCH_ACTIVITY         = 100;
         public static final int PAUSE_ACTIVITY          = 101;
@@ -1273,7 +1275,7 @@ public final class ActivityThread {
         public void handleMessage(Message msg) {
             if (DEBUG_MESSAGES) Slog.v(TAG, ">>> handling: " + codeToString(msg.what));
             switch (msg.what) {
-                //消息开启Activity
+                //开启Activity
                 case LAUNCH_ACTIVITY: {
                     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "activityStart");
                     final ActivityClientRecord r = (ActivityClientRecord) msg.obj;
@@ -1324,6 +1326,7 @@ public final class ActivityThread {
                     break;
                 case RESUME_ACTIVITY:
                     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "activityResume");
+                    //让Activity可见
                     handleResumeActivity((IBinder) msg.obj, true, msg.arg1 != 0, true);
                     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
                     break;
@@ -2153,6 +2156,7 @@ public final class ActivityThread {
         sendMessage(what, obj, arg1, arg2, false);
     }
 
+    //通过mH(Handler)发送消息
     private void sendMessage(int what, Object obj, int arg1, int arg2, boolean async) {
         if (DEBUG_MESSAGES) Slog.v(
             TAG, "SCHEDULE " + what + " " + mH.codeToString(what)
@@ -2355,6 +2359,7 @@ public final class ActivityThread {
         return baseContext;
     }
 
+
     private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) {
         // If we are getting ready to gc after going to the background, well
         // we are back active so skip it.
@@ -2372,15 +2377,15 @@ public final class ActivityThread {
         if (localLOGV) Slog.v(
             TAG, "Handling launch of " + r);
 
-        //开始反射生成Activity
+        //反射生成Activity，调用了onCreate()
         Activity a = performLaunchActivity(r, customIntent);
 
         if (a != null) {
             r.createdConfig = new Configuration(mConfiguration);
             Bundle oldState = r.state;
 
-            handleResumeActivity(r.token, false, r.isForward,
-                    !r.activity.mFinished && !r.startsNotResumed);
+            //调用了onResume
+            handleResumeActivity(r.token, false, r.isForward, !r.activity.mFinished && !r.startsNotResumed);
 
             if (!r.activity.mFinished && r.startsNotResumed) {
                 // The activity manager actually wants this one to start out
@@ -2394,7 +2399,7 @@ public final class ActivityThread {
                 // retain the current state it has.
                 try {
                     r.activity.mCalled = false;
-                    //onPause调用
+                    //调用onPause
                     mInstrumentation.callActivityOnPause(r.activity);
                     // We need to keep around the original state, in case
                     // we need to be created again.  But we only do this
@@ -2935,6 +2940,7 @@ public final class ActivityThread {
         //Slog.i(TAG, "Running services: " + mServices);
     }
 
+    //方法内调用onResume(0
     public final ActivityClientRecord performResumeActivity(IBinder token,
             boolean clearHide) {
         ActivityClientRecord r = mActivities.get(token);
@@ -2955,6 +2961,7 @@ public final class ActivityThread {
                     deliverResults(r, r.pendingResults);
                     r.pendingResults = null;
                 }
+                //执行onResume
                 r.activity.performResume();
 
                 EventLog.writeEvent(LOG_ON_RESUME_CALLED,
@@ -2997,6 +3004,7 @@ public final class ActivityThread {
         mSomeActivitiesChanged = true;
 
         // TODO Push resumeArgs into the activity for consideration
+        //最终调用onResume()
         ActivityClientRecord r = performResumeActivity(token, clearHide);
 
         if (r != null) {
@@ -3022,9 +3030,13 @@ public final class ActivityThread {
                 }
             }
             if (r.window == null && !a.mFinished && willBeVisible) {
+                //获取Activity的Window
                 r.window = r.activity.getWindow();
+                //获取Window的DecorView
                 View decor = r.window.getDecorView();
+                //将DecorView隐藏
                 decor.setVisibility(View.INVISIBLE);
+                //获取WindowManager
                 ViewManager wm = a.getWindowManager();
                 WindowManager.LayoutParams l = r.window.getAttributes();
                 a.mDecor = decor;
@@ -3032,6 +3044,7 @@ public final class ActivityThread {
                 l.softInputMode |= forwardBit;
                 if (a.mVisibleFromClient) {
                     a.mWindowAdded = true;
+                    //将DecorView添加到Window中
                     wm.addView(decor, l);
                 }
 
@@ -3076,6 +3089,7 @@ public final class ActivityThread {
                 r.activity.mVisibleFromServer = true;
                 mNumVisibleActivities++;
                 if (r.activity.mVisibleFromClient) {
+                    //显示Activity，实际上是设置DecorView可见
                     r.activity.makeVisible();
                 }
             }
@@ -3090,6 +3104,7 @@ public final class ActivityThread {
             r.onlyLocalRequest = false;
 
             // Tell the activity manager we have resumed.
+            //通知ActivityManagerNative，改Activity已经是resume状态
             if (reallyResume) {
                 try {
                     ActivityManagerNative.getDefault().activityResumed(token);
@@ -5061,9 +5076,11 @@ public final class ActivityThread {
         return retHolder;
     }
 
+    //UI线程与Application关联
     private void attach(boolean system) {
         sCurrentActivityThread = this;
         mSystemThread = system;
+        //不是系统进程
         if (!system) {
             ViewRootImpl.addFirstDrawHandler(new Runnable() {
                 @Override
@@ -5071,13 +5088,14 @@ public final class ActivityThread {
                     ensureJitEnabled();
                 }
             });
-            android.ddm.DdmHandleAppName.setAppName("<pre-initialized>",
-                                                    UserHandle.myUserId());
+            android.ddm.DdmHandleAppName.setAppName("<pre-initialized>", UserHandle.myUserId());
+
             RuntimeInit.setApplicationObject(mAppThread.asBinder());
             //通过ActivityManagerNative获取到ActivityManagerService
             final IActivityManager mgr = ActivityManagerNative.getDefault();
             try {
-                //ActivityManagerService开启bind
+                //将mAppThread与Application进行管理
+                //mAppThread为ApplicationThread类型，同样不是一个线程，而是Binder,用于与AMS进行交互
                 mgr.attachApplication(mAppThread);
             } catch (RemoteException ex) {
                 // Ignore
@@ -5205,7 +5223,8 @@ public final class ActivityThread {
             dropBox.addText(tag, data);
         }
     }
-
+    //zygote进程启动SystemServer，并且启动AMS,WMS等核心服务，
+    //zygote同时fork了用户进程，用户进程启动加载AndroidManifast.xml中配置了action.MAIN入口的Activiy，调用ActivityThread.main这个入口
     //app启动入口
     public static void main(String[] args) {
         SamplingProfilerIntegration.start();
@@ -5227,12 +5246,12 @@ public final class ActivityThread {
         TrustedCertificateStore.setDefaultUserDirectory(configDir);
 
         Process.setArgV0("<pre-initialized>");
-        //开启消息队列
+        //创建UI线程的Looper
         Looper.prepareMainLooper();
 
-        //生成ActivityThread
+        //生成ActivityThread，ActivityThread并不是线程，是封装了UI线程消息循环与操作Activity生命周期的工具类
         ActivityThread thread = new ActivityThread();
-        //非系统app启动
+        //attach，false表示非系统应用调用，这里是创建Application和Activity的入口
         thread.attach(false);
 
         if (sMainThreadHandler == null) {
@@ -5245,7 +5264,7 @@ public final class ActivityThread {
             Looper.myLooper().setMessageLogging(new
                     LogPrinter(Log.DEBUG, "ActivityThread"));
         }
-        //消息队列循环
+        //启动UI线程消息循环
         Looper.loop();
 
         throw new RuntimeException("Main thread loop unexpectedly exited");

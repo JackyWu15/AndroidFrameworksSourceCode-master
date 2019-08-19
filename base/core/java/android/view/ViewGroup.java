@@ -5015,8 +5015,7 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
      * {@inheritDoc}
      */
     @Override
-    protected abstract void onLayout(boolean changed,
-            int l, int t, int r, int b);
+    protected abstract void onLayout(boolean changed,int l, int t, int r, int b);
 
     /**
      * Indicates whether the view group has the ability to animate its children

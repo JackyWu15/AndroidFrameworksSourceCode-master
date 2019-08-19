@@ -511,15 +511,17 @@ public final class ActivityStackSupervisor implements DisplayListener {
         final String processName = app.processName;
         boolean didSomething = false;
         for (int displayNdx = mActivityDisplays.size() - 1; displayNdx >= 0; --displayNdx) {
+            //从Activity栈中取出Activity
             ArrayList<ActivityStack> stacks = mActivityDisplays.valueAt(displayNdx).mStacks;
             for (int stackNdx = stacks.size() - 1; stackNdx >= 0; --stackNdx) {
                 final ActivityStack stack = stacks.get(stackNdx);
                 if (!isFrontStack(stack)) {
                     continue;
                 }
-                //在栈顶
+                //从栈顶取出ActivityRecord
                 ActivityRecord hr = stack.topRunningActivityLocked(null);
                 if (hr != null) {
+                    //获取
                     if (hr.app == null && app.uid == hr.info.applicationInfo.uid
                             && processName.equals(hr.processName)) {
                         try {
@@ -1166,7 +1168,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
                     mService.mAutoStopProfiler) : null;
             app.forceProcessStateUpTo(ActivityManager.PROCESS_STATE_TOP);
 
-            //回到ActivityThread的ApplicationThread调用scheduleLaunchActivity，设置所有参数
+            //回到ActivityThread的ApplicationThread调用scheduleLaunchActivity，设置所有参数，再调用Handler发送消息调用handleLaunchActivity
             app.thread.scheduleLaunchActivity(new Intent(r.intent), r.appToken,
                     System.identityHashCode(r), r.info, new Configuration(mService.mConfiguration),
                     r.compat, r.task.voiceInteractor, app.repProcState, r.icicle, r.persistentState,

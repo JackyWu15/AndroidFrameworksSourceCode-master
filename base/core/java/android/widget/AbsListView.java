@@ -2131,6 +2131,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
      * Subclasses should NOT override this method but
      *  {@link #layoutChildren()} instead.
      */
+    //子类复写layoutChidrent()来布局 child view，也就是item view
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
@@ -2145,6 +2146,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             mRecycler.markChildrenDirty();
         }
 
+        //布局Child View
         layoutChildren();
         mInLayout = false;
 
@@ -2340,7 +2342,9 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             return transientView;
         }
 
+        //从缓存的item view中获取，listview复用机制
         final View scrapView = mRecycler.getScrapView(position);
+        //将scrapView设置给Adapter的getView
         final View child = mAdapter.getView(position, scrapView, this);
         if (scrapView != null) {
             if (child != scrapView) {
@@ -2832,6 +2836,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         if (mSelector != null) mSelector.jumpToCurrentState();
     }
 
+    //关联到Widow时调用
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -2842,6 +2847,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             treeObserver.addOnGlobalLayoutListener(this);
         }
 
+        //给适配器注册一个观察者
         if (mAdapter != null && mDataSetObserver == null) {
             mDataSetObserver = new AdapterDataSetObserver();
             mAdapter.registerDataSetObserver(mDataSetObserver);
@@ -2849,6 +2855,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             // Data may have changed while we were detached. Refresh.
             mDataChanged = true;
             mOldItemCount = mItemCount;
+            //获取Item的数量
             mItemCount = mAdapter.getCount();
         }
     }

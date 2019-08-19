@@ -24,12 +24,14 @@ import android.view.accessibility.AccessibilityEvent;
  * This is the API that a view sees when it wants to interact with its parent.
  * 
  */
+//和ViewManager用于对ViewGroup扩展的接口
 public interface ViewParent {
     /**
      * Called when something has changed which has invalidated the layout of a
      * child of this view parent. This will schedule a layout pass of the view
      * tree.
      */
+    //请求重新布局
     public void requestLayout();
 
     /**
@@ -37,6 +39,7 @@ public interface ViewParent {
      *
      * @return true if layout was requested, false otherwise
      */
+    //requestLayout以消息发到主线程，由Handler处理，需要间隔一段时间执行
     public boolean isLayoutRequested();
 
     /**
@@ -58,6 +61,7 @@ public interface ViewParent {
      * @param child The child which is dirty
      * @param r The area within the child that is invalid
      */
+    //无效化子视图
     public void invalidateChild(View child, Rect r);
 
     /**
@@ -80,6 +84,7 @@ public interface ViewParent {
      *
      * @return the parent of this ViewParent or null
      */
+    //无效化子视图部分或全部区域
     public ViewParent invalidateChildInParent(int[] location, Rect r);
 
     /**
@@ -87,6 +92,7 @@ public interface ViewParent {
      *
      * @return a ViewParent or null if this ViewParent does not have a parent
      */
+    //获取当前View的ViewParent
     public ViewParent getParent();
 
     /**
@@ -98,6 +104,7 @@ public interface ViewParent {
      * @param focused The view that is a descendant of child that actually has
      *        focus
      */
+    //请求子视图焦点
     public void requestChildFocus(View child, View focused);
 
     /**

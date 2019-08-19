@@ -689,6 +689,7 @@ public class ListView extends AbsListView {
      * @return The view that is currently selected, if it happens to be in the
      *         range that we draw.
      */
+    //从上到下布局
     private View fillDown(int pos, int nextTop) {
         View selectedView = null;
 
@@ -700,6 +701,7 @@ public class ListView extends AbsListView {
         while (nextTop < end && pos < mItemCount) {
             // is this the selected item?
             boolean selected = pos == mSelectedPosition;
+            //makeAndAddView获取item view
             View child = makeAndAddView(pos, nextTop, true, mListPadding.left, selected);
 
             nextTop = child.getBottom() + mDividerHeight;
@@ -723,6 +725,7 @@ public class ListView extends AbsListView {
      *
      * @return The view that is currently selected
      */
+    //从下到上布局
     private View fillUp(int pos, int nextBottom) {
         View selectedView = null;
 
@@ -734,6 +737,7 @@ public class ListView extends AbsListView {
         while (nextBottom > end && pos >= 0) {
             // is this the selected item?
             boolean selected = pos == mSelectedPosition;
+            //makeAndAddView获取item view
             View child = makeAndAddView(pos, nextBottom, false, mListPadding.left, selected);
             nextBottom = child.getTop() - mDividerHeight;
             if (selected) {
@@ -1655,6 +1659,7 @@ public class ListView extends AbsListView {
             case LAYOUT_SYNC:
                 sel = fillSpecific(mSyncPosition, mSpecificTop);
                 break;
+                //根据布局模式来布局item view
             case LAYOUT_FORCE_BOTTOM:
                 sel = fillUp(mItemCount - 1, childrenBottom);
                 adjustViewsUpOrDown();
@@ -1866,9 +1871,11 @@ public class ListView extends AbsListView {
         }
 
         // Make a new view for this position, or convert an unused view if possible
+        //获取一个item view
         child = obtainView(position, mIsScrap);
 
         // This needs to be positioned and measured
+        //将item view设置到相应的地方
         setupChild(child, position, y, flow, childrenLeft, selected, mIsScrap[0]);
 
         return child;

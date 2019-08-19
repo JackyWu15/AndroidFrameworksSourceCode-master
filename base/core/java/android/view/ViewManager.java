@@ -19,6 +19,7 @@ package android.view;
 /** Interface to let you add and remove child views to an Activity. To get an instance
   * of this class, call {@link android.content.Context#getSystemService(java.lang.String) Context.getSystemService()}.
   */
+//和ViewParent用于对ViewGroup扩展的接口
 public interface ViewManager
 {
     /**
@@ -31,7 +32,10 @@ public interface ViewManager
      * @param view The view to be added to this window.
      * @param params The LayoutParams to assign to view.
      */
+    //添加View
     public void addView(View view, ViewGroup.LayoutParams params);
+    //更新视图布局
     public void updateViewLayout(View view, ViewGroup.LayoutParams params);
+    //移除View
     public void removeView(View view);
 }

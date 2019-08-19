@@ -6025,8 +6025,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         }
     }
 
-    private final boolean attachApplicationLocked(IApplicationThread thread,
-            int pid) {
+    private final boolean attachApplicationLocked(IApplicationThread thread, int pid) {
 
         // Find the application record that is being attached...  either via
         // the pid if we are running in multiple processes, or just pull the
@@ -6156,7 +6155,7 @@ public final class ActivityManagerService extends ActivityManagerNative
             }
             ProfilerInfo profilerInfo = profileFile == null ? null
                     : new ProfilerInfo(profileFile, profileFd, samplingInterval, profileAutoStop);
-            //完成绑定app
+            //ApplicationThread绑定Application
             thread.bindApplication(processName, appInfo, providers, app.instrumentationClass,
                     profilerInfo, app.instrumentationArguments, app.instrumentationWatcher,
                     app.instrumentationUiAutomationConnection, testMode, enableOpenGlTrace,
@@ -6187,6 +6186,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         boolean didSomething = false;
 
         // See if the top visible activity is waiting to run in this process...
+        //正常启动Activity
         if (normalMode) {
             try {
                 //开始启动app
@@ -6247,6 +6247,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         return true;
     }
 
+    //ActivityThread关联 ApplicationThread
     @Override
     public final void attachApplication(IApplicationThread thread) {
         synchronized (this) {

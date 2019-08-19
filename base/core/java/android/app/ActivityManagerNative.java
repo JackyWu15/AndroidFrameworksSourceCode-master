@@ -2341,6 +2341,7 @@ public abstract class ActivityManagerNative extends Binder implements IActivityM
 
     private static final Singleton<IActivityManager> gDefault = new Singleton<IActivityManager>() {
         protected IActivityManager create() {
+            //获取系统级Service，即ActivityManagerService
             IBinder b = ServiceManager.getService("activity");
             if (false) {
                 Log.v("ActivityManager", "default service binder = " + b);
@@ -2355,6 +2356,9 @@ public abstract class ActivityManagerNative extends Binder implements IActivityM
     };
 }
 
+
+//ActivityManagerProxy代理类,代理ActivityManagerNative的实际实现类ActivityManagerService
+//ActivityManagerProxy运行在自己的进程中，ActivityManagerService也运行在自己的进程中，两者间通过Binder实现远程代理
 class ActivityManagerProxy implements IActivityManager
 {
     public ActivityManagerProxy(IBinder remote)
@@ -2825,6 +2829,8 @@ class ActivityManagerProxy implements IActivityManager
         data.recycle();
         reply.recycle();
     }
+
+
     public void attachApplication(IApplicationThread app) throws RemoteException
     {
         Parcel data = Parcel.obtain();

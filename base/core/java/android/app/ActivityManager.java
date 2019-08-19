@@ -1097,6 +1097,8 @@ public class ActivityManager {
      * @return The list of tasks associated with the application making this call.
      * @throws SecurityException
      */
+
+
     public List<ActivityManager.AppTask> getAppTasks() {
         ArrayList<AppTask> tasks = new ArrayList<AppTask>();
         List<IAppTask> appTasks;
