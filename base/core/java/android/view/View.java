@@ -17420,6 +17420,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      *
      * @see #onMeasure(int, int)
      */
+    //View的measure->调用onMeasure()传递子View的MeasureSpec
     public final void measure(int widthMeasureSpec, int heightMeasureSpec) {
         boolean optical = isLayoutModeOptical(this);
         if (optical != isLayoutModeOptical(mParent)) {
@@ -17447,6 +17448,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                     mMeasureCache.indexOfKey(key);
             if (cacheIndex < 0 || sIgnoreMeasureCache) {
                 // measure ourselves, this should set the measured dimension flag back
+               // 调用onMeasure()
                 onMeasure(widthMeasureSpec, heightMeasureSpec);
                 mPrivateFlags3 &= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
             } else {
@@ -17521,6 +17523,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * @see android.view.View.MeasureSpec#getSize(int)
      */
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        //根据widthMeasureSpec设置测量尺寸
         setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));
     }
 

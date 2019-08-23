@@ -119,7 +119,10 @@ public final class Message implements Parcelable {
      * Return a new Message instance from the global pool. Allows us to
      * avoid allocating new objects in many cases.
      */
-    public static Message obtain() {
+    //链表结构，获取消息对象，存入在recycle()中
+    public static Message
+
+    obtain() {
         synchronized (sPoolSync) {
             if (sPool != null) {
                 Message m = sPool;
@@ -273,7 +276,9 @@ public final class Message implements Parcelable {
      * enqueued or that is in the process of being delivered to a Handler.
      * </p>
      */
+    //将Message对象回收到消息池中
     public void recycle() {
+        //判断是否该消息还在使用
         if (isInUse()) {
             if (gCheckRecycle) {
                 throw new IllegalStateException("This message cannot be recycled because it "
@@ -281,6 +286,7 @@ public final class Message implements Parcelable {
             }
             return;
         }
+        //清空状态，并且将消息添加到消息池中
         recycleUnchecked();
     }
 
@@ -288,6 +294,7 @@ public final class Message implements Parcelable {
      * Recycles a Message that may be in-use.
      * Used internally by the MessageQueue and Looper when disposing of queued Messages.
      */
+
     void recycleUnchecked() {
         // Mark the message as in use while it remains in the recycled object pool.
         // Clear out all other details.
@@ -302,7 +309,7 @@ public final class Message implements Parcelable {
         target = null;
         callback = null;
         data = null;
-
+        //将消息添加到消息池
         synchronized (sPoolSync) {
             if (sPoolSize < MAX_POOL_SIZE) {
                 next = sPool;

@@ -63,11 +63,13 @@ bool MessageQueue::raiseAndClearException(JNIEnv* env, const char* msg) {
     }
     return false;
 }
-
+//NativeMessageQueue构造,NativeMessageQueue只是一个代理Native Looper的角色,Native Looper则是一个Jave层的Handler
 NativeMessageQueue::NativeMessageQueue() : mInCallback(false), mExceptionObj(NULL) {
     mLooper = Looper::getForThread();
     if (mLooper == NULL) {
+       //创建native的Looper
         mLooper = new Looper(false);
+        //设置给当前线程Looper
         Looper::setForThread(mLooper);
     }
 }
@@ -92,8 +94,11 @@ void NativeMessageQueue::raiseException(JNIEnv* env, const char* msg, jthrowable
     }
 }
 
+
+
 void NativeMessageQueue::pollOnce(JNIEnv* env, int timeoutMillis) {
     mInCallback = true;
+//从管道读取事件
     mLooper->pollOnce(timeoutMillis);
     mInCallback = false;
     if (mExceptionObj) {
@@ -114,7 +119,9 @@ sp<MessageQueue> android_os_MessageQueue_getMessageQueue(JNIEnv* env, jobject me
     return reinterpret_cast<NativeMessageQueue*>(ptr);
 }
 
+
 static jlong android_os_MessageQueue_nativeInit(JNIEnv* env, jclass clazz) {
+//构造NativeMessageQueue
     NativeMessageQueue* nativeMessageQueue = new NativeMessageQueue();
     if (!nativeMessageQueue) {
         jniThrowRuntimeException(env, "Unable to allocate native queue");
@@ -122,6 +129,7 @@ static jlong android_os_MessageQueue_nativeInit(JNIEnv* env, jclass clazz) {
     }
 
     nativeMessageQueue->incStrong(env);
+    //将NativeMessageQueue对象转为一个整型变量
     return reinterpret_cast<jlong>(nativeMessageQueue);
 }
 
@@ -130,9 +138,9 @@ static void android_os_MessageQueue_nativeDestroy(JNIEnv* env, jclass clazz, jlo
     nativeMessageQueue->decStrong(env);
 }
 
-static void android_os_MessageQueue_nativePollOnce(JNIEnv* env, jclass clazz,
-        jlong ptr, jint timeoutMillis) {
+static void android_os_MessageQueue_nativePollOnce(JNIEnv* env, jclass clazz,jlong ptr, jint timeoutMillis) {
     NativeMessageQueue* nativeMessageQueue = reinterpret_cast<NativeMessageQueue*>(ptr);
+    //从管道中读取事件
     nativeMessageQueue->pollOnce(env, timeoutMillis);
 }
 
@@ -150,9 +158,9 @@ static jboolean android_os_MessageQueue_nativeIsIdling(JNIEnv* env, jclass clazz
 
 static JNINativeMethod gMessageQueueMethods[] = {
     /* name, signature, funcPtr */
-    { "nativeInit", "()J", (void*)android_os_MessageQueue_nativeInit },
+    { "nativeInit", "()J", (void*)android_os_MessageQueue_nativeInit },//MessageQueue(boolean quitAllowed) { mQuitAllowed = quitAllowed;//调用nave初始化mPtr = nativeInit();}
     { "nativeDestroy", "(J)V", (void*)android_os_MessageQueue_nativeDestroy },
-    { "nativePollOnce", "(JI)V", (void*)android_os_MessageQueue_nativePollOnce },
+    { "nativePollOnce", "(JI)V", (void*)android_os_MessageQueue_nativePollOnce },//MessageQueue->next()->nativePollOnce(long ptr, int timeoutMillis)
     { "nativeWake", "(J)V", (void*)android_os_MessageQueue_nativeWake },
     { "nativeIsIdling", "(J)Z", (void*)android_os_MessageQueue_nativeIsIdling }
 };

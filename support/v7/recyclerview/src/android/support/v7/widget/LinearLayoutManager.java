@@ -17,9 +17,9 @@
 package android.support.v7.widget;
 
 import android.content.Context;
+import android.graphics.PointF;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.graphics.PointF;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
@@ -28,9 +28,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
-import static android.support.v7.widget.RecyclerView.NO_POSITION;
-
 import java.util.List;
+
+import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
 /**
  * A {@link android.support.v7.widget.RecyclerView.LayoutManager} implementation which provides

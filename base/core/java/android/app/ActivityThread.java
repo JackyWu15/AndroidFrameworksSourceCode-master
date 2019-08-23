@@ -2238,7 +2238,7 @@ public final class ActivityThread {
                     + ", dir=" + r.packageInfo.getAppDir());
 
             if (activity != null) {
-                //创建Context对象
+                //创建Context上下文对象
                 Context appContext = createBaseContextForActivity(r, activity);
                 CharSequence title = r.activityInfo.loadLabel(appContext.getPackageManager());
                 Configuration config = new Configuration(mCompatConfiguration);
@@ -2322,6 +2322,7 @@ public final class ActivityThread {
         return activity;
     }
 
+    //上下文创建
     private Context createBaseContextForActivity(ActivityClientRecord r,
             final Activity activity) {
         //通过ContextImpl实现类创建context对象
@@ -5237,16 +5238,19 @@ public final class ActivityThread {
         Environment.initForCurrentUser();
 
         // Set the reporter for event logging in libcore
+        //为当前用户初始化环境参数
         EventLogger.setReporter(new EventLoggingReporter());
 
         Security.addProvider(new AndroidKeyStoreProvider());
 
         // Make sure TrustedCertificateStore looks in the right place for CA certificates
+        //获取并确保信用凭证在目录中
         final File configDir = Environment.getUserConfigDirectory(UserHandle.myUserId());
         TrustedCertificateStore.setDefaultUserDirectory(configDir);
 
         Process.setArgV0("<pre-initialized>");
-        //创建UI线程的Looper
+        //创建UI线程的Looper,也即主线线程的Looper，每个MessageQueue只会属于一个线程，而MessageQueue在Looper中
+        //Handler通过关联Looper来关联MessageQueue
         Looper.prepareMainLooper();
 
         //生成ActivityThread，ActivityThread并不是线程，是封装了UI线程消息循环与操作Activity生命周期的工具类
@@ -5260,9 +5264,9 @@ public final class ActivityThread {
 
         AsyncTask.init();
 
+        //用于调试
         if (false) {
-            Looper.myLooper().setMessageLogging(new
-                    LogPrinter(Log.DEBUG, "ActivityThread"));
+            Looper.myLooper().setMessageLogging(new LogPrinter(Log.DEBUG, "ActivityThread"));
         }
         //启动UI线程消息循环
         Looper.loop();

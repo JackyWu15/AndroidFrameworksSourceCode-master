@@ -5462,14 +5462,12 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
      * @param parentWidthMeasureSpec The width requirements for this view
      * @param parentHeightMeasureSpec The height requirements for this view
      */
-    protected void measureChild(View child, int parentWidthMeasureSpec,
-            int parentHeightMeasureSpec) {
+    //测量子View
+    protected void measureChild(View child, int parentWidthMeasureSpec,int parentHeightMeasureSpec) {
+        //获取到子View的宽高属性，加上父类的MeasureSpec，两者确定了子View的MeasureSpec
         final LayoutParams lp = child.getLayoutParams();
-
-        final int childWidthMeasureSpec = getChildMeasureSpec(parentWidthMeasureSpec,
-                mPaddingLeft + mPaddingRight, lp.width);
-        final int childHeightMeasureSpec = getChildMeasureSpec(parentHeightMeasureSpec,
-                mPaddingTop + mPaddingBottom, lp.height);
+        final int childWidthMeasureSpec = getChildMeasureSpec(parentWidthMeasureSpec,mPaddingLeft + mPaddingRight, lp.width);
+        final int childHeightMeasureSpec = getChildMeasureSpec(parentHeightMeasureSpec,mPaddingTop + mPaddingBottom, lp.height);
 
         child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
     }

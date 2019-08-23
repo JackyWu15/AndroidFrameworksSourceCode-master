@@ -84,16 +84,22 @@ public class Handler {
     /**
      * Subclasses must implement this to receive messages.
      */
+    //消息会传送到此处，必须子类实现来处理
     public void handleMessage(Message msg) {
     }
     
     /**
      * Handle system messages here.
      */
+    //分发消息
     public void dispatchMessage(Message msg) {
+        //runnable不为空
         if (msg.callback != null) {
             handleCallback(msg);
-        } else {
+        }
+        //runnable为空
+        else {
+            //mCallback不为空
             if (mCallback != null) {
                 if (mCallback.handleMessage(msg)) {
                     return;
@@ -194,12 +200,13 @@ public class Handler {
                     klass.getCanonicalName());
             }
         }
-
+        //获取Looper
         mLooper = Looper.myLooper();
         if (mLooper == null) {
             throw new RuntimeException(
                 "Can't create handler inside thread that has not called Looper.prepare()");
         }
+        //获取消息队列
         mQueue = mLooper.mQueue;
         mCallback = callback;
         mAsynchronous = async;
@@ -321,6 +328,7 @@ public class Handler {
      *         message queue.  Returns false on failure, usually because the
      *         looper processing the message queue is exiting.
      */
+    //向UI线程传递一个Runnable
     public final boolean post(Runnable r)
     {
        return  sendMessageDelayed(getPostMessage(r), 0);
@@ -393,6 +401,7 @@ public class Handler {
      *         if the looper is quit before the delivery time of the message
      *         occurs then the message will be dropped.
      */
+
     public final boolean postDelayed(Runnable r, long delayMillis)
     {
         return sendMessageDelayed(getPostMessage(r), delayMillis);
@@ -562,6 +571,7 @@ public class Handler {
      *         the looper is quit before the delivery time of the message
      *         occurs then the message will be dropped.
      */
+    //发送消息
     public final boolean sendMessageDelayed(Message msg, long delayMillis)
     {
         if (delayMillis < 0) {
@@ -589,7 +599,9 @@ public class Handler {
      *         the looper is quit before the delivery time of the message
      *         occurs then the message will be dropped.
      */
+    //送入消息队列中
     public boolean sendMessageAtTime(Message msg, long uptimeMillis) {
+        //获取消息队列
         MessageQueue queue = mQueue;
         if (queue == null) {
             RuntimeException e = new RuntimeException(
@@ -597,6 +609,7 @@ public class Handler {
             Log.w("Looper", e.getMessage(), e);
             return false;
         }
+        //将消息添加到消息队列中
         return enqueueMessage(queue, msg, uptimeMillis);
     }
 
@@ -722,8 +735,11 @@ public class Handler {
         }
     }
 
+    //将Runable包装在一个消息中
     private static Message getPostMessage(Runnable r) {
+        //对象池方式创建Message
         Message m = Message.obtain();
+        //将runnable赋值给Message的callback
         m.callback = r;
         return m;
     }
@@ -736,6 +752,7 @@ public class Handler {
     }
 
     private static void handleCallback(Message message) {
+        //执行Runnable的run方法
         message.callback.run();
     }
 

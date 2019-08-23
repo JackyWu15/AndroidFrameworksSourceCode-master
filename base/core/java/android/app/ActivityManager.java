@@ -19,17 +19,6 @@ package android.app;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Point;
-import android.os.BatteryStats;
-import android.os.IBinder;
-import android.os.ParcelFileDescriptor;
-
-import com.android.internal.app.ProcessStats;
-import com.android.internal.os.TransferPipe;
-import com.android.internal.util.FastPrintWriter;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -40,12 +29,18 @@ import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.BatteryStats;
 import android.os.Bundle;
 import android.os.Debug;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Parcel;
+import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
 import android.os.Process;
 import android.os.RemoteException;
@@ -56,6 +51,11 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Size;
 import android.util.Slog;
+
+import com.android.internal.app.ProcessStats;
+import com.android.internal.os.TransferPipe;
+import com.android.internal.util.FastPrintWriter;
+
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.FileDescriptor;

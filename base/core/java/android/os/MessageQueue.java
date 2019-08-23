@@ -103,6 +103,7 @@ public final class MessageQueue {
 
     MessageQueue(boolean quitAllowed) {
         mQuitAllowed = quitAllowed;
+        //调用nave初始化
         mPtr = nativeInit();
     }
 
@@ -124,6 +125,7 @@ public final class MessageQueue {
         }
     }
 
+    //取出下个消息
     Message next() {
         // Return here if the message loop has already quit and been disposed.
         // This can happen if the application tries to restart a looper after quit
@@ -140,12 +142,14 @@ public final class MessageQueue {
                 Binder.flushPendingCommands();
             }
 
+            //处理Native层事件
             nativePollOnce(ptr, nextPollTimeoutMillis);
 
             synchronized (this) {
                 // Try to retrieve the next message.  Return if found.
                 final long now = SystemClock.uptimeMillis();
                 Message prevMsg = null;
+                //消息
                 Message msg = mMessages;
                 if (msg != null && msg.target == null) {
                     // Stalled by a barrier.  Find the next asynchronous message in the queue.
@@ -155,6 +159,7 @@ public final class MessageQueue {
                     } while (msg != null && !msg.isAsynchronous());
                 }
                 if (msg != null) {
+                    //延迟处理
                     if (now < msg.when) {
                         // Next message is not ready.  Set a timeout to wake up when it is ready.
                         nextPollTimeoutMillis = (int) Math.min(msg.when - now, Integer.MAX_VALUE);

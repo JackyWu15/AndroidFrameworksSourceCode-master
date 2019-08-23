@@ -75,6 +75,7 @@ public final class Looper {
         if (sThreadLocal.get() != null) {
             throw new RuntimeException("Only one Looper may be created per thread");
         }
+        //创建Looper
         sThreadLocal.set(new Looper(quitAllowed));
     }
 
@@ -84,6 +85,7 @@ public final class Looper {
      * is created by the Android environment, so you should never need
      * to call this function yourself.  See also: {@link #prepare()}
      */
+    //创建并Looper，并赋值给sMainLooper引用
     public static void prepareMainLooper() {
         prepare(false);
         synchronized (Looper.class) {
@@ -96,6 +98,7 @@ public final class Looper {
 
     /** Returns the application's main looper, which lives in the main thread of the application.
      */
+    //获取主线程Looper
     public static Looper getMainLooper() {
         synchronized (Looper.class) {
             return sMainLooper;
@@ -106,11 +109,15 @@ public final class Looper {
      * Run the message queue in this thread. Be sure to call
      * {@link #quit()} to end the loop.
      */
+    //取出消息队列的消息
     public static void loop() {
+        //获取当前线程的Looper
         final Looper me = myLooper();
         if (me == null) {
             throw new RuntimeException("No Looper; Looper.prepare() wasn't called on this thread.");
         }
+
+        //获取消息队列
         final MessageQueue queue = me.mQueue;
 
         // Make sure the identity of this thread is that of the local process,
@@ -118,6 +125,7 @@ public final class Looper {
         Binder.clearCallingIdentity();
         final long ident = Binder.clearCallingIdentity();
 
+        //死循环获取
         for (;;) {
             Message msg = queue.next(); // might block
             if (msg == null) {
@@ -149,6 +157,7 @@ public final class Looper {
                         + msg.callback + " what=" + msg.what);
             }
 
+            //回收时添加到消息链表中进行复用
             msg.recycleUnchecked();
         }
     }
@@ -157,6 +166,7 @@ public final class Looper {
      * Return the Looper object associated with the current thread.  Returns
      * null if the calling thread is not associated with a Looper.
      */
+    //通过ThreadLocal获取Looper,ThreadLocal保证每个线程有一份自己的Looper
     public static Looper myLooper() {
         return sThreadLocal.get();
     }

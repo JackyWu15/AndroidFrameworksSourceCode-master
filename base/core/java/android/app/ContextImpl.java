@@ -1226,6 +1226,7 @@ class ContextImpl extends Context {
         startActivityAsUser(intent, null, user);
     }
 
+    //跳转
     @Override
     public void startActivity(Intent intent, Bundle options) {
         warnIfCallingFromSystemProcess();
