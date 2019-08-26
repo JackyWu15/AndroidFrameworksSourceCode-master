@@ -505,13 +505,14 @@ static jint android_content_AssetManager_addAssetPath(JNIEnv* env, jobject clazz
     if (path8.c_str() == NULL) {
         return 0;
     }
-
+    //将java 层的mObject字段转为AssetManager指针
     AssetManager* am = assetManagerForJavaObject(env, clazz);
     if (am == NULL) {
         return 0;
     }
 
     int32_t cookie;
+    //将新的路径添加到资源列表中
     bool res = am->addAssetPath(String8(path8.c_str()), &cookie);
 
     return (res) ? static_cast<jint>(cookie) : 0;
@@ -1919,20 +1920,23 @@ static jintArray android_content_AssetManager_getStyleAttributes(JNIEnv* env, jo
     return array;
 }
 
+
 static void android_content_AssetManager_init(JNIEnv* env, jobject clazz, jboolean isSystem)
 {
     if (isSystem) {
         verifySystemIdmaps();
     }
+    //创建Native的AssetManager
     AssetManager* am = new AssetManager();
     if (am == NULL) {
         jniThrowException(env, "java/lang/OutOfMemoryError", "");
         return;
     }
-
+    //添加默认资源
     am->addDefaultAssets();
 
     ALOGV("Created AssetManager %p for Java object %p\n", am, clazz);
+    //将Native层的AssertManager存储到java层AssetManager的mObject
     env->SetLongField(clazz, gAssetManagerOffsets.mObject, reinterpret_cast<jlong>(am));
 }
 

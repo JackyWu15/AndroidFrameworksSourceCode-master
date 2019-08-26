@@ -180,6 +180,7 @@ bool AssetManager::addAssetPath(const String8& path, int32_t* cookie)
     if (kAppZipName) {
         realPath.appendPath(kAppZipName);
     }
+    //判断path路径是否合法
     ap.type = ::getFileType(realPath.string());
     if (ap.type == kFileTypeRegular) {
         ap.path = realPath;
@@ -216,6 +217,7 @@ bool AssetManager::addAssetPath(const String8& path, int32_t* cookie)
     }
     delete manifestAsset;
 
+//添加资源路径到列表中
     mAssetPaths.add(ap);
 
     // new paths are always added at the end
@@ -326,8 +328,9 @@ bool AssetManager::addDefaultAssets()
 {
     const char* root = getenv("ANDROID_ROOT");
     LOG_ALWAYS_FATAL_IF(root == NULL, "ANDROID_ROOT not set");
-
+    //构建系统路径
     String8 path(root);
+    //系统路径拼接framework资源的apk路径，形成完整路径
     path.appendPath(kSystemAssets);
 
     return addAssetPath(path, NULL);

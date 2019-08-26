@@ -507,6 +507,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         return resumedActivity;
     }
 
+
     boolean attachApplicationLocked(ProcessRecord app) throws RemoteException {
         final String processName = app.processName;
         boolean didSomething = false;
@@ -930,6 +931,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
                 }
             }
 
+            //验证Intent、class等
             int res = startActivityLocked(caller, intent, resolvedType, aInfo,
                     voiceSession, voiceInteractor, resultTo, resultWho,
                     requestCode, callingPid, callingUid, callingPackage,
@@ -1064,6 +1066,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         return ActivityManager.START_SUCCESS;
     }
 
+    //启动activity
     final boolean realStartActivityLocked(ActivityRecord r,
             ProcessRecord app, boolean andResume, boolean checkConfig)
             throws RemoteException {
@@ -1250,6 +1253,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         return true;
     }
 
+    //开启新的Activity
     void startSpecificActivityLocked(ActivityRecord r,
             boolean andResume, boolean checkConfig) {
         // Is this activity's application already running?
@@ -1269,6 +1273,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
                     app.addPackage(r.info.packageName, r.info.applicationInfo.versionCode,
                             mService.mProcessStats);
                 }
+                //启动新activity
                 realStartActivityLocked(r, app, andResume, checkConfig);
                 return;
             } catch (RemoteException e) {
@@ -1284,6 +1289,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
                 "activity", r.intent.getComponent(), false, false, true);
     }
 
+    //验证Intent，class等
     final int startActivityLocked(IApplicationThread caller,
             Intent intent, String resolvedType, ActivityInfo aInfo,
             IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
@@ -1502,6 +1508,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
 
         doPendingActivityLaunchesLocked(false);
 
+        //验证完成，开始启动模式判断
         err = startActivityUncheckedLocked(r, sourceRecord, voiceSession, voiceInteractor,
                 startFlags, true, options, inTask);
 
@@ -1586,6 +1593,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         }
     }
 
+    //启动模式判断，往下滑看到targetStack.startActivityLocked
     final int startActivityUncheckedLocked(ActivityRecord r, ActivityRecord sourceRecord,
             IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor, int startFlags,
             boolean doResume, Bundle options, TaskRecord inTask) {
@@ -2189,6 +2197,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         }
         ActivityStack.logStartActivity(EventLogTags.AM_CREATE_ACTIVITY, r, r.task);
         targetStack.mLastPausedActivity = null;
+        //获取Activity栈开启
         targetStack.startActivityLocked(r, newTask, doResume, keepCurTransition, options);
         if (!launchTaskBehind) {
             // Don't set focus on an activity that's going to the back.
@@ -2433,6 +2442,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         return resumeTopActivitiesLocked(null, null, null);
     }
 
+    //又调用了targetStack的resumeTopActivityLocked
     boolean resumeTopActivitiesLocked(ActivityStack targetStack, ActivityRecord target,
             Bundle targetOptions) {
         if (targetStack == null) {
@@ -2441,6 +2451,7 @@ public final class ActivityStackSupervisor implements DisplayListener {
         // Do targetStack first.
         boolean result = false;
         if (isFrontStack(targetStack)) {
+            //调用了targetStack的resumeTopActivityLocked
             result = targetStack.resumeTopActivityLocked(target, targetOptions);
         }
         for (int displayNdx = mActivityDisplays.size() - 1; displayNdx >= 0; --displayNdx) {

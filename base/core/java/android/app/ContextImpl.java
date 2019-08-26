@@ -1234,11 +1234,10 @@ class ContextImpl extends Context {
             throw new AndroidRuntimeException(
                     "Calling startActivity() from outside of an Activity "
                     + " context requires the FLAG_ACTIVITY_NEW_TASK flag."
-                    + " Is this really what you want?");
+                    + " Is this really what you want?");a
         }
-        mMainThread.getInstrumentation().execStartActivity(
-            getOuterContext(), mMainThread.getApplicationThread(), null,
-            (Activity)null, intent, -1, options);
+        //获取Instrumentation()执行跳转
+        mMainThread.getInstrumentation().execStartActivity(getOuterContext(), mMainThread.getApplicationThread(), null,(Activity)null, intent, -1, options);
     }
 
     /** @hide */
@@ -2237,7 +2236,9 @@ class ContextImpl extends Context {
         }
         mUser = user;
 
+        //获取包信息
         mPackageInfo = packageInfo;
+        //获取资源管理器
         mResourcesManager = ResourcesManager.getInstance();
         mDisplay = display;
         mOverrideConfiguration = overrideConfiguration;
@@ -2260,6 +2261,7 @@ class ContextImpl extends Context {
                     || overrideConfiguration != null
                     || (compatInfo != null && compatInfo.applicationScale
                             != resources.getCompatibilityInfo().applicationScale)) {
+                //根据设备配置获取对应的资源
                 resources = mResourcesManager.getTopLevelResources(packageInfo.getResDir(),
                         packageInfo.getSplitResDirs(), packageInfo.getOverlayDirs(),
                         packageInfo.getApplicationInfo().sharedLibraryFiles, displayId,

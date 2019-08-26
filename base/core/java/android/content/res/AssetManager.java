@@ -90,8 +90,10 @@ public final class AssetManager implements AutoCloseable {
                 mNumRefs = 0;
                 incRefsLocked(this.hashCode());
             }
+            //初始化,创建Native的AssetManager，并将Native层的AssertManager存储到java层中
             init(false);
             if (localLOGV) Log.v(TAG, "New asset manager: " + this);
+            //确保加载系统资源
             ensureSystemAssets();
         }
     }
@@ -99,6 +101,7 @@ public final class AssetManager implements AutoCloseable {
     private static void ensureSystemAssets() {
         synchronized (sSync) {
             if (sSystem == null) {
+                //如果没加载系统资源，新构造
                 AssetManager system = new AssetManager(true);
                 system.makeStringBlocks(null);
                 sSystem = system;
@@ -611,6 +614,7 @@ public final class AssetManager implements AutoCloseable {
      */
     public final int addAssetPath(String path) {
         synchronized (this) {
+            //native加载
             int res = addAssetPathNative(path);
             makeStringBlocks(mStringBlocks);
             return res;
@@ -636,6 +640,7 @@ public final class AssetManager implements AutoCloseable {
      * the input array of paths is null.
      * {@hide}
      */
+    //调用native加载
     public final int[] addAssetPaths(String[] paths) {
         if (paths == null) {
             return null;

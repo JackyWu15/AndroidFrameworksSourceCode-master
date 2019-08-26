@@ -6435,12 +6435,14 @@ public final class ActivityManagerService extends ActivityManagerNative
         Binder.restoreCallingIdentity(origId);
     }
 
+    //收到上一个activity暂停操作完成
     @Override
     public final void activityPaused(IBinder token) {
         final long origId = Binder.clearCallingIdentity();
         synchronized(this) {
             ActivityStack stack = ActivityRecord.getStackLocked(token);
             if (stack != null) {
+                //栈执行暂停锁定，并开始下一个activity的resume
                 stack.activityPausedLocked(token, false);
             }
         }
@@ -19148,6 +19150,7 @@ public final class ActivityManagerService extends ActivityManagerNative
             startActivityFromRecentsInner(tr.taskId, null);
         }
 
+        //AMS执行activity
         @Override
         public int startActivity(IBinder whoThread, String callingPackage,
                 Intent intent, String resolvedType, Bundle options) {
@@ -19166,6 +19169,8 @@ public final class ActivityManagerService extends ActivityManagerNative
                     throw new IllegalArgumentException("Bad app thread " + appThread);
                 }
             }
+
+            //实际通过StackSupervisor调用startActivityMayWait
             return mStackSupervisor.startActivityMayWait(appThread, -1, callingPackage, intent,
                     resolvedType, null, null, null, null, 0, 0, null, null,
                     null, options, callingUser, null, tr);

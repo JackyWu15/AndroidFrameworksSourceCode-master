@@ -229,6 +229,7 @@ public class Resources {
             mCompatibilityInfo = compatInfo;
         }
         mToken = new WeakReference<IBinder>(token);
+        //更新配置
         updateConfiguration(config, metrics);
         assets.ensureStringBlocks();
     }
@@ -1808,6 +1809,8 @@ public class Resources {
                             == Configuration.HARDKEYBOARDHIDDEN_YES) {
                 keyboardHidden = Configuration.KEYBOARDHIDDEN_SOFT;
             }
+
+            //根据配置初始化AssetManager
             mAssets.setConfiguration(mConfiguration.mcc, mConfiguration.mnc,
                     locale, mConfiguration.orientation,
                     mConfiguration.touchscreen,

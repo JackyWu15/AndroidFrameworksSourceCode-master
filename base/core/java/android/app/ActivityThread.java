@@ -1293,6 +1293,7 @@ public final class ActivityThread {
                 } break;
                 case PAUSE_ACTIVITY:
                     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "activityPause");
+                    //执行上一个Activity的暂停
                     handlePauseActivity((IBinder)msg.obj, false, (msg.arg1&1) != 0, msg.arg2,
                             (msg.arg1&2) != 0);
                     maybeSnapshot();
@@ -3180,6 +3181,7 @@ public final class ActivityThread {
         return thumbnail;
     }
 
+    //handlePauseActivity
     private void handlePauseActivity(IBinder token, boolean finished,
             boolean userLeaving, int configChanges, boolean dontReport) {
         ActivityClientRecord r = mActivities.get(token);
@@ -3190,6 +3192,7 @@ public final class ActivityThread {
             }
 
             r.activity.mConfigChangeFlags |= configChanges;
+            //执行handlePauseActivity调用onPause()
             performPauseActivity(token, finished, r.isPreHoneycomb());
 
             // Make sure any pending writes are now committed.
@@ -3198,6 +3201,7 @@ public final class ActivityThread {
             }
 
             // Tell the activity manager we have paused.
+            //通知AMS暂停执行完毕，可以开始resume下一个activity了
             if (!dontReport) {
                 try {
                     ActivityManagerNative.getDefault().activityPaused(token);
@@ -3242,6 +3246,7 @@ public final class ActivityThread {
             }
             // Now we are idle.
             r.activity.mCalled = false;
+            //让Instrumentation调用callActivityOnPause，实际调用Activity的performPause
             mInstrumentation.callActivityOnPause(r.activity);
             EventLog.writeEvent(LOG_ON_PAUSE_CALLED, UserHandle.myUserId(),
                     r.activity.getComponentName().getClassName());

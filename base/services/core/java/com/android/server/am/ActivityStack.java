@@ -804,6 +804,7 @@ final class ActivityStack {
      * @return Returns true if an activity now is in the PAUSING state, and we are waiting for
      * it to tell us when it is done.
      */
+    //暂停当前的Activity
     final boolean startPausingLocked(boolean userLeaving, boolean uiSleeping, boolean resuming,
             boolean dontWait) {
         if (mPausingActivity != null) {
@@ -849,6 +850,7 @@ final class ActivityStack {
                         prev.userId, System.identityHashCode(prev),
                         prev.shortComponentName);
                 mService.updateUsageStats(prev, false);
+                //让ActivityThread的schedulePauseActivity执行暂停操作，最终回调onPause()方法，并会回到ActivityStack通知已暂停完毕
                 prev.app.thread.schedulePauseActivity(prev.appToken, prev.finishing,
                         userLeaving, prev.configChangeFlags, dontWait);
             } catch (Exception e) {
@@ -910,6 +912,7 @@ final class ActivityStack {
         }
     }
 
+    //开始下一个activity的resume
     final void activityPausedLocked(IBinder token, boolean timeout) {
         if (DEBUG_PAUSE) Slog.v(
             TAG, "Activity paused: token=" + token + ", timeout=" + timeout);
@@ -920,6 +923,7 @@ final class ActivityStack {
             if (mPausingActivity == r) {
                 if (DEBUG_STATES) Slog.v(TAG, "Moving to PAUSED: " + r
                         + (timeout ? " (due to timeout)" : " (pause complete)"));
+                //正式确定暂停已完成
                 completePauseLocked(true);
             } else {
                 EventLog.writeEvent(EventLogTags.AM_FAILED_TO_PAUSE,
@@ -971,6 +975,7 @@ final class ActivityStack {
         }
     }
 
+    //暂停步骤完成，开始下一个activity的resume
     private void completePauseLocked(boolean resumeNext) {
         ActivityRecord prev = mPausingActivity;
         if (DEBUG_PAUSE) Slog.v(TAG, "Complete pause: " + prev);
@@ -1020,8 +1025,10 @@ final class ActivityStack {
         }
 
         if (resumeNext) {
+            //暂停完成，获取顶层的ActivityStack
             final ActivityStack topStack = mStackSupervisor.getFocusedStack();
             if (!mService.isSleepingOrShuttingDown()) {
+                //执行resumeTopActivitiesLocked来resume下一个Activity
                 mStackSupervisor.resumeTopActivitiesLocked(topStack, prev, null);
             } else {
                 mStackSupervisor.checkReadyForSleepLocked();
@@ -1032,6 +1039,8 @@ final class ActivityStack {
                     // activity on the stack is not the just paused activity,
                     // we need to go ahead and resume it to ensure we complete
                     // an in-flight app switch.
+
+                    //执行resumeTopActivitiesLocked来resume下一个Activity
                     mStackSupervisor.resumeTopActivitiesLocked(topStack, null, null);
                 }
             }
@@ -1467,6 +1476,7 @@ final class ActivityStack {
         return resumeTopActivityLocked(prev, null);
     }
 
+    //调用了resumeTopActivityInnerLocked
     final boolean resumeTopActivityLocked(ActivityRecord prev, Bundle options) {
         if (inResumeTopActivity) {
             // Don't even start recursing.
@@ -1477,6 +1487,7 @@ final class ActivityStack {
         try {
             // Protect against recursion.
             inResumeTopActivity = true;
+            //进入resumeTopActivityInnerLocked执行pause上一个activity的操作
             result = resumeTopActivityInnerLocked(prev, options);
         } finally {
             inResumeTopActivity = false;
@@ -1484,6 +1495,7 @@ final class ActivityStack {
         return result;
     }
 
+    //当前方法会执行pause再执行resume，如果pause已完成，startSpecificActivityLocked开始下一个Activity的启动
     final boolean resumeTopActivityInnerLocked(ActivityRecord prev, Bundle options) {
         if (ActivityManagerService.DEBUG_LOCKSCREEN) mService.logLockScreen("");
 
@@ -1638,9 +1650,11 @@ final class ActivityStack {
 
         // We need to start pausing the current activity so the top one
         // can be resumed...
+        //先执行当前Activity的Pause，再执行新的resume
         boolean dontWaitForPause = (next.info.flags&ActivityInfo.FLAG_RESUME_WHILE_PAUSING) != 0;
         boolean pausing = mStackSupervisor.pauseBackStacks(userLeaving, true, dontWaitForPause);
         if (mResumedActivity != null) {
+            //执行pause操作
             pausing |= startPausingLocked(userLeaving, false, true, dontWaitForPause);
             if (DEBUG_STATES) Slog.d(TAG, "resumeTopActivityLocked: Pausing " + mResumedActivity);
         }
@@ -1879,6 +1893,7 @@ final class ActivityStack {
                             next.nonLocalizedLabel, next.labelRes, next.icon, next.logo,
                             next.windowFlags, null, true);
                 }
+                //开始新的activity
                 mStackSupervisor.startSpecificActivityLocked(next, true, false);
                 if (DEBUG_STACK) mStackSupervisor.validateTopActivitiesLocked();
                 return true;
@@ -1957,6 +1972,7 @@ final class ActivityStack {
         updateTaskMovement(task, true);
     }
 
+    //调用startActivityLocked判断是否在栈顶等操作，调用resumeTopActivitiesLocked，执行上一个activity的pause()后，执行下一个activity的resume
     final void startActivityLocked(ActivityRecord r, boolean newTask,
             boolean doResume, boolean keepCurTransition, Bundle options) {
         TaskRecord rTask = r.task;
@@ -2115,6 +2131,7 @@ final class ActivityStack {
             validateAppTokensLocked();
         }
 
+        //执行resume
         if (doResume) {
             mStackSupervisor.resumeTopActivitiesLocked(this, r, options);
         }

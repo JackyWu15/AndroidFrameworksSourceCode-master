@@ -5883,6 +5883,9 @@ public class Activity extends ContextThemeWrapper
             CharSequence title, Activity parent, String id,
             NonConfigurationInstances lastNonConfigurationInstances,
             Configuration config, IVoiceInteractor voiceInteractor) {
+        //关联Context，Activity继承ContextThemeWrapper，ContextThemeWrapper继承ContextWrapper
+        //ContextWrapper 成员变量mBase(即ContextImpl)C
+        //这里将ContextImpl赋值给mBase引用，那么Activity相当于一个代理者，activity.startActivity()等在ContextWrapper中调用，mBase.startActivity()，因此实际实现则在ContextImpl中
         attachBaseContext(context);
 
         mFragments.attachActivity(this, mContainer, null);
@@ -6053,10 +6056,12 @@ public class Activity extends ContextThemeWrapper
         }
     }
 
+    //调用onPause
     final void performPause() {
         mDoReportFullyDrawn = false;
         mFragments.dispatchPause();
         mCalled = false;
+        //onPause()方法执行
         onPause();
         mResumed = false;
         if (!mCalled && getApplicationInfo().targetSdkVersion

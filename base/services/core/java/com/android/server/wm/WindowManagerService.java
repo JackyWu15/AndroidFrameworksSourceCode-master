@@ -774,6 +774,7 @@ public class WindowManagerService extends IWindowManager.Stub
             final boolean haveInputMethods, final boolean showBootMsgs,
             final boolean onlyCore) {
         final WindowManagerService[] holder = new WindowManagerService[1];
+        //通过handler构造WMS
         DisplayThread.getHandler().runWithScissors(new Runnable() {
             @Override
             public void run() {
@@ -798,6 +799,7 @@ public class WindowManagerService extends IWindowManager.Stub
         }, 0);
     }
 
+    //构造WMS
     private WindowManagerService(Context context, InputManagerService inputManager,
             boolean haveInputMethods, boolean showBootMsgs, boolean onlyCore) {
         mContext = context;
@@ -818,7 +820,9 @@ public class WindowManagerService extends IWindowManager.Stub
         mPointerEventDispatcher = new PointerEventDispatcher(mInputManager.monitorInput(TAG));
 
         mFxSession = new SurfaceSession();
+        //获取显示服务
         mDisplayManager = (DisplayManager)context.getSystemService(Context.DISPLAY_SERVICE);
+        //为每个Dispay分配一个Content
         Display[] displays = mDisplayManager.getDisplays();
         for (Display display : displays) {
             createDisplayContentLocked(display);
@@ -844,9 +848,10 @@ public class WindowManagerService extends IWindowManager.Stub
         mScreenFrozenLock = mPowerManager.newWakeLock(
                 PowerManager.PARTIAL_WAKE_LOCK, "SCREEN_FROZEN");
         mScreenFrozenLock.setReferenceCounted(false);
-
+        //构造app事务对象
         mAppTransition = new AppTransition(context, mH);
 
+        //获取IActivityManager
         mActivityManager = ActivityManagerNative.getDefault();
         mBatteryStats = BatteryStatsService.getService();
         mAppOps = (AppOpsManager)context.getSystemService(Context.APP_OPS_SERVICE);
@@ -879,6 +884,7 @@ public class WindowManagerService extends IWindowManager.Stub
                 PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, TAG);
         mHoldingScreenWakeLock.setReferenceCounted(false);
 
+        //window动画对象
         mAnimator = new WindowAnimator(this);
 
         LocalServices.addService(WindowManagerInternal.class, new LocalService());

@@ -149,6 +149,7 @@ public class ResourcesManager {
      * @param compatInfo the compability info. Must not be null.
      * @param token the application token for determining stack bounds.
      */
+    //根据设备获取对应的资源
     public Resources getTopLevelResources(String resDir, String[] splitResDirs,
             String[] overlayDirs, String[] libDirs, int displayId,
             Configuration overrideConfiguration, CompatibilityInfo compatInfo, IBinder token) {
@@ -160,6 +161,7 @@ public class ResourcesManager {
             if (false) {
                 Slog.w(TAG, "getTopLevelResources: " + resDir + " / " + scale);
             }
+            //是否已加载过改资源
             WeakReference<Resources> wr = mActiveResources.get(key);
             r = wr != null ? wr.get() : null;
             //if (r != null) Slog.i(TAG, "isUpToDate " + resDir + ": " + r.getAssets().isUpToDate());
@@ -176,12 +178,13 @@ public class ResourcesManager {
         //    Slog.w(TAG, "Throwing away out-of-date resources!!!! "
         //            + r + " " + resDir);
         //}
-
+        //未加载过，则构建AssetManager
         AssetManager assets = new AssetManager();
         // resDir can be null if the 'android' package is creating a new Resources object.
         // This is fine, since each AssetManager automatically loads the 'android' package
         // already.
         if (resDir != null) {
+            //调用native层加载apk或zip类型的文件
             if (assets.addAssetPath(resDir) == 0) {
                 return null;
             }
@@ -211,7 +214,9 @@ public class ResourcesManager {
         }
 
         //Slog.i(TAG, "Resource: key=" + key + ", display metrics=" + metrics);
+        //屏幕分辨率
         DisplayMetrics dm = getDisplayMetricsLocked(displayId);
+        //设备配置
         Configuration config;
         boolean isDefaultDisplay = (displayId == Display.DEFAULT_DISPLAY);
         final boolean hasOverrideConfig = key.hasOverrideConfiguration();
@@ -226,6 +231,7 @@ public class ResourcesManager {
         } else {
             config = getConfiguration();
         }
+        //创建资源，更新配置，让Resources指向AssetManaget
         r = new Resources(assets, dm, config, compatInfo, token);
         if (false) {
             Slog.i(TAG, "Created app resources " + resDir + " " + r + ": "
