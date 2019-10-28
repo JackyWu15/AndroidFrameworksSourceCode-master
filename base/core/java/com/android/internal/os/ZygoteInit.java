@@ -16,14 +16,10 @@
 
 package com.android.internal.os;
 
-import static android.system.OsConstants.S_IRWXG;
-import static android.system.OsConstants.S_IRWXO;
-
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.net.LocalServerSocket;
 import android.opengl.EGL14;
-import android.os.Build;
 import android.os.Debug;
 import android.os.Process;
 import android.os.SystemClock;
@@ -34,14 +30,7 @@ import android.system.Os;
 import android.system.OsConstants;
 import android.util.EventLog;
 import android.util.Log;
-import android.util.Slog;
 import android.webkit.WebViewFactory;
-
-import dalvik.system.DexFile;
-import dalvik.system.PathClassLoader;
-import dalvik.system.VMRuntime;
-
-import libcore.io.IoUtils;
 
 import java.io.BufferedReader;
 import java.io.FileDescriptor;
@@ -52,6 +41,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+
+import dalvik.system.DexFile;
+import dalvik.system.PathClassLoader;
+import dalvik.system.VMRuntime;
+import libcore.io.IoUtils;
+
+import static android.system.OsConstants.S_IRWXG;
+import static android.system.OsConstants.S_IRWXO;
 
 /**
  * Startup class for the zygote process.

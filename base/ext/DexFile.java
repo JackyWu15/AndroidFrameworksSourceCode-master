@@ -17,7 +17,7 @@
 package dalvik.system;
 
 import android.system.ErrnoException;
-import dalvik.annotation.optimization.ReachabilitySensitive;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,6 +25,8 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
+
+import dalvik.annotation.optimization.ReachabilitySensitive;
 import libcore.io.Libcore;
 
 /**

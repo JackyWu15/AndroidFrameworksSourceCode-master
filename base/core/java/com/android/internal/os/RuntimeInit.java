@@ -26,14 +26,18 @@ import android.os.Process;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.util.Slog;
+
 import com.android.internal.logging.AndroidConfig;
 import com.android.server.NetworkManagementSocketTagger;
-import dalvik.system.VMRuntime;
+
+import org.apache.harmony.luni.internal.util.TimezoneGetter;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.TimeZone;
 import java.util.logging.LogManager;
-import org.apache.harmony.luni.internal.util.TimezoneGetter;
+
+import dalvik.system.VMRuntime;
 
 /**
  * Main entry point for runtime initialization.  Not for

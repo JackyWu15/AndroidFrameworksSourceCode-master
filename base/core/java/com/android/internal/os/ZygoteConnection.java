@@ -20,11 +20,13 @@ import android.net.Credentials;
 import android.net.LocalSocket;
 import android.os.Process;
 import android.os.SELinux;
+import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.util.Log;
-import dalvik.system.PathClassLoader;
+import android.util.Slog;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -36,9 +38,9 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+
+import dalvik.system.PathClassLoader;
 import libcore.io.IoUtils;
-import android.os.SystemClock;
-import android.util.Slog;
 
 /**
  * A connection that can make spawn requests.

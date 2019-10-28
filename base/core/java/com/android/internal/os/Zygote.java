@@ -17,11 +17,12 @@
 package com.android.internal.os;
 
 
-import dalvik.system.ZygoteHooks;
+import android.os.SystemClock;
 import android.system.ErrnoException;
 import android.system.Os;
-import android.os.SystemClock;
 import android.util.Slog;
+
+import dalvik.system.ZygoteHooks;
 
 /** @hide */
 public final class Zygote {
