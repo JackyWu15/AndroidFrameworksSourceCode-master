@@ -262,9 +262,10 @@ static bool checkPermission(const char* permissionString) {
 /* static */ int MediaPlayerService::AudioOutput::mMinBufferCount = 4;
 /* static */ bool MediaPlayerService::AudioOutput::mIsOnEmulator = false;
 
+//初始化
 void MediaPlayerService::instantiate() {
-    defaultServiceManager()->addService(
-            String16("media.player"), new MediaPlayerService());
+    //获取到ServiceManger对象，将服务加入
+    defaultServiceManager()->addService(String16("media.player"), new MediaPlayerService());
 }
 
 MediaPlayerService::MediaPlayerService()

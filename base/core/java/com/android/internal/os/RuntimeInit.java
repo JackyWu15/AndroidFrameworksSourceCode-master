@@ -229,6 +229,7 @@ public class RuntimeInit {
          * clears up all the stack frames that were required in setting
          * up the process.
          */
+        //传入main和参数，回到ZygoteInit调用
         throw new ZygoteInit.MethodAndArgsCaller(m, argv);
     }
 
@@ -272,7 +273,7 @@ public class RuntimeInit {
 
         commonInit();
         nativeZygoteInit();
-
+        //加载SystemServer类
         applicationInit(targetSdkVersion, argv, classLoader);
     }
 
@@ -318,6 +319,7 @@ public class RuntimeInit {
         }
 
         // Remaining arguments are passed to the start class's static main
+        //保存main，通过抛异常方式，让ZygoteInit执行SystemServer的main方法
         invokeStaticMain(args.startClass, args.startArgs, classLoader);
     }
 

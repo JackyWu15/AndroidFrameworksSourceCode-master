@@ -38,6 +38,7 @@
 
 using namespace android;
 
+//由init进程启动
 int main(int argc __unused, char** argv)
 {
     signal(SIGPIPE, SIG_IGN);
@@ -125,6 +126,7 @@ int main(int argc __unused, char** argv)
         sp<ProcessState> proc(ProcessState::self());
         sp<IServiceManager> sm = defaultServiceManager();
         ALOGI("ServiceManager: %p", sm.get());
+        //系统服务通过Binder IPC和framework进行通信，当初始化这些服务时，会把服务加入ContextManger中，以便应用程序使用，以MediaPlayerService.cpp为例
         AudioFlinger::instantiate();
         MediaPlayerService::instantiate();
         CameraService::instantiate();

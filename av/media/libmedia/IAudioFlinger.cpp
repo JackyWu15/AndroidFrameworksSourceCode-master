@@ -991,8 +991,10 @@ status_t BnAudioFlinger::onTransact(
             reply->writeInt32( latency((audio_io_handle_t) data.readInt32()) );
             return NO_ERROR;
         } break;
+        //分析RPC代码为调音量
         case SET_MASTER_VOLUME: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
+            //调用setMasterVolume
             reply->writeInt32( setMasterVolume(data.readFloat()) );
             return NO_ERROR;
         } break;

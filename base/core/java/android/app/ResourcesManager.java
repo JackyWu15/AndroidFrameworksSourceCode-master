@@ -16,8 +16,6 @@
 
 package android.app;
 
-import static android.app.ActivityThread.DEBUG_CONFIGURATION;
-
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.content.res.CompatibilityInfo;
@@ -34,6 +32,8 @@ import android.view.DisplayAdjustments;
 
 import java.lang.ref.WeakReference;
 import java.util.Locale;
+
+import static android.app.ActivityThread.DEBUG_CONFIGURATION;
 
 /** @hide */
 public class ResourcesManager {

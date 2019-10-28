@@ -3431,7 +3431,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         }
 
         // Inflate the window decor.
-        //layoutResource布局就是真个Activity的布局
+        //layoutResource布局就是整个Activity的布局
         int layoutResource;
         int features = getLocalFeatures();
         // System.out.println("Features: 0x" + Integer.toHexString(features));

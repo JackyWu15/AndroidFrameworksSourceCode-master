@@ -158,10 +158,10 @@ public final class SystemServer {
 
     /**
      * The main entry point from zygote.
-     * zygote的入口，开启运行系统服务
+     * zygote启动完毕后，调用的入口
      */
     public static void main(String[] args) {
-        new SystemServer().run();
+        new SystemServer().run();//执行run
     }
 
     public SystemServer() {
@@ -230,7 +230,9 @@ public final class SystemServer {
         Looper.prepareMainLooper();
 
         // Initialize native services.
+        //加载services/core/jni/中的cpp代码，初始化各种服务，看目录下onload.cpp，将java本地方法映射为c函数，java->c，
         System.loadLibrary("android_servers");
+        //调用services/core/jni/com_android_server_SystemServer.cpp
         nativeInit();
 
         // Check whether we failed to shut down last time we tried.
@@ -241,7 +243,7 @@ public final class SystemServer {
         createSystemContext();
 
         // Create the system service manager.
-        //创建SystemServiceManager
+        //创建SystemServiceManager，用来管理各种系统service
         mSystemServiceManager = new SystemServiceManager(mSystemContext);
         LocalServices.addService(SystemServiceManager.class, mSystemServiceManager);
 
@@ -311,9 +313,8 @@ public final class SystemServer {
         mInstaller = mSystemServiceManager.startService(Installer.class);
 
         // Activity manager runs the show.
-        //开启mActivityManagerService
-        mActivityManagerService = mSystemServiceManager.startService(
-                ActivityManagerService.Lifecycle.class).getService();
+        //开启ActivityManagerService，对比PowerManagerService等，实际上ActivityManagerService不是一个SystemService，而是Binder，ActivityManagerService.Lifecycle才是SystemService
+        mActivityManagerService = mSystemServiceManager.startService(ActivityManagerService.Lifecycle.class).getService();
         mActivityManagerService.setSystemServiceManager(mSystemServiceManager);
 
         // Power manager needs to be started early because other services need it.

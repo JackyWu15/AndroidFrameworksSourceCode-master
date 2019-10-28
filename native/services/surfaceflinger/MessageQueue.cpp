@@ -93,6 +93,7 @@ MessageQueue::MessageQueue()
 MessageQueue::~MessageQueue() {
 }
 
+//接收surfaceflinger，创建looper和handler
 void MessageQueue::init(const sp<SurfaceFlinger>& flinger)
 {
     mFlinger = flinger;

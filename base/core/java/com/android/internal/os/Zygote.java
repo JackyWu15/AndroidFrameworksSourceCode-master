@@ -88,8 +88,9 @@ public final class Zygote {
           int[][] rlimits, int mountExternal, String seInfo, String niceName, int[] fdsToClose,
           String instructionSet, String appDataDir) {
         long startTime = SystemClock.elapsedRealtime();
-        VM_HOOKS.preFork();
+        VM_HOOKS.preFork();//再次创建一个新的虚拟机实例
         checkTime(startTime, "Zygote.preFork");
+        //通过native创建子进程，见com_android_internal_os_Zygote.cpp的nativeForkAndSpecialize
         int pid = nativeForkAndSpecialize(
                   uid, gid, gids, debugFlags, rlimits, mountExternal, seInfo, niceName, fdsToClose,
                   instructionSet, appDataDir);
@@ -141,8 +142,7 @@ public final class Zygote {
     public static int forkSystemServer(int uid, int gid, int[] gids, int debugFlags,
             int[][] rlimits, long permittedCapabilities, long effectiveCapabilities) {
         VM_HOOKS.preFork();
-        int pid = nativeForkSystemServer(
-                uid, gid, gids, debugFlags, rlimits, permittedCapabilities, effectiveCapabilities);
+        int pid = nativeForkSystemServer(uid, gid, gids, debugFlags, rlimits, permittedCapabilities, effectiveCapabilities);
         VM_HOOKS.postForkCommon();
         return pid;
     }

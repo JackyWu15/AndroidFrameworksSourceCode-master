@@ -165,9 +165,9 @@ out:
 }
 
 // ----------------------------------------------------------------------------
-
-AudioFlinger::AudioFlinger()
-    : BnAudioFlinger(),
+//BnAudioFlinger声明在AudioFlinger头文件中
+//BnAudioFlinger负责分析AudioFlinger服务中使用的RPC代码，并调用AudioFlinger相应的函数
+AudioFlinger::AudioFlinger(): BnAudioFlinger(),
       mPrimaryHardwareDev(NULL),
       mAudioHwDevs(NULL),
       mHardwareStatus(AUDIO_HW_IDLE),
@@ -2867,7 +2867,6 @@ void AudioFlinger::dumpTee(int fd, const sp<NBAIO_Source>& source, audio_io_hand
 #endif
 
 // ----------------------------------------------------------------------------
-
 status_t AudioFlinger::onTransact(
         uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
 {

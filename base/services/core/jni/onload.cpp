@@ -19,6 +19,7 @@
 #include "utils/Log.h"
 #include "utils/misc.h"
 
+//引入函数声明
 namespace android {
 int register_android_server_AlarmManagerService(JNIEnv* env);
 int register_android_server_AssetAtlasService(JNIEnv* env);
@@ -57,6 +58,7 @@ extern "C" jint JNI_OnLoad(JavaVM* vm, void* reserved)
     }
     ALOG_ASSERT(env, "Could not retrieve the env!");
 
+    //动态注册AlarmManagerService等一系列的服务，以register_android_server_SystemServer为例
     register_android_server_PowerManagerService(env);
     register_android_server_SerialService(env);
     register_android_server_InputApplicationHandle(env);

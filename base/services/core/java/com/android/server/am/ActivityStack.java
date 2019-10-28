@@ -16,55 +16,18 @@
 
 package com.android.server.am;
 
-import static com.android.server.am.ActivityManagerService.TAG;
-import static com.android.server.am.ActivityManagerService.localLOGV;
-import static com.android.server.am.ActivityManagerService.DEBUG_CLEANUP;
-import static com.android.server.am.ActivityManagerService.DEBUG_CONFIGURATION;
-import static com.android.server.am.ActivityManagerService.DEBUG_PAUSE;
-import static com.android.server.am.ActivityManagerService.DEBUG_RESULTS;
-import static com.android.server.am.ActivityManagerService.DEBUG_STACK;
-import static com.android.server.am.ActivityManagerService.DEBUG_SWITCH;
-import static com.android.server.am.ActivityManagerService.DEBUG_TASKS;
-import static com.android.server.am.ActivityManagerService.DEBUG_TRANSITION;
-import static com.android.server.am.ActivityManagerService.DEBUG_USER_LEAVING;
-import static com.android.server.am.ActivityManagerService.DEBUG_VISBILITY;
-import static com.android.server.am.ActivityManagerService.VALIDATE_TOKENS;
-
-import static com.android.server.am.ActivityRecord.HOME_ACTIVITY_TYPE;
-import static com.android.server.am.ActivityRecord.APPLICATION_ACTIVITY_TYPE;
-
-import static com.android.server.am.ActivityStackSupervisor.DEBUG_ADD_REMOVE;
-import static com.android.server.am.ActivityStackSupervisor.DEBUG_APP;
-import static com.android.server.am.ActivityStackSupervisor.DEBUG_CONTAINERS;
-import static com.android.server.am.ActivityStackSupervisor.DEBUG_RELEASE;
-import static com.android.server.am.ActivityStackSupervisor.DEBUG_SAVED_STATE;
-import static com.android.server.am.ActivityStackSupervisor.DEBUG_SCREENSHOTS;
-import static com.android.server.am.ActivityStackSupervisor.DEBUG_STATES;
-import static com.android.server.am.ActivityStackSupervisor.HOME_STACK_ID;
-
-import android.util.ArraySet;
-import com.android.internal.app.IVoiceInteractor;
-import com.android.internal.os.BatteryStatsImpl;
-import com.android.server.Watchdog;
-import com.android.server.am.ActivityManagerService.ItemMatcher;
-import com.android.server.am.ActivityStackSupervisor.ActivityContainer;
-import com.android.server.wm.AppTransition;
-import com.android.server.wm.TaskGroup;
-import com.android.server.wm.WindowManagerService;
-
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.app.ActivityOptions;
 import android.app.AppGlobals;
 import android.app.IActivityController;
 import android.app.ResultInfo;
-import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Binder;
@@ -80,9 +43,19 @@ import android.os.SystemClock;
 import android.os.Trace;
 import android.os.UserHandle;
 import android.service.voice.IVoiceInteractionSession;
+import android.util.ArraySet;
 import android.util.EventLog;
 import android.util.Slog;
 import android.view.Display;
+
+import com.android.internal.app.IVoiceInteractor;
+import com.android.internal.os.BatteryStatsImpl;
+import com.android.server.Watchdog;
+import com.android.server.am.ActivityManagerService.ItemMatcher;
+import com.android.server.am.ActivityStackSupervisor.ActivityContainer;
+import com.android.server.wm.AppTransition;
+import com.android.server.wm.TaskGroup;
+import com.android.server.wm.WindowManagerService;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -91,6 +64,30 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+
+import static com.android.server.am.ActivityManagerService.DEBUG_CLEANUP;
+import static com.android.server.am.ActivityManagerService.DEBUG_CONFIGURATION;
+import static com.android.server.am.ActivityManagerService.DEBUG_PAUSE;
+import static com.android.server.am.ActivityManagerService.DEBUG_RESULTS;
+import static com.android.server.am.ActivityManagerService.DEBUG_STACK;
+import static com.android.server.am.ActivityManagerService.DEBUG_SWITCH;
+import static com.android.server.am.ActivityManagerService.DEBUG_TASKS;
+import static com.android.server.am.ActivityManagerService.DEBUG_TRANSITION;
+import static com.android.server.am.ActivityManagerService.DEBUG_USER_LEAVING;
+import static com.android.server.am.ActivityManagerService.DEBUG_VISBILITY;
+import static com.android.server.am.ActivityManagerService.TAG;
+import static com.android.server.am.ActivityManagerService.VALIDATE_TOKENS;
+import static com.android.server.am.ActivityManagerService.localLOGV;
+import static com.android.server.am.ActivityRecord.APPLICATION_ACTIVITY_TYPE;
+import static com.android.server.am.ActivityRecord.HOME_ACTIVITY_TYPE;
+import static com.android.server.am.ActivityStackSupervisor.DEBUG_ADD_REMOVE;
+import static com.android.server.am.ActivityStackSupervisor.DEBUG_APP;
+import static com.android.server.am.ActivityStackSupervisor.DEBUG_CONTAINERS;
+import static com.android.server.am.ActivityStackSupervisor.DEBUG_RELEASE;
+import static com.android.server.am.ActivityStackSupervisor.DEBUG_SAVED_STATE;
+import static com.android.server.am.ActivityStackSupervisor.DEBUG_SCREENSHOTS;
+import static com.android.server.am.ActivityStackSupervisor.DEBUG_STATES;
+import static com.android.server.am.ActivityStackSupervisor.HOME_STACK_ID;
 
 /**
  * State and management of a single stack of activities.

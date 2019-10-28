@@ -2260,14 +2260,15 @@ public final class ActivityManagerService extends ActivityManagerNative
     // Note: This method is invoked on the main thread but may need to attach various
     // handlers to other threads.  So take care to be explicit about the looper.
     public ActivityManagerService(Context systemContext) {
+        //系统进程中的Context
         mContext = systemContext;
         mFactoryTest = FactoryTest.getMode();
+        // 系统进程(framework-res.apk)对应的ActivityThread
         mSystemThread = ActivityThread.currentActivityThread();
 
         Slog.i(TAG, "Memory class: " + ActivityManager.staticGetMemoryClass());
 
-        mHandlerThread = new ServiceThread(TAG,
-                android.os.Process.THREAD_PRIORITY_FOREGROUND, false /*allowIo*/);
+        mHandlerThread = new ServiceThread(TAG,android.os.Process.THREAD_PRIORITY_FOREGROUND, false /*allowIo*/);
         mHandlerThread.start();
         mHandler = new MainHandler(mHandlerThread.getLooper());
 
@@ -3078,6 +3079,7 @@ public final class ActivityManagerService extends ActivityManagerNative
                 null /* entryPoint */, null /* entryPointArgs */);
     }
 
+    //通知Zygote创建一个新的进程
     private final void startProcessLocked(ProcessRecord app, String hostingType,
             String hostingNameStr, String abiOverride, String entryPoint, String[] entryPointArgs) {
         long startTime = SystemClock.elapsedRealtime();
@@ -3186,7 +3188,7 @@ public final class ActivityManagerService extends ActivityManagerNative
             // Start the process.  It will either succeed and return a result containing
             // the PID of the new process, or else throw a RuntimeException.
             boolean isActivityProcess = (entryPoint == null);
-            if (entryPoint == null) entryPoint = "android.app.ActivityThread";
+            if (entryPoint == null) entryPoint = "android.app.ActivityThread";//告诉Zygote子进程孵化完成后，调用ActivityThread的main方法
             checkTime(startTime, "startProcess: asking zygote to start proc");
             Process.ProcessStartResult startResult = Process.start(entryPoint,
                     app.processName, uid, uid, gids, debugFlags, mountExternal,
@@ -3300,7 +3302,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         }
         return intent;
     }
-
+    //点击桌面图标，Launcher启动
     boolean startHomeActivityLocked(int userId) {
         if (mFactoryTest == FactoryTest.FACTORY_TEST_LOW_LEVEL
                 && mTopAction == null) {
@@ -3310,8 +3312,7 @@ public final class ActivityManagerService extends ActivityManagerNative
             return false;
         }
         Intent intent = getHomeIntent();
-        ActivityInfo aInfo =
-            resolveActivityInfo(intent, STOCK_PM_FLAGS, userId);
+        ActivityInfo aInfo = resolveActivityInfo(intent, STOCK_PM_FLAGS, userId);
         if (aInfo != null) {
             intent.setComponent(new ComponentName(
                     aInfo.applicationInfo.packageName, aInfo.name));
@@ -3319,8 +3320,9 @@ public final class ActivityManagerService extends ActivityManagerNative
             // instrumented.
             aInfo = new ActivityInfo(aInfo);
             aInfo.applicationInfo = getAppInfoForUser(aInfo.applicationInfo, userId);
-            ProcessRecord app = getProcessRecordLocked(aInfo.processName,
-                    aInfo.applicationInfo.uid, true);
+            //获取app的进程
+            ProcessRecord app = getProcessRecordLocked(aInfo.processName,aInfo.applicationInfo.uid, true);
+            //如果进程不存在，通知Zygote创建新的进程
             if (app == null || app.instrumentationClass == null) {
                 intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NEW_TASK);
                 mStackSupervisor.startHomeActivity(intent, aInfo);

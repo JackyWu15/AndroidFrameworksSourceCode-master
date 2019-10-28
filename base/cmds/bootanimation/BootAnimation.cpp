@@ -69,6 +69,7 @@ static const int ANIM_ENTRY_NAME_MAX = 256;
 
 BootAnimation::BootAnimation() : Thread(false), mZip(NULL)
 {
+    //构建与sufaceflinger的session
     mSession = new SurfaceComposerClient();
 }
 

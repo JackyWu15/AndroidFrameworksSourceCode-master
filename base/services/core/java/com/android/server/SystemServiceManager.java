@@ -36,6 +36,7 @@ public class SystemServiceManager {
     private boolean mSafeMode;
 
     // Services that should receive lifecycle events.
+    //管理service的列表
     private final ArrayList<SystemService> mServices = new ArrayList<SystemService>();
 
     private int mCurrentPhase = -1;

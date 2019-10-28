@@ -421,6 +421,7 @@ void ckTime(uint64_t start, const char* where) {
   }
 }
 
+//新建进程的方法
 // Utility routine to fork zygote and specialize the child process.
 static pid_t ForkAndSpecializeCommon(JNIEnv* env, uid_t uid, gid_t gid, jintArray javaGids,
                                      jint debug_flags, jobjectArray javaRlimits,
@@ -432,7 +433,7 @@ static pid_t ForkAndSpecializeCommon(JNIEnv* env, uid_t uid, gid_t gid, jintArra
   uint64_t start = MsTime();
   SetSigChldHandler();
   ckTime(start, "ForkAndSpecializeCommon:SetSigChldHandler");
-
+//fork了新的进程
   pid_t pid = fork();
 
   if (pid == 0) {
@@ -565,7 +566,7 @@ static pid_t ForkAndSpecializeCommon(JNIEnv* env, uid_t uid, gid_t gid, jintArra
     UnsetSigChldHandler();
 
     ckTime(start, "ForkAndSpecializeCommon:child process setup");
-
+    //调用gCallPostForkChildHooks
     env->CallStaticVoidMethod(gZygoteClass, gCallPostForkChildHooks, debug_flags,
                               is_system_server ? NULL : instructionSet);
     ckTime(start, "ForkAndSpecializeCommon:PostForkChildHooks returns");
@@ -636,6 +637,7 @@ int register_com_android_internal_os_Zygote(JNIEnv* env) {
   if (gZygoteClass == NULL) {
     RuntimeAbort(env);
   }
+  //执行Zygote的callPostForkChildHooks静态方法
   gCallPostForkChildHooks = env->GetStaticMethodID(gZygoteClass, "callPostForkChildHooks",
                                                    "(ILjava/lang/String;)V");
 

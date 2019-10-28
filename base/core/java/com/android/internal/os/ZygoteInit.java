@@ -169,8 +169,7 @@ public class ZygoteInit {
             }
 
             try {
-                sServerSocket = new LocalServerSocket(
-                        createFileDescriptor(fileDesc));
+                sServerSocket = new LocalServerSocket(createFileDescriptor(fileDesc));//创建服务端
             } catch (IOException ex) {
                 throw new RuntimeException(
                         "Error binding to local socket '" + fileDesc + "'", ex);
@@ -251,10 +250,10 @@ public class ZygoteInit {
 
     static void preload() {
         Log.d(TAG, "begin preload");
-        preloadClasses();
-        preloadResources();
-        preloadOpenGL();
-        preloadSharedLibraries();
+        preloadClasses();//加载类
+        preloadResources();//加载资源
+        preloadOpenGL();//加载opengl图像
+        preloadSharedLibraries();//加载库文件
         // Ask the WebViewFactory to do any initialization that must run in the zygote process,
         // for memory sharing purposes.
         WebViewFactory.prepareWebViewInZygote();
@@ -284,8 +283,7 @@ public class ZygoteInit {
     private static void preloadClasses() {
         final VMRuntime runtime = VMRuntime.getRuntime();
 
-        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(
-                PRELOADED_CLASSES);
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(PRELOADED_CLASSES);//获取输入流，读取preloaded-classes文件
         if (is == null) {
             Log.e(TAG, "Couldn't find " + PRELOADED_CLASSES + ".");
         } else {
@@ -307,14 +305,13 @@ public class ZygoteInit {
             Debug.startAllocCounting();
 
             try {
-                BufferedReader br
-                    = new BufferedReader(new InputStreamReader(is), 256);
+                BufferedReader br = new BufferedReader(new InputStreamReader(is), 256);
 
                 int count = 0;
                 String line;
                 while ((line = br.readLine()) != null) {
                     // Skip comments and blank lines.
-                    line = line.trim();
+                    line = line.trim();//忽略注释和空行
                     if (line.startsWith("#") || line.equals("")) {
                         continue;
                     }
@@ -323,7 +320,7 @@ public class ZygoteInit {
                         if (false) {
                             Log.v(TAG, "Preloading " + line + "...");
                         }
-                        Class.forName(line);
+                        Class.forName(line);//将类加载到内存中
                         if (Debug.getGlobalAllocSize() > PRELOAD_GC_THRESHOLD) {
                             if (false) {
                                 Log.v(TAG,
@@ -385,26 +382,24 @@ public class ZygoteInit {
         try {
             System.gc();
             runtime.runFinalizationSync();
-            mResources = Resources.getSystem();
+            mResources = Resources.getSystem();//获取系统资源
             mResources.startPreloading();
-            if (PRELOAD_RESOURCES) {
+            if (PRELOAD_RESOURCES) {//资源已被加载抛异常
                 Log.i(TAG, "Preloading resources...");
 
                 long startTime = SystemClock.uptimeMillis();
-                TypedArray ar = mResources.obtainTypedArray(
-                        com.android.internal.R.array.preloaded_drawables);
+                //加载/base/core/res/res/values/arrays.xml中定义的preloaded_drawables等drawable图片
+                TypedArray ar = mResources.obtainTypedArray(com.android.internal.R.array.preloaded_drawables);
                 int N = preloadDrawables(runtime, ar);
                 ar.recycle();
-                Log.i(TAG, "...preloaded " + N + " resources in "
-                        + (SystemClock.uptimeMillis()-startTime) + "ms.");
+                Log.i(TAG, "...preloaded " + N + " resources in " + (SystemClock.uptimeMillis()-startTime) + "ms.");
 
                 startTime = SystemClock.uptimeMillis();
-                ar = mResources.obtainTypedArray(
-                        com.android.internal.R.array.preloaded_color_state_lists);
+                //加载/base/core/res/res/values/arrays.xml中定义的preloaded_color_state_lists等颜色文件
+                ar = mResources.obtainTypedArray(com.android.internal.R.array.preloaded_color_state_lists);
                 N = preloadColorStateLists(runtime, ar);
                 ar.recycle();
-                Log.i(TAG, "...preloaded " + N + " resources in "
-                        + (SystemClock.uptimeMillis()-startTime) + "ms.");
+                Log.i(TAG, "...preloaded " + N + " resources in "+ (SystemClock.uptimeMillis()-startTime) + "ms.");
             }
             mResources.finishPreloading();
         } catch (RuntimeException e) {
@@ -491,8 +486,7 @@ public class ZygoteInit {
     /**
      * Finish remaining work for the newly forked system server process.
      */
-    private static void handleSystemServerProcess(
-            ZygoteConnection.Arguments parsedArgs)
+    private static void handleSystemServerProcess(ZygoteConnection.Arguments parsedArgs)
             throws ZygoteInit.MethodAndArgsCaller {
 
         closeServerSocket();
@@ -503,7 +497,7 @@ public class ZygoteInit {
         if (parsedArgs.niceName != null) {
             Process.setArgV0(parsedArgs.niceName);
         }
-
+        //获取SystemServer.class路径
         final String systemServerClasspath = Os.getenv("SYSTEMSERVERCLASSPATH");
         if (systemServerClasspath != null) {
             performSystemServerDexOpt(systemServerClasspath);
@@ -521,19 +515,18 @@ public class ZygoteInit {
                 System.arraycopy(parsedArgs.remainingArgs, 0, amendedArgs, 2, parsedArgs.remainingArgs.length);
             }
 
-            WrapperInit.execApplication(parsedArgs.invokeWith,
-                    parsedArgs.niceName, parsedArgs.targetSdkVersion,
-                    null, args);
+            WrapperInit.execApplication(parsedArgs.invokeWith,parsedArgs.niceName, parsedArgs.targetSdkVersion,null, args);
         } else {
             ClassLoader cl = null;
             if (systemServerClasspath != null) {
-                cl = new PathClassLoader(systemServerClasspath, ClassLoader.getSystemClassLoader());
+                cl = new PathClassLoader(systemServerClasspath, ClassLoader.getSystemClassLoader());//加载SystemServer.class开启SystemServer进程
                 Thread.currentThread().setContextClassLoader(cl);
             }
 
             /*
              * Pass the remaining arguments to SystemServer.
              */
+            //通过RuntimeInit类调用c层
             RuntimeInit.zygoteInit(parsedArgs.targetSdkVersion, parsedArgs.remainingArgs, cl);
         }
 
@@ -592,7 +585,7 @@ public class ZygoteInit {
             "--capabilities=" + capabilities + "," + capabilities,
             "--runtime-init",
             "--nice-name=system_server",
-            "com.android.server.SystemServer",
+            "com.android.server.SystemServer",//指定SystemServer类
         };
         ZygoteConnection.Arguments parsedArgs = null;
 
@@ -604,6 +597,7 @@ public class ZygoteInit {
             ZygoteConnection.applyInvokeWithSystemProperty(parsedArgs);
 
             /* Request to fork the system server process */
+            //在此处，fork了SystemServer，实际上Zygote.class只是一个辅助类，用来forkSystemServer，而ZygoteInit才是一个进程
             pid = Zygote.forkSystemServer(
                     parsedArgs.uid, parsedArgs.gid,
                     parsedArgs.gids,
@@ -616,6 +610,7 @@ public class ZygoteInit {
         }
 
         /* For child process */
+        //0表示子进程，即SystemServer
         if (pid == 0) {
             if (hasSecondZygote(abiList)) {
                 waitForSecondaryZygote(socketName);
@@ -640,7 +635,7 @@ public class ZygoteInit {
         }
         return result;
     }
-
+    //ZygoteInit才是一个进程,
     public static void main(String argv[]) {
         try {
             // Start profiling the zygote initialization.
@@ -649,8 +644,8 @@ public class ZygoteInit {
             boolean startSystemServer = false;
             String socketName = "zygote";
             String abiList = null;
-            for (int i = 1; i < argv.length; i++) {
-                if ("start-system-server".equals(argv[i])) {
+            for (int i = 1; i < argv.length; i++) {//参数解析
+                if ("start-system-server".equals(argv[i])) {//读到start-system-server开启SystemServer
                     startSystemServer = true;
                 } else if (argv[i].startsWith(ABI_LIST_ARG)) {
                     abiList = argv[i].substring(ABI_LIST_ARG.length());
@@ -664,13 +659,12 @@ public class ZygoteInit {
             if (abiList == null) {
                 throw new RuntimeException("No ABI list supplied.");
             }
-
+            //注册服务端socket，后续可以接收从ActivityManager接收新应用程序运行的请求
             registerZygoteSocket(socketName);
-            EventLog.writeEvent(LOG_BOOT_PROGRESS_PRELOAD_START,
-                SystemClock.uptimeMillis());
+            EventLog.writeEvent(LOG_BOOT_PROGRESS_PRELOAD_START,SystemClock.uptimeMillis());
+            //加载framework的类、图标、图像，共享库等看/base/preloaded-classes列出了所有预加载的资源
             preload();
-            EventLog.writeEvent(LOG_BOOT_PROGRESS_PRELOAD_END,
-                SystemClock.uptimeMillis());
+            EventLog.writeEvent(LOG_BOOT_PROGRESS_PRELOAD_END,SystemClock.uptimeMillis());
 
             // Finish profiling the zygote initialization.
             SamplingProfilerIntegration.writeZygoteSnapshot();
@@ -681,17 +675,18 @@ public class ZygoteInit {
             // Disable tracing so that forked processes do not inherit stale tracing tags from
             // Zygote.
             Trace.setTracingEnabled(false);
-
+            //开启SystemServer
             if (startSystemServer) {
                 startSystemServer(abiList, socketName);
             }
 
             Log.i(TAG, "Accepting command socket connections");
+            //接收新的应用程序的运行请求
             runSelectLoop(abiList);
 
             closeServerSocket();
         } catch (MethodAndArgsCaller caller) {
-            caller.run();
+            caller.run();//执行Server的main方法
         } catch (RuntimeException ex) {
             Log.e(TAG, "Zygote died with exception", ex);
             closeServerSocket();
@@ -738,10 +733,12 @@ public class ZygoteInit {
      * be executed.
      */
     private static void runSelectLoop(String abiList) throws MethodAndArgsCaller {
+        //套接字描述符数组
         ArrayList<FileDescriptor> fds = new ArrayList<FileDescriptor>();
+        //ZygoteConnection连接集合
         ArrayList<ZygoteConnection> peers = new ArrayList<ZygoteConnection>();
         FileDescriptor[] fdArray = new FileDescriptor[4];
-
+        //添加描述符
         fds.add(sServerSocket.getFileDescriptor());
         peers.add(null);
 
@@ -768,6 +765,7 @@ public class ZygoteInit {
 
             try {
                 fdArray = fds.toArray(fdArray);
+                //检查输入输出
                 index = selectReadable(fdArray);
             } catch (IOException ex) {
                 throw new RuntimeException("Error in select()", ex);
@@ -781,7 +779,7 @@ public class ZygoteInit {
                 fds.add(newPeer.getFileDescriptor());
             } else {
                 boolean done;
-                done = peers.get(index).runOnce();
+                done = peers.get(index).runOnce();//收到请求，孵化一个新的应用程序
 
                 if (done) {
                     peers.remove(index);

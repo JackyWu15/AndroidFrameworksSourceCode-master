@@ -30,6 +30,7 @@ static void android_server_SystemServer_nativeInit(JNIEnv* env, jobject clazz) {
     property_get("system_init.startsensorservice", propBuf, "1");
     if (strcmp(propBuf, "1") == 0) {
         // Start the sensor service
+        //初始化SensorService
         SensorService::instantiate();
     }
 }
@@ -37,15 +38,17 @@ static void android_server_SystemServer_nativeInit(JNIEnv* env, jobject clazz) {
 /*
  * JNI registration.
  */
+ // 动态列表
 static JNINativeMethod gMethods[] = {
     /* name, signature, funcPtr */
+    //本地方法名，签名，方法指针(即调用函数)
     { "nativeInit", "()V", (void*) android_server_SystemServer_nativeInit },
+
 };
 
 int register_android_server_SystemServer(JNIEnv* env)
 {
-    return jniRegisterNativeMethods(env, "com/android/server/SystemServer",
-            gMethods, NELEM(gMethods));
+    return jniRegisterNativeMethods(env, "com/android/server/SystemServer",gMethods, NELEM(gMethods));
 }
 
 }; // namespace android

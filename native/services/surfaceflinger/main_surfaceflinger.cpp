@@ -29,7 +29,7 @@ using namespace android;
 
 int main(int, char**) {
     // When SF is launched in its own process, limit the number of
-    // binder threads to 4.
+    // binder threads to 4.//
     ProcessState::self()->setThreadPoolMaxThreadCount(4);
 
     // start the thread pool
@@ -37,6 +37,8 @@ int main(int, char**) {
     ps->startThreadPool();
 
     // instantiate surfaceflinger
+    //构造SurfaceFlinger
+    //以BootAnimation为例，Android系统的开机动画是主要一个BootAnimation对象来实现，BootAnimation对象在构造的时候，会在内部创建一个SurfaceComposerClient对象来负责创建一个到SurfaceFlinger服务的连接
     sp<SurfaceFlinger> flinger = new SurfaceFlinger();
 
 #if defined(HAVE_PTHREADS)
@@ -45,13 +47,16 @@ int main(int, char**) {
     set_sched_policy(0, SP_FOREGROUND);
 
     // initialize before clients can connect
+    //初始化
     flinger->init();
 
     // publish surface flinger
+    //将SurfaceFlinger加入到ServiceManager中
     sp<IServiceManager> sm(defaultServiceManager());
     sm->addService(String16(SurfaceFlinger::getServiceName()), flinger, false);
 
     // run in this thread
+    //运行
     flinger->run();
 
     return 0;

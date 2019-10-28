@@ -32,8 +32,10 @@ sp<IBinder> IInterface::asBinder()
     return this ? onAsBinder() : NULL;
 }
 
+//将类转换为IBinder
 sp<const IBinder> IInterface::asBinder() const
 {
+    //执行子类的onAsBinder来转换
     return this ? const_cast<IInterface*>(this)->onAsBinder() : NULL;
 }
 

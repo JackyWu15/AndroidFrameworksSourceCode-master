@@ -103,6 +103,7 @@ struct binder_state *binder_open(size_t mapsize)
         return NULL;
     }
 
+    //打开驱动，并初始化binder_proc结构体和等待队列
     bs->fd = open("/dev/binder", O_RDWR);
     if (bs->fd < 0) {
         fprintf(stderr,"binder: cannot open device (%s)\n",

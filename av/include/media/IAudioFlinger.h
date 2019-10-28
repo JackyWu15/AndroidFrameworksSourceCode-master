@@ -38,7 +38,7 @@
 namespace android {
 
 // ----------------------------------------------------------------------------
-
+//IInterface主要通过asBinder函数，将IAudioFlinger转成IBinder类型，当进行IPC通讯时，IBinder要被保存到RPC中，传递给BinderDriver
 class IAudioFlinger : public IInterface
 {
 public:
@@ -241,14 +241,13 @@ public:
 
 
 // ----------------------------------------------------------------------------
-
+//BnInterface：继承了IAudioFlinger和BBinder
 class BnAudioFlinger : public BnInterface<IAudioFlinger>
 {
 public:
-    virtual status_t    onTransact( uint32_t code,
-                                    const Parcel& data,
-                                    Parcel* reply,
-                                    uint32_t flags = 0);
+    //code:RPC代码
+    //data:RPC数据
+    virtual status_t    onTransact( uint32_t code,const Parcel& data,Parcel* reply,uint32_t flags = 0);
 };
 
 // ----------------------------------------------------------------------------

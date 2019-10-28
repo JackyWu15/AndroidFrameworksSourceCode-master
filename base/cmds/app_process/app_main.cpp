@@ -33,9 +33,7 @@ void app_usage()
 class AppRuntime : public AndroidRuntime
 {
 public:
-    AppRuntime(char* argBlockStart, const size_t argBlockLength)
-        : AndroidRuntime(argBlockStart, argBlockLength)
-        , mClass(NULL)
+    AppRuntime(char* argBlockStart, const size_t argBlockLength): AndroidRuntime(argBlockStart, argBlockLength), mClass(NULL)
     {
     }
 
@@ -182,7 +180,7 @@ static const char ZYGOTE_NICE_NAME[] = "zygote64";
 static const char ABI_LIST_PROPERTY[] = "ro.product.cpu.abilist32";
 static const char ZYGOTE_NICE_NAME[] = "zygote";
 #endif
-
+//argv为argv[0] -Xzygote /system/bin --zygote --start-system-server
 int main(int argc, char* const argv[])
 {
     if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0) < 0) {
@@ -193,10 +191,11 @@ int main(int argc, char* const argv[])
             return 12;
         }
     }
-
+    //初始化AppRuntime,AppRuntime继承了AndroidRuntime
     AppRuntime runtime(argv[0], computeArgBlockSize(argc, argv));
     // Process command line arguments
     // ignore argv[0]
+    //忽略argv[0]，指向-Xzygote
     argc--;
     argv++;
 
@@ -232,27 +231,27 @@ int main(int argc, char* const argv[])
             ++i; // Skip --.
             break;
         }
-        runtime.addOption(strdup(argv[i]));
+        runtime.addOption(strdup(argv[i]));//将-Xzygote加入到runtime中
     }
 
     // Parse runtime arguments.  Stop at first unrecognized option.
     bool zygote = false;
     bool startSystemServer = false;
     bool application = false;
-    String8 niceName;
+    String8 niceName;//String8 是android的一个变量类型，表示单字节字符串.
     String8 className;
 
     ++i;  // Skip unused "parent dir" argument.
     while (i < argc) {
         const char* arg = argv[i++];
-        if (strcmp(arg, "--zygote") == 0) {
+        if (strcmp(arg, "--zygote") == 0) {//是否Zygote进程
             zygote = true;
-            niceName = ZYGOTE_NICE_NAME;
-        } else if (strcmp(arg, "--start-system-server") == 0) {
+            niceName = ZYGOTE_NICE_NAME;//命名为zygote
+        } else if (strcmp(arg, "--start-system-server") == 0) {//是否启动SystemServer
             startSystemServer = true;
-        } else if (strcmp(arg, "--application") == 0) {
+        } else if (strcmp(arg, "--application") == 0) {//是否进入独立程序
             application = true;
-        } else if (strncmp(arg, "--nice-name=", 12) == 0) {
+        } else if (strncmp(arg, "--nice-name=", 12) == 0) {//程序别名
             niceName.setTo(arg + 12);
         } else if (strncmp(arg, "--", 2) != 0) {
             className.setTo(arg);
@@ -275,7 +274,7 @@ int main(int argc, char* const argv[])
     } else {
         // We're in zygote mode.
         maybeCreateDalvikCache();
-
+        //
         if (startSystemServer) {
             args.add(String8("start-system-server"));
         }
@@ -299,11 +298,12 @@ int main(int argc, char* const argv[])
     }
 
     if (!niceName.isEmpty()) {
-        runtime.setArgv0(niceName.string());
+        runtime.setArgv0(niceName.string());//将ZygoteInit进程名字改为zygote
         set_process_name(niceName.string());
     }
 
     if (zygote) {
+        //开启虚拟机，见AndroidRuntime.start
         runtime.start("com.android.internal.os.ZygoteInit", args);
     } else if (className) {
         runtime.start("com.android.internal.os.RuntimeInit", args);

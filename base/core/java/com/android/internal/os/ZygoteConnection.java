@@ -139,6 +139,7 @@ class ZygoteConnection {
      * @throws ZygoteInit.MethodAndArgsCaller trampoline to invoke main()
      * method in child process
      */
+    //得到连接的启动命令，孵化一个应用程序
     boolean runOnce() throws ZygoteInit.MethodAndArgsCaller {
 
         String args[];
@@ -148,6 +149,7 @@ class ZygoteConnection {
         long startTime = SystemClock.elapsedRealtime();
 
         try {
+            //通过socket读取ActivityManagerService传过来的参数，根据参数创建新应用
             args = readArgumentList();
             descriptors = mSocket.getAncillaryFileDescriptors();
         } catch (IOException ex) {
@@ -243,6 +245,7 @@ class ZygoteConnection {
             fd = null;
 
             checkTime(startTime, "zygoteConnection.runOnce: preForkAndSpecialize");
+            //创建一个新的虚拟机实例，再创建一个新的应用程序
             pid = Zygote.forkAndSpecialize(parsedArgs.uid, parsedArgs.gid, parsedArgs.gids,
                     parsedArgs.debugFlags, rlimits, parsedArgs.mountExternal, parsedArgs.seInfo,
                     parsedArgs.niceName, fdsToClose, parsedArgs.instructionSet,
@@ -260,10 +263,12 @@ class ZygoteConnection {
         }
 
         try {
+            //新的进程
             if (pid == 0) {
                 // in child
                 IoUtils.closeQuietly(serverPipeFd);
                 serverPipeFd = null;
+                //根据参数，加载新进程的类，并调用main方法
                 handleChildProc(parsedArgs, descriptors, childPipeFd, newStderr);
 
                 // should never get here, the child is expected to either
@@ -607,6 +612,7 @@ class ZygoteConnection {
         int argc;
 
         try {
+            //socket读取参数
             String s = mSocketReader.readLine();
 
             if (s == null) {
@@ -865,6 +871,7 @@ class ZygoteConnection {
      *
      * @throws ZygoteInit.MethodAndArgsCaller on success to
      * trampoline to code that invokes static main.
+     *  加载新的类，并运行main方法
      */
     private void handleChildProc(Arguments parsedArgs,
             FileDescriptor[] descriptors, FileDescriptor pipeFd, PrintStream newStderr)
@@ -903,6 +910,7 @@ class ZygoteConnection {
                         parsedArgs.niceName, parsedArgs.targetSdkVersion,
                         pipeFd, parsedArgs.remainingArgs);
             } else {
+                //加载新的类
                 RuntimeInit.zygoteInit(parsedArgs.targetSdkVersion,
                         parsedArgs.remainingArgs, null /* classLoader */);
             }

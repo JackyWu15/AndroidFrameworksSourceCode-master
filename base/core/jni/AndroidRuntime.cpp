@@ -201,6 +201,7 @@ static void doThrow(JNIEnv* env, const char* exc, const char* msg = NULL)
 
 /*
  * Code written in the Java Programming Language calls here from main().
+ * RuntimeInit.java的本地方法被映射的c函数
  */
 static void com_android_internal_os_RuntimeInit_nativeFinishInit(JNIEnv* env, jobject clazz)
 {
@@ -220,6 +221,7 @@ static void com_android_internal_os_RuntimeInit_nativeSetExitWithoutCleanup(JNIE
 
 /*
  * JNI registration.
+ * RuntimeInit.java的本地方法列表
  */
 static JNINativeMethod gMethods[] = {
     { "nativeFinishInit", "()V",
@@ -230,10 +232,11 @@ static JNINativeMethod gMethods[] = {
         (void*) com_android_internal_os_RuntimeInit_nativeSetExitWithoutCleanup },
 };
 
+
+//将RuntimeInit类中的本地方法和c函数映射在一起
 int register_com_android_internal_os_RuntimeInit(JNIEnv* env)
 {
-    return jniRegisterNativeMethods(env, "com/android/internal/os/RuntimeInit",
-        gMethods, NELEM(gMethods));
+    return jniRegisterNativeMethods(env, "com/android/internal/os/RuntimeInit",gMethods, NELEM(gMethods));
 }
 
 // ----------------------------------------------------------------------
@@ -927,10 +930,11 @@ jstring AndroidRuntime::NewStringLatin1(JNIEnv* env, const char* bytes) {
  * Passes the main function two arguments, the class name and the specified
  * options string.
  */
+
+ //传入"com.android.internal.os.ZygoteInit"类
 void AndroidRuntime::start(const char* className, const Vector<String8>& options)
 {
-    ALOGD("\n>>>>>> AndroidRuntime START %s <<<<<<\n",
-            className != NULL ? className : "(unknown)");
+    ALOGD("\n>>>>>> AndroidRuntime START %s <<<<<<\n",className != NULL ? className : "(unknown)");
 
     static const String8 startSystemServer("start-system-server");
 
@@ -960,6 +964,7 @@ void AndroidRuntime::start(const char* className, const Vector<String8>& options
     //ALOGD("Found LD_ASSUME_KERNEL='%s'\n", kernelHack);
 
     /* start the virtual machine */
+    //创建虚拟机
     JniInvocation jni_invocation;
     jni_invocation.Init(NULL);
     JNIEnv* env;
@@ -968,9 +973,11 @@ void AndroidRuntime::start(const char* className, const Vector<String8>& options
     }
     onVmCreated(env);
 
+
     /*
      * Register android functions.
      */
+     //在C程序中，将各java类的本地方法和c函数进行映射，和通过JNI_onLoad相反c->java，
     if (startReg(env) < 0) {
         ALOGE("Unable to register all android natives\n");
         return;
@@ -1003,19 +1010,18 @@ void AndroidRuntime::start(const char* className, const Vector<String8>& options
      * Start VM.  This thread becomes the main thread of the VM, and will
      * not return until the VM exits.
      */
-    char* slashClassName = toSlashClassName(className);
-    jclass startClass = env->FindClass(slashClassName);
+    char* slashClassName = toSlashClassName(className);//将"com.android.internal.os.ZygoteInit"的.替换成/，"com/android/internal/os/ZygoteInit"，即类查找的形式
+    jclass startClass = env->FindClass(slashClassName);//找到ZygoteInit.class字节码
     if (startClass == NULL) {
         ALOGE("JavaVM unable to locate class '%s'\n", slashClassName);
         /* keep going */
     } else {
-        jmethodID startMeth = env->GetStaticMethodID(startClass, "main",
-            "([Ljava/lang/String;)V");
+        jmethodID startMeth = env->GetStaticMethodID(startClass, "main","([Ljava/lang/String;)V");//获取静态main方法
         if (startMeth == NULL) {
             ALOGE("JavaVM unable to find main() in '%s'\n", className);
             /* keep going */
         } else {
-            env->CallStaticVoidMethod(startClass, startMeth, strArray);
+            env->CallStaticVoidMethod(startClass, startMeth, strArray);//调用main方法，开启ZygoteInit进程
 
 #if 0
             if (env->ExceptionCheck())
@@ -1206,7 +1212,7 @@ typedef void (*RegJAMProc)();
 static int register_jni_procs(const RegJNIRec array[], size_t count, JNIEnv* env)
 {
     for (size_t i = 0; i < count; i++) {
-        if (array[i].mProc(env) < 0) {
+        if (array[i].mProc(env) < 0) {//调用数值中的函数
 #ifndef NDEBUG
             ALOGD("----------!!! %s failed to load\n", array[i].mName);
 #endif
@@ -1223,8 +1229,9 @@ static void register_jam_procs(const RegJAMProc array[], size_t count)
     }
 }
 
+//函数指针数值
 static const RegJNIRec gRegJNI[] = {
-    REG_JNI(register_com_android_internal_os_RuntimeInit),
+    REG_JNI(register_com_android_internal_os_RuntimeInit),//初始化RuntimeInit
     REG_JNI(register_android_os_SystemClock),
     REG_JNI(register_android_util_EventLog),
     REG_JNI(register_android_util_Log),
@@ -1367,6 +1374,7 @@ static const RegJNIRec gRegJNI[] = {
 
 /*
  * Register android native functions with the VM.
+ * 通过jni的RegisterNatives映射c函数到java本地方法
  */
 /*static*/ int AndroidRuntime::startReg(JNIEnv* env)
 {
@@ -1386,7 +1394,7 @@ static const RegJNIRec gRegJNI[] = {
      * and never released.  Use Push/Pop to manage the storage.
      */
     env->PushLocalFrame(200);
-
+    //注册framework使用的jni本地函数，调用register_jni_procs将数值传入
     if (register_jni_procs(gRegJNI, NELEM(gRegJNI), env) < 0) {
         env->PopLocalFrame(NULL);
         return -1;

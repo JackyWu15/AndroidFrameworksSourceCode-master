@@ -173,6 +173,8 @@ SurfaceFlinger::SurfaceFlinger()
     ALOGI_IF(mDebugDDMS, "DDMS debugging enabled");
 }
 
+
+//onFirstRef被调用
 void SurfaceFlinger::onFirstRef()
 {
     mEventQueue.init(this);
@@ -385,22 +387,23 @@ private:
 };
 
 void SurfaceFlinger::init() {
-    ALOGI(  "SurfaceFlinger's main thread ready to run. "
-            "Initializing graphics H/W...");
+    ALOGI(  "SurfaceFlinger's main thread ready to run. " "Initializing graphics H/W...");
 
     status_t err;
     Mutex::Autolock _l(mStateLock);
 
     // initialize EGL for the default display
+    //初始化EGL，作为默认显示
     mEGLDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     eglInitialize(mEGLDisplay, NULL, NULL);
 
     // Initialize the H/W composer object.  There may or may not be an
     // actual hardware composer underneath.
-    mHwc = new HWComposer(this,
-            *static_cast<HWComposer::EventHandler *>(this));
+    //初始化硬件HWComposer
+    mHwc = new HWComposer(this,*static_cast<HWComposer::EventHandler *>(this));
 
     // get a RenderEngine for the given display / config (can't fail)
+    //获取渲染引擎RenderEngine
     mRenderEngine = RenderEngine::create(mEGLDisplay, mHwc->getVisualID());
 
     // retrieve the EGL context that was selected/created
@@ -413,6 +416,7 @@ void SurfaceFlinger::init() {
     for (size_t i=0 ; i<DisplayDevice::NUM_BUILTIN_DISPLAY_TYPES ; i++) {
         DisplayDevice::DisplayType type((DisplayDevice::DisplayType)i);
         // set-up the displays that are already connected
+        //建立已连接的显示设备
         if (mHwc->isConnected(i) || type==DisplayDevice::DISPLAY_PRIMARY) {
             // All non-virtual displays are currently considered secure.
             bool isSecure = true;
@@ -421,12 +425,13 @@ void SurfaceFlinger::init() {
 
             sp<IGraphicBufferProducer> producer;
             sp<IGraphicBufferConsumer> consumer;
-            BufferQueue::createBufferQueue(&producer, &consumer,
-                    new GraphicBufferAlloc());
+            //创建 BufferQueue 的生产者和消费者
+            BufferQueue::createBufferQueue(&producer, &consumer,new GraphicBufferAlloc());
 
             sp<FramebufferSurface> fbs = new FramebufferSurface(*mHwc, i,
                     consumer);
             int32_t hwcId = allocateHwcDisplayId(type);
+             //创建显示设备
             sp<DisplayDevice> hw = new DisplayDevice(this,
                     type, hwcId, mHwc->getFormat(hwcId), isSecure, token,
                     fbs, producer,
@@ -459,6 +464,7 @@ void SurfaceFlinger::init() {
     mEventControlThread->run("EventControl", PRIORITY_URGENT_DISPLAY);
 
     // set a fake vsync period if there is no HWComposer
+    //当不存在 HWComposer 时，则设置软件 vsync
     if (mHwc->initCheck() != NO_ERROR) {
         mPrimaryDispSync.setPeriod(16666667);
     }
@@ -467,9 +473,11 @@ void SurfaceFlinger::init() {
     mDrawingState = mCurrentState;
 
     // set initial conditions (e.g. unblank default device)
+      //初始化显示设备
     initializeDisplays();
 
     // start boot animation
+    //启动开机动画
     startBootAnim();
 }
 
@@ -480,6 +488,7 @@ int32_t SurfaceFlinger::allocateHwcDisplayId(DisplayDevice::DisplayType type) {
 
 void SurfaceFlinger::startBootAnim() {
     // start boot animation
+    //开启BootAnimation.cpp
     property_set("service.bootanim.exit", "0");
     property_set("ctl.start", "bootanim");
 }
