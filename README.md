@@ -4,6 +4,6 @@
 
 ## 书籍PDF下载
 
-- [《Android框架揭秘》](https://pan.baidu.com/s/12Mh2b0Vj_I4x4Q3laICOtA)
+- [《Android框架揭秘》](https://pan.baidu.com/s/110ipuZ-LOz_-6t5qP4YNdw)
 - [《Android系统源代码情景分析》](https://pan.baidu.com/s/1x-X_xmk1SVQNVyH6jM3tzg)
 
