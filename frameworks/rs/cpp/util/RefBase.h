@@ -73,6 +73,7 @@ public:
             //! DEBUGGING ONLY: Get current strong ref count.
             int32_t         getStrongCount() const;
 
+    //成员变量weakref_type来描述对象的引用计数
     class weakref_type
     {
     public:
@@ -159,18 +160,21 @@ private:
 };
 
 // ---------------------------------------------------------------------------
-
+//轻量级指针
 template <class T>
 class LightRefBase
 {
 public:
+    //引用计数，inline内联函数，拷贝整段代码，而不是开辟栈帧
     inline LightRefBase() : mCount(0) { }
+    //增加引用数
     inline void incStrong(__attribute__((unused)) const void* id) const {
         __sync_fetch_and_add(&mCount, 1);
     }
+    //减少引用数
     inline void decStrong(__attribute__((unused)) const void* id) const {
         if (__sync_fetch_and_sub(&mCount, 1) == 1) {
-            delete static_cast<const T*>(this);
+            delete static_cast<const T*>(this);//减到0，释放这个对象
         }
     }
     //! DEBUGGING ONLY: Get current strong ref count.
@@ -194,6 +198,7 @@ private:
 
 // ---------------------------------------------------------------------------
 
+//弱引用指针
 template <typename T>
 class wp
 {

@@ -57,7 +57,7 @@ inline bool operator _op_ (const wp<U>& o) const {              \
 }
 
 // ---------------------------------------------------------------------------
-
+//强指针和轻量指针的实现类
 template <typename T>
 class sp
 {
@@ -105,7 +105,7 @@ private:
     template<typename Y> friend class sp;
     template<typename Y> friend class wp;
     void set_pointer(T* ptr);
-    T* m_ptr;
+    T* m_ptr;//指向实际引用对象
 };
 
 #undef COMPARE
@@ -115,14 +115,15 @@ TextOutput& operator<<(TextOutput& to, const sp<T>& val);
 
 // ---------------------------------------------------------------------------
 // No user serviceable parts below here.
-
+//构造
 template<typename T>
 sp<T>::sp(T* other)
 : m_ptr(other)
   {
-    if (other) other->incStrong(this);
+    if (other) other->incStrong(this);//调用父类LightRefBase的incStrong函数
   }
 
+//拷贝构造
 template<typename T>
 sp<T>::sp(const sp<T>& other)
 : m_ptr(other.m_ptr)
@@ -146,7 +147,7 @@ sp<T>::sp(const sp<U>& other)
 template<typename T>
 sp<T>::~sp()
 {
-    if (m_ptr) m_ptr->decStrong(this);
+    if (m_ptr) m_ptr->decStrong(this);//调用父类LightRefBase的decStrong函数
 }
 
 template<typename T>
