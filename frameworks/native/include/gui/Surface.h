@@ -191,7 +191,7 @@ private:
     // operations on the surface texture client ultimately translate into
     // interactions with the server using this interface.
     // TODO: rename to mBufferProducer
-    sp<IGraphicBufferProducer> mGraphicBufferProducer;
+    sp<IGraphicBufferProducer> mGraphicBufferProducer;//Surface的核心，很多“协议”通过他实现
 
     // mSlots stores the buffers that have been allocated for each buffer slot.
     // It is initialized to null pointers, and gets filled in with the result of
@@ -199,10 +199,11 @@ private:
     // slot that has not yet been used. The buffer allocated to a slot will also
     // be replaced if the requested buffer usage or geometry differs from that
     // of the buffer allocated to a slot.
-    BufferSlot mSlots[NUM_BUFFER_SLOTS];
+    BufferSlot mSlots[NUM_BUFFER_SLOTS];//用于存储buffer的
 
     // mReqWidth is the buffer width that will be requested at the next dequeue
     // operation. It is initialized to 1.
+    //以下的mReq都表示下一次dequeue时会申请的
     uint32_t mReqWidth;
 
     // mReqHeight is the buffer height that will be requested at the next
@@ -211,7 +212,7 @@ private:
 
     // mReqFormat is the buffer pixel format that will be requested at the next
     // deuque operation. It is initialized to PIXEL_FORMAT_RGBA_8888.
-    uint32_t mReqFormat;
+    uint32_t mReqFormat;//像素格式
 
     // mReqUsage is the set of buffer usage flags that will be requested
     // at the next deuque operation. It is initialized to 0.
@@ -251,7 +252,7 @@ private:
      // mUserWidth, if non-zero, is an application-specified override
      // of mDefaultWidth.  This is lower priority than the width set by
      // native_window_set_buffers_dimensions.
-     uint32_t mUserWidth;
+     uint32_t mUserWidth;//应用层指定的值覆盖上面的Default
 
      // mUserHeight, if non-zero, is an application-specified override
      // of mDefaultHeight.  This is lower priority than the height set

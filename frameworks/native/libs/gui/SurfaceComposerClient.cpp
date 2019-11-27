@@ -494,6 +494,7 @@ sp<SurfaceControl> SurfaceComposerClient::createSurface(
     if (mStatus == NO_ERROR) {
         sp<IBinder> handle;
         sp<IGraphicBufferProducer> gbp;
+        //构建Surface
         status_t err = mClient->createSurface(name, w, h, format, flags,
                 &handle, &gbp);
         ALOGE_IF(err, "SurfaceComposerClient::createSurface error %s", strerror(-err));

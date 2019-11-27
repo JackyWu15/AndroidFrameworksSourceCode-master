@@ -16,7 +16,6 @@
 package com.android.framework.internalloctestapp;
 
 import android.app.Activity;
-import android.os.Bundle;
 
 /**
  * Empty activity, not needed for this test

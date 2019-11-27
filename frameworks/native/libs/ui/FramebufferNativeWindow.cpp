@@ -249,21 +249,24 @@ int FramebufferNativeWindow::dequeueBuffer_DEPRECATED(ANativeWindow* window,
 int FramebufferNativeWindow::dequeueBuffer(ANativeWindow* window, 
         ANativeWindowBuffer** buffer, int* fenceFd)
 {
-    FramebufferNativeWindow* self = getSelf(window);
-    Mutex::Autolock _l(self->mutex);
+    FramebufferNativeWindow* self = getSelf(window);//将window强转FramebufferNativeWindow,window是FramebufferNativeWindow的父类
+    Mutex::Autolock _l(self->mutex);//自动锁，后面自动释放
     framebuffer_device_t* fb = self->fbDev;
 
+    //mBufferHead为缓存指针，像一个环形队列，等于角标2又回到0
     int index = self->mBufferHead++;
     if (self->mBufferHead >= self->mNumBuffers)
         self->mBufferHead = 0;
 
     // wait for a free non-front buffer
+    //没有可用缓存，只能等待
     while (self->mNumFreeBuffers < 2) {
         self->mCondition.wait(self->mutex);
     }
     ALOG_ASSERT(self->buffers[index] != self->front);
 
     // get this buffer
+    // 可用的减少1个
     self->mNumFreeBuffers--;
     self->mCurrentBufferIndex = index;
 

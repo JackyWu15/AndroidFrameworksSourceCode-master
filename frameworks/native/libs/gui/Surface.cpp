@@ -189,6 +189,7 @@ int Surface::setSwapInterval(int interval) {
     return NO_ERROR;
 }
 
+
 int Surface::dequeueBuffer(android_native_buffer_t** buffer, int* fenceFd) {
     ATRACE_CALL();
     ALOGV("Surface::dequeueBuffer");
@@ -198,7 +199,7 @@ int Surface::dequeueBuffer(android_native_buffer_t** buffer, int* fenceFd) {
     bool swapIntervalZero;
     uint32_t reqFormat;
     uint32_t reqUsage;
-
+    //宽高计算
     {
         Mutex::Autolock lock(mMutex);
 
@@ -212,6 +213,7 @@ int Surface::dequeueBuffer(android_native_buffer_t** buffer, int* fenceFd) {
 
     int buf = -1;
     sp<Fence> fence;
+    //可以看到，实际的函数调用都通过mGraphicBufferProducer，这里是获得缓冲区
     status_t result = mGraphicBufferProducer->dequeueBuffer(&buf, &fence, swapIntervalZero,
             reqW, reqH, reqFormat, reqUsage);
 

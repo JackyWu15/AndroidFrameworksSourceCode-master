@@ -16,7 +16,6 @@
 package com.android.framework.externalsharedpermsbttestapp;
 
 import android.bluetooth.BluetoothAdapter;
-
 import android.test.InstrumentationTestCase;
 
 public class ExternalSharedPermsBTTest extends InstrumentationTestCase
