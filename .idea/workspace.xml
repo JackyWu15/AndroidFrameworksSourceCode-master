@@ -6,17 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9359eed3-d6f5-49b9-9bc0-02227e7628e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/ExternalSharedPermsBT/src/com/android/framework/externalsharedpermsbttestapp/ExternalSharedPermsBTTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/ExternalSharedPermsBT/src/com/android/framework/externalsharedpermsbttestapp/ExternalSharedPermsBTTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/ExternalSharedPermsDiffKey/src/com/android/framework/externalsharedpermsdiffkeytestapp/ExternalSharedPermsDiffKeyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/ExternalSharedPermsDiffKey/src/com/android/framework/externalsharedpermsdiffkeytestapp/ExternalSharedPermsDiffKeyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/ExternalSharedPermsFL/src/com/android/framework/externalsharedpermsfltestapp/ExternalSharedPermsFLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/ExternalSharedPermsFL/src/com/android/framework/externalsharedpermsfltestapp/ExternalSharedPermsFLTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/InternalLocTestApp/src/com/android/framework/internalloctestapp/InternalLocTestAppActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/tests/hosttests/test-apps/InternalLocTestApp/src/com/android/framework/internalloctestapp/InternalLocTestAppActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/native/include/gui/Surface.h" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/include/gui/Surface.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/native/libs/gui/SurfaceComposerClient.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/libs/gui/SurfaceComposerClient.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="9359eed3-d6f5-49b9-9bc0-02227e7628e8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,6 +291,17 @@
             <path>
               <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="harware" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="harware" type="462c0819:PsiDirectoryNode" />
+              <item name="libhardware" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
               <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -456,7 +457,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574822432930</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="SurfaceFlinger分析">
+      <created>1574854686856</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1574854686872</updated>
+    </task>
+    <task id="LOCAL-00014" summary="SurfaceFlinger分析">
+      <created>1574854848916</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1574854848916</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -539,7 +554,8 @@
     <MESSAGE value="init进程启动后框架大致执行流程" />
     <MESSAGE value="分析PackageManagerService，理解应用程序的安装流程" />
     <MESSAGE value="应用程序的启动过程" />
-    <option name="LAST_COMMIT_MESSAGE" value="应用程序的启动过程" />
+    <MESSAGE value="SurfaceFlinger分析" />
+    <option name="LAST_COMMIT_MESSAGE" value="SurfaceFlinger分析" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/model/LoaderResults.java">
