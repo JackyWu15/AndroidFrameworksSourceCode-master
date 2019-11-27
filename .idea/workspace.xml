@@ -27771,148 +27771,31 @@
       <change afterPath="$PROJECT_DIR$/frameworks/base/wifi/java/android/net/wifi/p2p/package.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frameworks/base/wifi/java/android/net/wifi/package.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frameworks/base/wifi/wifi.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/core/include/system/window.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/.vs/AndroidFrameworksSourceCode-master/v15/.suo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/.vs/AndroidFrameworksSourceCode-master/v15/Browse.VC.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/.vs/AndroidFrameworksSourceCode-master/v15/Browse.VC.opendb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/.vs/ProjectSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/.vs/VSWorkspaceState.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/.vs/slnx.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/rs/cpp/util/RefBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/rs/cpp/util/RefBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/rs/server/StrongPointer.h" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/rs/server/StrongPointer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/Android.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/Android.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/CleanSpec.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/CleanSpec.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/MODULE_LICENSE_APACHE2" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/MODULE_LICENSE_APACHE2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/NOTICE" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/NOTICE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/proguard.flags" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/proguard.flags" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/res/drawable-hdpi/stat_notify_sms.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/res/drawable-hdpi/stat_notify_sms.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/res/drawable-mdpi/stat_notify_sms.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/res/drawable-mdpi/stat_notify_sms.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/src/com/android/basicsmsreceiver/BasicSmsReceiverApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/src/com/android/basicsmsreceiver/BasicSmsReceiverApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/src/com/android/basicsmsreceiver/DialogSmsDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/src/com/android/basicsmsreceiver/DialogSmsDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/src/com/android/basicsmsreceiver/SmsMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/BasicSmsReceiver/src/com/android/basicsmsreceiver/SmsMessageReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Browser2/run_startup_time_test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Browser2/run_startup_time_test.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Browser2/test/run_tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Browser2/test/run_tests.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Calendar/assets/backward" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Calendar/assets/backward" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Calendar/assets/zone.tab" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Calendar/assets/zone.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Calendar/libs/android-support-v4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Calendar/mkprojectfile" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Calendar/mkprojectfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Calendar/res/drawable-xxhdpi/stat_notify_calendar.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Calendar/res/drawable-xxhdpi/stat_notify_calendar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-hdpi/ic_menu_savephoto_disabled.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-hdpi/ic_menu_savephoto_disabled.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-mdpi/ic_menu_savephoto_disabled.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-mdpi/ic_menu_savephoto_disabled.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-mdpi/ic_recording_indicator.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-mdpi/ic_recording_indicator.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-xhdpi/ic_menu_savephoto_disabled.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/drawable-xhdpi/ic_menu_savephoto_disabled.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw320dp-land/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw320dp-land/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw320dp-port/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw320dp-port/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw320dp/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw320dp/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw600dp/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw600dp/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw800dp/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/res/values-sw800dp/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/src/com/android/camera/ShutterButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/src/com/android/camera/ShutterButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/exiftool_parser/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/exiftool_parser/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/res/raw/galaxy_nexus.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/res/raw/galaxy_nexus.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/CameraTestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/CameraTestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/native/opengl/include/EGL/eglplatform.h" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/opengl/include/EGL/eglplatform.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/harware/libhardware/include/hardware/fb.h" beforeDir="false" afterPath="$PROJECT_DIR$/harware/libhardware/include/hardware/fb.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/harware/libhardware/include/hardware/gralloc.h" beforeDir="false" afterPath="$PROJECT_DIR$/harware/libhardware/include/hardware/gralloc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/harware/libhardware/include/hardware/hardware.h" beforeDir="false" afterPath="$PROJECT_DIR$/harware/libhardware/include/hardware/hardware.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/harware/libhardware/modules/gralloc/framebuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/harware/libhardware/modules/gralloc/framebuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/harware/libhardware/modules/gralloc/gralloc.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/harware/libhardware/modules/gralloc/gralloc.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/StressTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/StressTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/CameraLatency.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/CameraLatency.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/CameraStressTestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/CameraStressTestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/ImageCapture.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/ImageCapture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/SwitchPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/SwitchPreview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/VideoCapture.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Camera2/tests/src/com/android/camera/stress/VideoCapture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Car/libs/resource_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Car/libs/resource_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Contacts/res/drawable-sw600dp/quantum_launchscreen_contacts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Contacts/res/drawable-sw600dp/quantum_launchscreen_contacts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Contacts/res/drawable/quantum_launchscreen_contacts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Contacts/res/drawable/quantum_launchscreen_contacts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Contacts/script/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Contacts/script/test.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Contacts/src/com/android/contacts/ContactSaveService.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Contacts/src/com/android/contacts/ContactSaveService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Contacts/src/com/android/contacts/activities/ShowOrCreateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Contacts/src/com/android/contacts/activities/ShowOrCreateActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Contacts/src/com/android/contacts/editor/ContactEditorFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Contacts/src/com/android/contacts/editor/ContactEditorFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/DeskClock/res/drawable/ic_clock.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/DeskClock/res/drawable/ic_clock.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/about/res/raw/third_party_license_metadata" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/about/res/raw/third_party_license_metadata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/about/res/raw/third_party_licenses" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/about/res/raw/third_party_licenses" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/drawable-hdpi/ic_dialer_fork_add_call.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/drawable-hdpi/ic_dialer_fork_add_call.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/drawable-hdpi/ic_dialer_fork_current_call.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/drawable-hdpi/ic_dialer_fork_current_call.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/drawable-hdpi/ic_dialer_fork_tt_keypad.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/drawable-hdpi/ic_dialer_fork_tt_keypad.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/interactions/res/layout/phone_disambig_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Dialer/java/com/android/dialer/interactions/res/layout/phone_disambig_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/provider/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/provider/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/provider/EmailContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/provider/EmailContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/provider/Policy.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/provider/Policy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/service/IPolicyService.aidl" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/service/IPolicyService.aidl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/service/PolicyServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/emailcommon/src/com/android/emailcommon/service/PolicyServiceProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/res/xml/account_settings_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/res/xml/account_settings_preferences.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/src/com/android/email/mail/internet/EmailHtmlUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/src/com/android/email/mail/internet/EmailHtmlUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Email/tests/src/com/android/email/mail/internet/EmailHtmlUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Email/tests/src/com/android/email/mail/internet/EmailHtmlUtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/ExactCalculator/res/values-uk/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/ExactCalculator/res/values-uk/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery/res/drawable-mdpi/btn_check_buttonless_off.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery/res/drawable-mdpi/btn_check_buttonless_off.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery/res/drawable-mdpi/btn_check_buttonless_on.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery/res/drawable-mdpi/btn_check_buttonless_on.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-hdpi/ic_menu_savephoto_disabled.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-hdpi/ic_menu_savephoto_disabled.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-mdpi/ic_menu_savephoto_disabled.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-mdpi/ic_menu_savephoto_disabled.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-mdpi/ic_recording_indicator.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-mdpi/ic_recording_indicator.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-xhdpi/ic_menu_savephoto_disabled.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable-xhdpi/ic_menu_savephoto_disabled.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_black.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_black.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_film.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_film.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_rounded_black.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_rounded_black.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_rounded_white.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_rounded_white.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_white.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/drawable/filtershow_border_white.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/layout/photo_frame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/layout/photo_frame.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw320dp-land/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw320dp-land/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw320dp-port/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw320dp-port/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw320dp/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw320dp/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw600dp/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw600dp/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw800dp/photoeditor_dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Gallery2/res/values-sw800dp/photoeditor_dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/KeyChain/Android.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/KeyChain/Android.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/KeyChain/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/KeyChain/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/KeyChain/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/KeyChain/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher2/fill_screens.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher2/fill_screens.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher2/print_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher2/print_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/fill_screens.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/fill_screens.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/print_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/print_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-hdpi/workspace_bg.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-hdpi/workspace_bg.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-mdpi/workspace_bg.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-mdpi/workspace_bg.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-xhdpi/workspace_bg.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-xhdpi/workspace_bg.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-xxhdpi/workspace_bg.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-xxhdpi/workspace_bg.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-xxxhdpi/workspace_bg.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/res/drawable-xxxhdpi/workspace_bg.9.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/BaseDraggingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/BaseDraggingActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/LauncherAppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/LauncherAppState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/LauncherModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/LauncherModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsContainerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsContainerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsGridAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsGridAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/model/LoaderTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/model/LoaderTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/touch/ItemClickHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/touch/ItemClickHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/Android.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/Android.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/doc/feature_mos_API_doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/doc/feature_mos_API_doxyfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/FrameBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/FrameBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/FrameBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/FrameBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/Renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/Renderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/SurfaceTextureRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/SurfaceTextureRenderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/SurfaceTextureRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/SurfaceTextureRenderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/WarpRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/WarpRenderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/WarpRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/WarpRenderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/YVURenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/YVURenderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/YVURenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_mos/src/mosaic_renderer/YVURenderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_stab/doc/dbreg_API_doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/jni/feature_stab/doc/dbreg_API_doxyfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_camera_disabled_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_camera_disabled_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_camera_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_camera_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_camera_pressed_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_camera_pressed_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_video_disabled_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_video_disabled_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_video_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_video_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_video_pressed_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-hdpi/ic_rotate_video_pressed_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/btn_mode_switch_knob_normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/btn_mode_switch_knob_normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/btn_mode_switch_knob_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/btn_mode_switch_knob_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_recording_indicator.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_recording_indicator.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_camera_disabled_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_camera_disabled_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_camera_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_camera_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_camera_pressed_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_camera_pressed_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_video_disabled_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_video_disabled_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_video_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_video_holo_dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_video_pressed_holo_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/res/drawable-mdpi/ic_rotate_video_pressed_holo_dark.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/ShutterButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/ShutterButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/VideoCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/VideoCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/panorama/MosaicRendererSurfaceViewRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/panorama/MosaicRendererSurfaceViewRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/panorama/PanoramaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/src/com/android/camera/panorama/PanoramaActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/CameraStressTestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/CameraStressTestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/StressTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/StressTests.java" afterDir="false" />
@@ -27922,261 +27805,19 @@
       <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/stress/SwitchPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/stress/SwitchPreview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/stress/VideoCapture.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/LegacyCamera/tests/src/com/android/camera/stress/VideoCapture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/ManagedProvisioning/tests/instrumentation/src/com/android/managedprovisioning/preprovisioning/terms/TermsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/ManagedProvisioning/tests/instrumentation/src/com/android/managedprovisioning/preprovisioning/terms/TermsProviderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/ManagedProvisioning/tools/bash/animation/swiper-theme-gen.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/ManagedProvisioning/tools/bash/animation/swiper-theme-gen.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/ManagedProvisioning/tools/bash/coverage.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/ManagedProvisioning/tools/bash/coverage.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/ForceProguard.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/ForceProguard.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/build/colorize_errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/build/colorize_errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/build/process_style_output.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/build/process_style_output.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/proguard-test.flags" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/proguard-test.flags" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc234-mnc10/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc234-mnc10/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc234-mnc11" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc234-mnc15/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc234-mnc15/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc070/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc070/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc090/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc090/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc380/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc380/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc410/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc410/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc560/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc560/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc680/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc310-mnc680/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc311-mnc100/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc311-mnc100/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc311-mnc230/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc311-mnc230/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc312-mnc530/mms_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/res/xml-mcc312-mnc530/mms_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/src/android/support/v7/mms/pdu/PduParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/src/android/support/v7/mms/pdu/PduParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/src/com/android/messaging/mmslib/pdu/PduParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/src/com/android/messaging/mmslib/pdu/PduParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/src/com/android/messaging/sms/MmsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/src/com/android/messaging/sms/MmsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/tools/buglesql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/tools/buglesql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/tools/dumpapkversion.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/tools/dumpapkversion.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/tools/messagegen/fillsms" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/tools/messagegen/fillsms" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/tools/messagegen/listimages" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/tools/messagegen/listimages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Messaging/tools/mmssql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Messaging/tools/mmssql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_ic_pause_small.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_ic_pause_small.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_ic_play_small.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_ic_play_small.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_small_normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_small_normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_small_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_small_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_small_selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/btn_playback_small_selected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/now_playing_progress_handle_normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/now_playing_progress_handle_normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/now_playing_progress_handle_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/now_playing_progress_handle_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/now_playing_progress_handle_selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/now_playing_progress_handle_selected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/panel_now_playing_progress_bg.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/panel_now_playing_progress_bg.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_drag.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_drag.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_longpress.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_longpress.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_normal.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_normal.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_pressed.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_pressed.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_selected.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-hdpi/playlist_tile_selected.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-land-mdpi/albumart_mp_unknown.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-land-mdpi/albumart_mp_unknown.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/albumart_mp_unknown.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/albumart_mp_unknown.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/albumart_mp_unknown_list.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/albumart_mp_unknown_list.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_ic_pause_small.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_ic_pause_small.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_ic_play_small.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_ic_play_small.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_small_normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_small_normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_small_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_small_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_small_selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/btn_playback_small_selected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/buttonbar_focused.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/buttonbar_focused.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/buttonbar_pressed.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/buttonbar_pressed.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_delete.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_music_library.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_music_library.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_party_shuffle.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_party_shuffle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_set_as_ringtone.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_set_as_ringtone.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_shuffle.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_menu_shuffle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_album_playback.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_album_playback.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_artist_playback.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_artist_playback.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_current_playlist_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_current_playlist_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_partyshuffle_on_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_partyshuffle_on_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_playlist_list.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_playlist_list.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_repeat_all_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_repeat_all_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_repeat_off_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_repeat_off_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_repeat_once_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_repeat_once_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_shuffle_off_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_shuffle_off_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_shuffle_on_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_shuffle_on_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_song_playback.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_mp_song_playback.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_search_category_music_song.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_search_category_music_song.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_slide_keyboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/ic_slide_keyboard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/indicator_ic_mp_playing_list.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/indicator_ic_mp_playing_list.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/now_playing_progress_handle_normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/now_playing_progress_handle_normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/now_playing_progress_handle_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/now_playing_progress_handle_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/now_playing_progress_handle_selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/now_playing_progress_handle_selected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/panel_now_playing_progress_bg.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/panel_now_playing_progress_bg.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_drag.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_drag.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_longpress.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_longpress.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_normal.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_normal.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_pressed.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_pressed.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_selected.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/playlist_tile_selected.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/stat_notify_musicplayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Music/res/drawable-mdpi/stat_notify_musicplayer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/NativeNfcManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/NativeNfcManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/RoutingManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/RoutingManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/RoutingManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/RoutingManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/extns/Android.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/extns/Android.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/extns/pn54x/Android.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/jni/extns/pn54x/Android.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeLlcpConnectionlessSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeLlcpConnectionlessSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeLlcpServiceSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeLlcpServiceSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeLlcpSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeLlcpSocket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeNfcManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeNfcManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeNfcTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeNfcTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeP2pDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeP2pDevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/NfcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/NfcService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/P2pLinkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/P2pLinkManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/ndefpush/NdefPushClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/ndefpush/NdefPushClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/ndefpush/NdefPushServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Nfc/src/com/android/nfc/ndefpush/NdefPushServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/PackageInstaller/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/PackageInstaller/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/PackageInstaller/src/com/android/packageinstaller/InstallInstalling.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/PackageInstaller/src/com/android/packageinstaller/InstallInstalling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/PackageInstaller/src/com/android/packageinstaller/UninstallerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/PackageInstaller/src/com/android/packageinstaller/UninstallerActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/PackageInstaller/src/com/android/packageinstaller/television/UninstallAppProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/PackageInstaller/src/com/android/packageinstaller/television/UninstallAppProgress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_edit_items_bg_focused.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_edit_items_bg_focused.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_edit_items_bg_pressed.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_edit_items_bg_pressed.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_grid_item_bg_focused.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_grid_item_bg_focused.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_grid_item_bg_pressed.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_grid_item_bg_pressed.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_icon_web.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/corpus_icon_web.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/globe.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/globe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/ic_dialog_menu_generic.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/ic_dialog_menu_generic.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/magnifying_glass.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/magnifying_glass.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/spinner_black_20.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/spinner_black_20.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/textfield_search_default.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/textfield_search_default.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/textfield_search_selected.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/QuickSearchBox/res/drawable-mdpi/textfield_search_selected.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/Android.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/Android.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/CleanSpec.mk" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/CleanSpec.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/NOTICE" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/NOTICE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/internal/ByteArrayConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/internal/ByteArrayConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/internal/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/internal/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/ApduFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/ApduFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/ChannelAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/ChannelAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/CommandApdu.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/CommandApdu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/ResponseApdu.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/ResponseApdu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/ASN1.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/ASN1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/DERParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/DERParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/PKCS15/PKCS15Exception.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/PKCS15/PKCS15Exception.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/SecureElementException.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/arf/SecureElementException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/AR_DO.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/AR_DO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/DO_Exception.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/DO_Exception.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/NFC_AR_DO.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/NFC_AR_DO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/ParserException.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/ParserException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/REF_AR_DO.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/REF_AR_DO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_ALL_AR_DO.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_ALL_AR_DO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_ARAC_AID_DO.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_ARAC_AID_DO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_AR_DO.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_AR_DO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_DO_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_DO_Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_RefreshTag_DO.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SecureElement/src/com/android/se/security/gpac/Response_RefreshTag_DO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/drawable-mdpi/dotted_line_480px.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/drawable-mdpi/dotted_line_480px.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/app_high_usage_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/app_high_usage_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/app_preference_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/app_preference_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/bluetooth_device_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/bluetooth_device_picker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/keyguard_appwidget_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/keyguard_appwidget_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/pick_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/pick_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/regulatory_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/regulatory_info.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/single_button_panel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/single_button_panel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/two_buttons_panel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/two_buttons_panel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/usage_stats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/usage_stats.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/usage_stats_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/usage_stats_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/zen_rule_name.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/zen_rule_name.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/layout/zen_schedule_rule_day.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/layout/zen_schedule_rule_day.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-hdpi/ic_accessibility_magnification.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-hdpi/ic_accessibility_magnification.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-mdpi/ic_accessibility_magnification.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-mdpi/ic_accessibility_magnification.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-xhdpi/ic_accessibility_magnification.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-xhdpi/ic_accessibility_magnification.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-xxhdpi/ic_accessibility_magnification.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-xxhdpi/ic_accessibility_magnification.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-xxxhdpi/ic_accessibility_magnification.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/mipmap-xxxhdpi/ic_accessibility_magnification.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-land/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-land/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc001-mnc01/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc001-mnc01/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc001-mnc010/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc001-mnc010/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc246-mnc081/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc246-mnc081/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc310-mnc028/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc310-mnc028/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc311-mnc390/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-mcc311-mnc390/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-sw400dp/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-sw400dp/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-sw600dp-land/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-sw600dp-land/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-sw600dp/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-sw600dp/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values-xlarge/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values-xlarge/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/UsageStatsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/UsageStatsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/applications/AppStateAppOpsBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/applications/AppStateAppOpsBridge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/applications/appinfo/AppInfoDashboardFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/applications/appinfo/AppInfoDashboardFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/bluetooth/BluetoothDiscoverableEnabler.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/bluetooth/BluetoothDiscoverableEnabler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/bluetooth/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/bluetooth/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/network/ApnPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/network/ApnPreference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/network/ApnSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/network/ApnSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/wfd/WifiDisplaySettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/src/com/android/settings/wfd/WifiDisplaySettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/tests/unit/res/drawable-hdpi/ic_settings_applications.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/tests/unit/res/drawable-hdpi/ic_settings_applications.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/tests/unit/res/drawable-mdpi/ic_settings_applications.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/tests/unit/res/drawable-mdpi/ic_settings_applications.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Settings/wrap_alpha.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Settings/wrap_alpha.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/SpareParts/res/mipmap-hdpi/app_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/SpareParts/res/mipmap-hdpi/app_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Stk/res/layout/stk_menu_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Stk/res/layout/stk_menu_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Stk/res/layout/stk_msg_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Stk/res/layout/stk_msg_dialog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Stk/res/layout/stk_title.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Stk/res/layout/stk_title.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Stk/res/values/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Stk/res/values/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Stk/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Stk/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/Stk/src/com/android/stk/ToneDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Stk/src/com/android/stk/ToneDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/jni/gen_jni.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/jni/gen_jni.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/sample_customization/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/partner_support/samples/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/res/raw/third_party_license_metadata" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/res/raw/third_party_license_metadata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/res/raw/third_party_licenses" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/res/raw/third_party_licenses" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/tests/input/tools/get_test_logos.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/tests/input/tools/get_test_logos.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/tests/tunerscripts/usbtuner-test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/tests/tunerscripts/usbtuner-test.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TV/tuner/SampleDvbTuner/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TV/tuner/SampleDvbTuner/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Tag/res/raw/discovered_tag_notification.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Tag/res/raw/discovered_tag_notification.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Test/connectivity/PMC/build_pmc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Test/connectivity/PMC/build_pmc.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Test/connectivity/sl4n/rapidjson/include/rapidjson/internal/biginteger.h" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Test/connectivity/sl4n/rapidjson/include/rapidjson/internal/biginteger.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-hdpi/logo_settings_color_48dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-hdpi/logo_settings_color_48dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-mdpi/logo_settings_color_48dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-mdpi/logo_settings_color_48dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-xhdpi/logo_settings_color_48dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-xhdpi/logo_settings_color_48dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-xxhdpi/ic_settings_wifi_active_0_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-xxhdpi/ic_settings_wifi_active_0_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-xxhdpi/logo_settings_color_48dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/TvSettings/Settings/res/drawable-xxhdpi/logo_settings_color_48dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/UnifiedEmail/res/values-land/layouts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/UnifiedEmail/res/values-land/layouts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/UnifiedEmail/res/values-sw600dp/layouts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/UnifiedEmail/res/values-sw600dp/layouts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/apps/UnifiedEmail/src/com/android/emailcommon/utility/TextUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/UnifiedEmail/src/com/android/emailcommon/utility/TextUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-hdpi/ic_actionbar_accept.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-hdpi/ic_actionbar_accept.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-mdpi/ic_actionbar_accept.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-mdpi/ic_actionbar_accept.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-xhdpi/ic_actionbar_accept.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-xhdpi/ic_actionbar_accept.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-xxhdpi/ic_actionbar_accept.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/WallpaperPicker/res/drawable-xxhdpi/ic_actionbar_accept.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/BugReportSender/res/drawable-hdpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/BugReportSender/res/drawable-hdpi/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/ic_contact_picture_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/ic_contact_picture_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/ic_contact_picture_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/ic_contact_picture_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/ic_default_number.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/ic_default_number.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/sym_action_map.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/sym_action_map.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/sym_action_organization.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/sym_action_organization.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/sym_note.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/sym_note.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/title_bar_shadow.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-hdpi/title_bar_shadow.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/ic_default_number.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/ic_default_number.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/sym_action_map.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/sym_action_map.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/sym_action_organization.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/sym_action_organization.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/sym_note.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/sym_note.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/title_bar_shadow.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/LoaderApp/res/drawable-mdpi/title_bar_shadow.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/procstatlog/diskload.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/procstatlog/diskload.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/experimental/procstatlog/procstatreport.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/experimental/procstatlog/procstatreport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/inputmethods/LatinIME/native/dicttoolkit/run_tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/inputmethods/LatinIME/native/dicttoolkit/run_tests.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/inputmethods/LatinIME/native/jni/run-tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/inputmethods/LatinIME/native/jni/run-tests.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/dicttool/etc/dicttool_aosp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/dicttool/etc/dicttool_aosp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/dicttool/etc/makedict_aosp" beforeDir="false" afterPath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/dicttool/etc/makedict_aosp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/dicttool/tests/etc/test-dicttool.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/dicttool/tests/etc/test-dicttool.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/make-keyboard-text/etc/make-keyboard-text" beforeDir="false" afterPath="$PROJECT_DIR$/packages/inputmethods/LatinIME/tools/make-keyboard-text/etc/make-keyboard-text" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/ContactsProvider/run-all-tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/ContactsProvider/run-all-tests.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/ContactsProvider/tools/contacts-db-schema.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/ContactsProvider/tools/contacts-db-schema.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-hdpi/ic_search_category_music_album.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-hdpi/ic_search_category_music_album.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-hdpi/ic_search_category_music_artist.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-hdpi/ic_search_category_music_artist.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-hdpi/ic_search_category_music_song.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-hdpi/ic_search_category_music_song.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-mdpi/ic_search_category_music_album.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-mdpi/ic_search_category_music_album.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-mdpi/ic_search_category_music_artist.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-mdpi/ic_search_category_music_artist.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-mdpi/ic_search_category_music_song.png" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/MediaProvider/res/drawable-mdpi/ic_search_category_music_song.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/providers/MediaProvider/tools/genfiles/genfiles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/packages/providers/MediaProvider/tools/genfiles/genfiles.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/emulator/diagnostic_injector.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/emulator/diagnostic_injector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/emulator/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/emulator/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/emulator/obd2_to_diagjson.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/emulator/obd2_to_diagjson.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/emulator/vhal_const_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/emulator/vhal_const_generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/emulator/vhal_emulator_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/emulator/vhal_emulator_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/emulator/vhal_prop_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/emulator/vhal_prop_simulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/ioanalyze/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/ioanalyze/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Car/tools/update-obd2-sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Car/tools/update-obd2-sensors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/services/Telecomm/src/com/android/server/telecom/CallLogManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Telecomm/src/com/android/server/telecom/CallLogManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/services/Telephony/src/com/android/phone/PhoneInterfaceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Telephony/src/com/android/phone/PhoneInterfaceManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/services/Telephony/src/com/android/services/telephony/CdmaConference.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/services/Telephony/src/com/android/services/telephony/CdmaConference.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28192,17 +27833,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret line="3729" column="46" selection-start-line="3729" selection-start-column="46" selection-end-line="3729" selection-end-column="46" />
+            <state relative-caret-position="470">
+              <caret line="1225" column="41" selection-start-line="1225" selection-start-column="41" selection-end-line="1225" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="1244" column="28" lean-forward="true" selection-start-line="1244" selection-start-column="28" selection-end-line="1244" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="4525" column="51" lean-forward="true" selection-start-line="4525" selection-start-column="51" selection-end-line="4525" selection-end-column="51" />
+              <folding>
+                <element signature="e#76690#76691#0" expanded="true" />
+                <element signature="e#76729#76730#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="3208" column="13" selection-start-line="3208" selection-start-column="13" selection-end-line="3208" selection-end-column="13" />
+            <state relative-caret-position="329">
+              <caret line="6175" column="34" selection-start-line="6175" selection-start-column="19" selection-end-line="6175" selection-end-column="34" />
               <folding>
                 <element signature="e#17808#18725#0" />
                 <element signature="e#99114#99115#0" expanded="true" />
@@ -28213,88 +27876,50 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/os/Process.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="603" column="38" selection-start-line="603" selection-start-column="38" selection-end-line="603" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="3217" column="46" selection-start-line="3217" selection-start-column="46" selection-end-line="3217" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#223486#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="1291" column="35" selection-start-line="1291" selection-start-column="17" selection-end-line="1291" selection-end-column="35" />
+            <state relative-caret-position="493">
+              <caret line="1172" column="45" selection-start-line="1172" selection-start-column="23" selection-end-line="1172" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ProcessRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="668">
+              <caret line="422" column="73" lean-forward="true" selection-start-line="422" selection-start-column="73" selection-end-line="422" selection-end-column="73" />
               <folding>
-                <element signature="e#112682#112683#0" expanded="true" />
-                <element signature="e#112730#112731#0" expanded="true" />
-                <element signature="e#115239#115240#0" expanded="true" />
-                <element signature="e#115305#115306#0" expanded="true" />
-                <element signature="e#151925#151926#0" expanded="true" />
-                <element signature="e#151980#151981#0" expanded="true" />
-                <element signature="e#156666#156667#0" expanded="true" />
-                <element signature="e#156726#156727#0" expanded="true" />
-                <element signature="e#158422#158423#0" expanded="true" />
-                <element signature="e#158470#158471#0" expanded="true" />
+                <element signature="e#0#31750#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStack.java">
+        <entry file="file://$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2380">
-              <caret line="1899" column="60" selection-start-line="1899" selection-start-column="33" selection-end-line="1899" selection-end-column="60" />
+            <state relative-caret-position="253">
+              <caret line="173" column="27" lean-forward="true" selection-start-line="173" selection-start-column="27" selection-end-line="173" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityManagerNative.java">
+        <entry file="file://$PROJECT_DIR$/harware/libhardware/modules/gralloc/gralloc.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="2392" column="29" selection-start-line="2392" selection-start-column="29" selection-end-line="2392" selection-end-column="29" />
-              <folding>
-                <element signature="e#2619#2620#0" expanded="true" />
-                <element signature="e#2656#2657#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="253">
+              <caret line="204" column="53" lean-forward="true" selection-start-line="204" selection-start-column="53" selection-end-line="204" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java">
+        <entry file="file://$PROJECT_DIR$/system/core/include/system/window.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="1620" column="37" selection-start-line="1620" selection-start-column="20" selection-end-line="1620" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/SystemService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3432">
-              <caret line="178" column="40" selection-start-line="178" selection-start-column="30" selection-end-line="178" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#7104#0" expanded="true" />
-                <element signature="e#6923#6924#0" expanded="true" />
-                <element signature="e#6976#6977#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="152">
+              <caret line="92" column="23" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -28303,36 +27928,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>framebuffer_open</find>
+      <find>gralloc_open</find>
+      <find>device_open</find>
+      <find>fb_device_open</find>
+      <find>gralloc_device_open</find>
+      <find>setSwapInterval</find>
+      <find>MIN_NUM_FRAME_BUFFERS</find>
+      <find>alloc</find>
+      <find>alloc(</find>
+      <find>GRALLOC_USAGE_HW_FB</find>
+      <find>NativeBuffer</find>
+      <find>ANativeWindowBuffer</find>
+      <find>mAppThread</find>
+      <find>attachApplication(</find>
+      <find>startpro</find>
+      <find>grDev</find>
+      <find>makeActive</find>
+      <find>attachApplication</find>
+      <find>attachApplicationLocked</find>
+      <find>scheduleLaunchActivity</find>
       <find>ActivityRecord</find>
-      <find>startService</find>
-      <find>startBootstrapServices</find>
-      <find>getService</find>
-      <find>getDefault</find>
-      <find>getService(</find>
-      <find>startActivity</find>
-      <find>最终还</find>
-      <find>setSystemServiceManager</find>
-      <find>startActivity(</find>
-      <find>startActivityMayWait</find>
-      <find>startActivityMayw</find>
-      <find>startactivity(</find>
-      <find>execStartActivity</find>
-      <find>targetStack</find>
-      <find>startActivityLocked</find>
-      <find>userl</find>
-      <find>终止</find>
-      <find>thread</find>
-      <find>schedulePauseActivity</find>
-      <find>activityPaused</find>
-      <find>activityPausedLocked</find>
-      <find>resumeTopActivitiesLocked</find>
-      <find>resumeTopActivityLocked</find>
-      <find>startSpecificActivityLocked</find>
-      <find>start</find>
-      <find>Process.start(</find>
-      <find>start(</find>
-      <find>PAUSE_ACTIVITY</find>
-      <find>startProcessLocked</find>
+      <find>LAUNCH_ACTIVITY</find>
+      <find>getComponent</find>
+      <find>CONTEXT_INCLUDE_CODE</find>
+      <find>performResume</find>
+      <find>callActivityOnResume</find>
+      <find>onresume</find>
+      <find>mInstrumentation</find>
+      <find>BIND_APPLICATION</find>
+      <find>bindApplication</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -28342,14 +27967,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/base/services/java/com/android/server/SystemServer.java" />
-        <option value="$PROJECT_DIR$/native/services/surfaceflinger/main_surfaceflinger.cpp" />
-        <option value="$PROJECT_DIR$/base/cmds/bootanimation/BootAnimation.cpp" />
-        <option value="$PROJECT_DIR$/native/services/surfaceflinger/MessageQueue.cpp" />
-        <option value="$PROJECT_DIR$/native/services/surfaceflinger/SurfaceFlinger.cpp" />
-        <option value="$PROJECT_DIR$/system/core/rootdir/init.rc" />
-        <option value="$PROJECT_DIR$/native/cmds/servicemanager/binder.c" />
-        <option value="$PROJECT_DIR$/native/libs/binder/IInterface.cpp" />
         <option value="$PROJECT_DIR$/av/include/media/IAudioFlinger.h" />
         <option value="$PROJECT_DIR$/av/media/libmedia/IAudioFlinger.cpp" />
         <option value="$PROJECT_DIR$/av/services/audioflinger/AudioFlinger.cpp" />
@@ -28385,14 +28002,22 @@
         <option value="$PROJECT_DIR$/frameworks/rs/cpp/util/RefBase.h" />
         <option value="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/BaseDraggingActivity.java" />
         <option value="$PROJECT_DIR$/frameworks/base/services/java/com/android/server/SystemServer.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" />
         <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java" />
         <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityManagerNative.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ProcessRecord.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java" />
         <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStack.java" />
+        <option value="$PROJECT_DIR$/harware/libhardware/include/hardware/fb.h" />
+        <option value="$PROJECT_DIR$/harware/libhardware/include/hardware/gralloc.h" />
+        <option value="$PROJECT_DIR$/harware/libhardware/include/hardware/hardware.h" />
+        <option value="$PROJECT_DIR$/harware/libhardware/modules/gralloc/framebuffer.cpp" />
+        <option value="$PROJECT_DIR$/harware/libhardware/modules/gralloc/gralloc.cpp" />
+        <option value="$PROJECT_DIR$/frameworks/native/opengl/include/EGL/eglplatform.h" />
+        <option value="$PROJECT_DIR$/system/core/include/system/window.h" />
+        <option value="$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp" />
+        <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ProcessRecord.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" />
         <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" />
       </list>
     </option>
   </component>
@@ -28428,12 +28053,165 @@
               <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
               <item name="frameworks" type="462c0819:PsiDirectoryNode" />
-              <item name="compile" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
-              <item name="packages" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="am" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="harware" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="harware" type="462c0819:PsiDirectoryNode" />
+              <item name="libhardware" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="harware" type="462c0819:PsiDirectoryNode" />
+              <item name="libhardware" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="harware" type="462c0819:PsiDirectoryNode" />
+              <item name="libhardware" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="gralloc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -28445,18 +28223,19 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="H:/Project/Componentization" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/system/core/include/system" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="K:\AndroidFrameworksSourceCode-master" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="K:\AndroidFrameworksSourceCode-master\system\core\include\system" />
       <recent name="K:\AndroidFrameworksSourceCode-master\native\cmds\servicemanager" />
       <recent name="K:\AndroidFrameworksSourceCode-master\system\core\rootdir" />
       <recent name="K:\AndroidFrameworksSourceCode-master\system\core\init" />
       <recent name="K:\AndroidFrameworksSourceCode-master\base\ext" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="K:\AndroidFrameworksSourceCode-master" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -28552,14 +28331,22 @@
       <option name="project" value="LOCAL" />
       <updated>1574135012688</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="应用程序的启动过程">
+      <created>1574682379786</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1574682379786</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20362474" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20362474" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -28567,7 +28354,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Build Variants" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49946696" visible="true" weight="0.040130153" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="0" sideWeight="0.49946696" visible="true" weight="0.055314533" />
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50053304" side_tool="true" weight="0.164859" />
@@ -28637,99 +28424,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="应用程序的启动过程" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="4184" column="37" lean-forward="true" selection-start-line="4184" selection-start-column="37" selection-end-line="4184" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/pm/PackageParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93236">
-          <caret line="4326" column="60" selection-start-line="4326" selection-start-column="60" selection-end-line="4326" selection-end-column="60" />
-          <folding>
-            <element signature="e#13733#13734#0" expanded="true" />
-            <element signature="e#13781#13782#0" expanded="true" />
-            <element signature="e#13834#13835#0" expanded="true" />
-            <element signature="e#13878#13879#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/pm/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33484">
-          <caret line="1615" column="90" selection-start-line="1615" selection-start-column="90" selection-end-line="1615" selection-end-column="90" />
-          <folding>
-            <element signature="e#10300#10301#0" expanded="true" />
-            <element signature="e#10361#10362#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/pm/ApplicationInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
-          <caret line="107" column="39" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#34119#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12958">
-          <caret line="635" column="44" selection-start-line="635" selection-start-column="44" selection-end-line="635" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#33277#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/jni/AndroidRuntime.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22594">
-          <caret line="1027" column="49" selection-start-line="1027" selection-start-column="49" selection-end-line="1027" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/cmds/app_process/app_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6094">
-          <caret line="277" column="32" selection-start-line="277" selection-start-column="32" selection-end-line="277" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/accounts/AccountManagerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4598">
-          <caret line="306" column="27" selection-start-line="306" selection-start-column="16" selection-end-line="306" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#152320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/testing/uiautomator/cmds/uiautomator/Android.mk">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/codeStyles/Project.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/packages/SystemUI/src/com/android/systemui/SystemUIService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#1760#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1079#1080#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/testing/uiautomator/cmds/uiautomator/src/com/android/commands/uiautomator/Launcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -28888,16 +28582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="64" column="29" lean-forward="true" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#149737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/rs/server/RefBase.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1650" />
@@ -28982,13 +28666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="1620" column="37" selection-start-line="1620" selection-start-column="20" selection-end-line="1620" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityManagerNative.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -29017,24 +28694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ProcessRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="91" column="77" selection-start-line="91" selection-start-column="77" selection-end-line="91" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#31750#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="3729" column="46" selection-start-line="3729" selection-start-column="46" selection-end-line="3729" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/os/Process.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
@@ -29042,43 +28701,147 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java">
+    <entry file="file://$PROJECT_DIR$/harware/libhardware/modules/gralloc/gr.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="3217" column="46" selection-start-line="3217" selection-start-column="46" selection-end-line="3217" selection-end-column="46" />
+        <state relative-caret-position="-617" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/opengl/include/EGL/eglplatform.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="90" column="28" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/include/ui/FramebufferNativeWindow.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="32" selection-start-line="32" selection-end-line="33" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/harware/libhardware/include/hardware/fb.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="164" column="74" selection-start-line="164" selection-start-column="74" selection-end-line="164" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/harware/libhardware/include/hardware/hardware.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/harware/libhardware/modules/gralloc/framebuffer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="308" lean-forward="true" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/harware/libhardware/include/hardware/gralloc.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-363">
+          <caret line="95" column="23" selection-start-line="95" selection-start-column="4" selection-end-line="95" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/system/core/include/system/window.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="92" column="23" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="173" column="27" lean-forward="true" selection-start-line="173" selection-start-column="27" selection-end-line="173" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/harware/libhardware/modules/gralloc/gralloc.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="204" column="53" lean-forward="true" selection-start-line="204" selection-start-column="53" selection-end-line="204" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ProcessRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="422" column="73" lean-forward="true" selection-start-line="422" selection-start-column="73" selection-end-line="422" selection-end-column="73" />
           <folding>
-            <element signature="e#0#223486#0" expanded="true" />
+            <element signature="e#0#31750#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="1291" column="35" selection-start-line="1291" selection-start-column="17" selection-end-line="1291" selection-end-column="35" />
+        <state relative-caret-position="493">
+          <caret line="1172" column="45" selection-start-line="1172" selection-start-column="23" selection-end-line="1172" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/Intent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="5180" column="39" lean-forward="true" selection-start-line="5180" selection-start-column="39" selection-end-line="5180" selection-end-column="39" />
           <folding>
-            <element signature="e#112682#112683#0" expanded="true" />
-            <element signature="e#112730#112731#0" expanded="true" />
-            <element signature="e#115239#115240#0" expanded="true" />
-            <element signature="e#115305#115306#0" expanded="true" />
-            <element signature="e#151925#151926#0" expanded="true" />
-            <element signature="e#151980#151981#0" expanded="true" />
-            <element signature="e#156666#156667#0" expanded="true" />
-            <element signature="e#156726#156727#0" expanded="true" />
-            <element signature="e#158422#158423#0" expanded="true" />
-            <element signature="e#158470#158471#0" expanded="true" />
+            <element signature="e#0#315536#0" expanded="true" />
+            <element signature="e#229518#229519#0" expanded="true" />
+            <element signature="e#229551#229552#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="3270" column="41" selection-start-line="3270" selection-start-column="21" selection-end-line="3270" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#149737#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="1244" column="28" lean-forward="true" selection-start-line="1244" selection-start-column="28" selection-end-line="1244" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="1225" column="41" selection-start-line="1225" selection-start-column="41" selection-end-line="1225" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="3208" column="13" selection-start-line="3208" selection-start-column="13" selection-end-line="3208" selection-end-column="13" />
+        <state relative-caret-position="329">
+          <caret line="6175" column="34" selection-start-line="6175" selection-start-column="19" selection-end-line="6175" selection-end-column="34" />
           <folding>
             <element signature="e#17808#18725#0" />
             <element signature="e#99114#99115#0" expanded="true" />
             <element signature="e#99157#99158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="4525" column="51" lean-forward="true" selection-start-line="4525" selection-start-column="51" selection-end-line="4525" selection-end-column="51" />
+          <folding>
+            <element signature="e#76690#76691#0" expanded="true" />
+            <element signature="e#76729#76730#0" expanded="true" />
           </folding>
         </state>
       </provider>

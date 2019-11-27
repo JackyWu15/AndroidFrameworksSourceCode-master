@@ -77,22 +77,22 @@ typedef HDC     EGLNativeDisplayType;
 typedef HBITMAP EGLNativePixmapType;
 typedef HWND    EGLNativeWindowType;
 
-#elif defined(__WINSCW__) || defined(__SYMBIAN32__)  /* Symbian */
+#elif defined(__WINSCW__) || defined(__SYMBIAN32__)  /* Symbian *///塞班系统
 
 typedef int   EGLNativeDisplayType;
 typedef void *EGLNativeWindowType;
 typedef void *EGLNativePixmapType;
 
-#elif defined(__ANDROID__) || defined(ANDROID)
+#elif defined(__ANDROID__) || defined(ANDROID)//安卓系统
 
 struct ANativeWindow;
 struct egl_native_pixmap_t;
 
-typedef struct ANativeWindow*           EGLNativeWindowType;
+typedef struct ANativeWindow*           EGLNativeWindowType;//在安卓系统中EGLNativeWindowType指的是ANativeWindow
 typedef struct egl_native_pixmap_t*     EGLNativePixmapType;
 typedef void*                           EGLNativeDisplayType;
 
-#elif defined(__unix__)
+#elif defined(__unix__)//unix系统
 
 /* X11 (tentative)  */
 #include <X11/Xlib.h>

@@ -41,6 +41,7 @@
 namespace android {
 // ----------------------------------------------------------------------------
 
+//继承自ANativeWindowBuffer
 class NativeBuffer 
     : public ANativeObjectBase<
         ANativeWindowBuffer, 
@@ -71,19 +72,22 @@ private:
  * back buffer).
  * 
  */
-
+//本地平台的适配，通过调用硬件HAL接口的Gralloc的父类hw_module_t，来打开fb*设备和gralloc设备
+//fb*为屏幕设备
+//gralloc图形缓冲的分配和释放
 FramebufferNativeWindow::FramebufferNativeWindow() 
     : BASE(), fbDev(0), grDev(0), mUpdateOnDemand(false)
 {
     hw_module_t const* module;
+    //获取hw_module_t
     if (hw_get_module(GRALLOC_HARDWARE_MODULE_ID, &module) == 0) {
         int stride;
         int err;
         int i;
-        err = framebuffer_open(module, &fbDev);
+        err = framebuffer_open(module, &fbDev);//通过hw_module_t来打开fb屏幕设备
         ALOGE_IF(err, "couldn't open framebuffer HAL (%s)", strerror(-err));
         
-        err = gralloc_open(module, &grDev);
+        err = gralloc_open(module, &grDev);//通过hw_module_t来打开gralloc缓冲区设备
         ALOGE_IF(err, "couldn't open gralloc HAL (%s)", strerror(-err));
 
         // bail out if we can't initialize the modules
@@ -93,13 +97,16 @@ FramebufferNativeWindow::FramebufferNativeWindow()
         mUpdateOnDemand = (fbDev->setUpdateRect != 0);
         
         // initialize the buffer FIFO
+        //#define MIN_NUM_FRAME_BUFFERS  2
+        //#define MAX_NUM_FRAME_BUFFERS  3
+        //根据fb设备属性来获得buffer数，看头文件定义最多3，最小2,也就是默认为前后台的双缓冲
         if(fbDev->numFramebuffers >= MIN_NUM_FRAME_BUFFERS &&
            fbDev->numFramebuffers <= MAX_NUM_FRAME_BUFFERS){
             mNumBuffers = fbDev->numFramebuffers;
-        } else {
+        } else {//否则采用最小的buffer数，为2
             mNumBuffers = MIN_NUM_FRAME_BUFFERS;
         }
-        mNumFreeBuffers = mNumBuffers;
+        mNumFreeBuffers = mNumBuffers;//当前空闲的buffer数，初始化时和申请的一样
         mBufferHead = mNumBuffers-1;
 
         /*
@@ -114,17 +121,21 @@ FramebufferNativeWindow::FramebufferNativeWindow()
         *((uint32_t *)&fbDev->format) = FRAMEBUFFER_FORCE_FORMAT;
 #endif
 
+        //构造Buffer，存到数组中
         for (i = 0; i < mNumBuffers; i++)
         {
-                buffers[i] = new NativeBuffer(
-                        fbDev->width, fbDev->height, fbDev->format, GRALLOC_USAGE_HW_FB);
+                //NativeBuffer继承自ANativeWindowBuffer，定义在window.h，持有指向内存的句柄
+                buffers[i] = new NativeBuffer(fbDev->width, fbDev->height, fbDev->format, GRALLOC_USAGE_HW_FB);
         }
-
+        //给每个buffer分配内存
         for (i = 0; i < mNumBuffers; i++)
         {
+            //缓冲设备GPU0已经打开，由Gralloc的分析知道，此处向HAL层的Gralloc申请内存
+            //GRALLOC_USAGE_HW_FB参数是一个枚举，定义在gralloc.h，表示缓冲区的用途
                 err = grDev->alloc(grDev,
                         fbDev->width, fbDev->height, fbDev->format,
-                        GRALLOC_USAGE_HW_FB, &buffers[i]->handle, &buffers[i]->stride);
+                        GRALLOC_USAGE_HW_FB, &buffers[i]->handle,
+                        &buffers[i]->stride);
 
                 ALOGE_IF(err, "fb buffer %d allocation failed w=%d, h=%d, err=%s",
                         i, fbDev->width, fbDev->height, strerror(-err));
@@ -138,6 +149,7 @@ FramebufferNativeWindow::FramebufferNativeWindow()
                 }
         }
 
+        //为本地窗口属性赋值
         const_cast<uint32_t&>(ANativeWindow::flags) = fbDev->flags; 
         const_cast<float&>(ANativeWindow::xdpi) = fbDev->xdpi;
         const_cast<float&>(ANativeWindow::ydpi) = fbDev->ydpi;
@@ -149,12 +161,14 @@ FramebufferNativeWindow::FramebufferNativeWindow()
         ALOGE("Couldn't get gralloc module");
     }
 
+    //为各函数指针赋值实现的方法
     ANativeWindow::setSwapInterval = setSwapInterval;
     ANativeWindow::dequeueBuffer = dequeueBuffer;
     ANativeWindow::queueBuffer = queueBuffer;
     ANativeWindow::query = query;
     ANativeWindow::perform = perform;
 
+    //以下为过时函数，但仍旧保留
     ANativeWindow::dequeueBuffer_DEPRECATED = dequeueBuffer_DEPRECATED;
     ANativeWindow::lockBuffer_DEPRECATED = lockBuffer_DEPRECATED;
     ANativeWindow::queueBuffer_DEPRECATED = queueBuffer_DEPRECATED;

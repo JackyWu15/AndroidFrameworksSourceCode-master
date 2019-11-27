@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/harware/libhardware" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/libnativehelper" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/packages/apps/BasicSmsReceiver" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/packages/apps/Bluetooth" vcs="Git" />
