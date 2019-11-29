@@ -2251,6 +2251,7 @@ public class WindowManagerService extends IWindowManager.Stub
         }
     }
 
+    //添加窗口
     public int addWindow(Session session, IWindow client, int seq,
             WindowManager.LayoutParams attrs, int viewVisibility, int displayId,
             Rect outContentInsets, InputChannel outInputChannel) {

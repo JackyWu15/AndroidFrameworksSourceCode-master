@@ -1032,12 +1032,12 @@ public class Instrumentation {
      * @throws InstantiationException
      * @throws IllegalAccessException
      */
-    public Activity newActivity(Class<?> clazz, Context context, 
+    public Activity newActivity(Class<?> clazz, Context context,
             IBinder token, Application application, Intent intent, ActivityInfo info, 
             CharSequence title, Activity parent, String id,
             Object lastNonConfigurationInstance) throws InstantiationException, 
             IllegalAccessException {
-        Activity activity = (Activity)clazz.newInstance();
+        Activity activity = (Activity)clazz.newInstance();//反射构造Activity
         ActivityThread aThread = null;
         activity.attach(context, aThread, this, token, 0, application, intent,
                 info, title, parent, id,
@@ -1058,6 +1058,7 @@ public class Instrumentation {
      * 
      * @return The newly instantiated Activity object.
      */
+    //反射构造Activity
     public Activity newActivity(ClassLoader cl, String className,
             Intent intent)
             throws InstantiationException, IllegalAccessException,

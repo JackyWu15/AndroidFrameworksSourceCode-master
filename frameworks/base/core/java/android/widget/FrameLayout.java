@@ -413,22 +413,26 @@ public class FrameLayout extends ViewGroup {
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int count = getChildCount();
+        int count = getChildCount();//子View个数
 
+        //父View的mode要求
         final boolean measureMatchParentChildren =
                 MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.EXACTLY ||
                 MeasureSpec.getMode(heightMeasureSpec) != MeasureSpec.EXACTLY;
         mMatchParentChildren.clear();
 
-        int maxHeight = 0;
+        int maxHeight = 0;//所有子View中最大的高度
         int maxWidth = 0;
         int childState = 0;
 
+        //先测量最大宽和高，包括边距
         for (int i = 0; i < count; i++) {
             final View child = getChildAt(i);
             if (mMeasureAllChildren || child.getVisibility() != GONE) {
+                //测量子View的Margins，显然，只有ViewGroup才有
                 measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
                 final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+                //最大的尺寸
                 maxWidth = Math.max(maxWidth,
                         child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin);
                 maxHeight = Math.max(maxHeight,
@@ -470,7 +474,7 @@ public class FrameLayout extends ViewGroup {
                 final MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
                 int childWidthMeasureSpec;
                 int childHeightMeasureSpec;
-                
+
                 if (lp.width == LayoutParams.MATCH_PARENT) {
                     childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(getMeasuredWidth() -
                             getPaddingLeftWithForeground() - getPaddingRightWithForeground() -
@@ -482,7 +486,7 @@ public class FrameLayout extends ViewGroup {
                             lp.leftMargin + lp.rightMargin,
                             lp.width);
                 }
-                
+
                 if (lp.height == LayoutParams.MATCH_PARENT) {
                     childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(getMeasuredHeight() -
                             getPaddingTopWithForeground() - getPaddingBottomWithForeground() -
@@ -494,7 +498,7 @@ public class FrameLayout extends ViewGroup {
                             lp.topMargin + lp.bottomMargin,
                             lp.height);
                 }
-
+                //子View递归测量
                 child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
             }
         }

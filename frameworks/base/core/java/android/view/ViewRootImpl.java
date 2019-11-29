@@ -352,15 +352,14 @@ public final class ViewRootImpl implements ViewParent,
 
     public ViewRootImpl(Context context, Display display) {
         mContext = context;
-        //WMS是运行在Native层的，而ViewRootImpl是运行在Framework层，两者通过Binder机制取得关联
-        //获取Window Session，通过aidl与WindowManagerService建立连接
+        //Binder通讯，ViewRootImpl和WMS通讯
         mWindowSession = WindowManagerGlobal.getWindowSession();
         mDisplay = display;
         mBasePackageName = context.getBasePackageName();
 
         mDisplayAdjustments = display.getDisplayAdjustments();
 
-        //保存当前线程，更新UI的线程只能是创建ViewRootImpl的线程，之所以只能在主线程中更新UI，是因为ViewRootImpl是在主线程中创建的，如果子线程创建了ViewRootImpl
+        //保存当前线程，更新UI的线程只能是创建ViewRootImpl的线程，之所以只能在主线程中更新UI，是因为ViewRootImpl是在主线程中创建的
         mThread = Thread.currentThread();
         mLocation = new WindowLeaked(null);
         mLocation.fillInStackTrace();
@@ -370,7 +369,7 @@ public final class ViewRootImpl implements ViewParent,
         mTempRect = new Rect();
         mVisRect = new Rect();
         mWinFrame = new Rect();
-        mWindow = new W(this);
+        mWindow = new W(this);//IWindow，WMS和ViewRootImpl通讯
         mTargetSdkVersion = context.getApplicationInfo().targetSdkVersion;
         mViewVisibility = View.GONE;
         mTransparentRegion = new Region();
@@ -442,13 +441,13 @@ public final class ViewRootImpl implements ViewParent,
     }
 
     /**
-     * WMS管理的并不是Window，而是View，它管理的是属于某个Window下的View
+     *
      * We have one child
      */
     public void setView(View view, WindowManager.LayoutParams attrs, View panelParentView) {
         synchronized (this) {
             if (mView == null) {
-                mView = view;
+                mView = view;//DecorView
 
                 mAttachInfo.mDisplayState = mDisplay.getState();
                 mDisplayManager.registerDisplayListener(mDisplayListener, mHandler);
@@ -519,7 +518,7 @@ public final class ViewRootImpl implements ViewParent,
                 // Schedule the first layout -before- adding to the window
                 // manager, to make sure we do the relayout before receiving
                 // any other events from the system.
-                //请求布局
+                //开启遍历View树，进行布局渲染
                 requestLayout();
                 if ((mWindowAttributes.inputFeatures
                         & WindowManager.LayoutParams.INPUT_FEATURE_NO_INPUT_CHANNEL) == 0) {
@@ -529,7 +528,7 @@ public final class ViewRootImpl implements ViewParent,
                     mOrigWindowType = mWindowAttributes.type;
                     mAttachInfo.mRecomputeGlobalAttributes = true;
                     collectViewAttributes();
-                    //向WMS发起当前的Window请求
+                    //向WMS发起请求，注册一个新的窗口
                     res = mWindowSession.addToDisplay(mWindow, mSeq, mWindowAttributes,
                             getHostVisibility(), mDisplay.getDisplayId(),
                             mAttachInfo.mContentInsets, mInputChannel);
@@ -867,10 +866,13 @@ public final class ViewRootImpl implements ViewParent,
         scheduleTraversals();
     }
 
+    //请求绘制
     @Override
     public void requestLayout() {
         if (!mHandlingLayoutInLayoutRequest) {
+            //检查是否生成ViewRootImpl的线程，当前为主线程
             checkThread();
+            //当前已发起layout申请
             mLayoutRequested = true;
             //发送do_traversal消息
             scheduleTraversals();
@@ -1025,12 +1027,12 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
-
+    //发送Handler消息，对应主线程Handler
     void scheduleTraversals() {
         if (!mTraversalScheduled) {
             mTraversalScheduled = true;
             mTraversalBarrier = mHandler.getLooper().postSyncBarrier();
-            //发送消息调用doTraversal()
+            //发送消息调用doTraversal
             mChoreographer.postCallback( Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
             if (!mUnbufferedInputDispatch) {
                 scheduleConsumeBatchedInput();
@@ -1048,7 +1050,7 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
-
+    //整个View的遍历
     void doTraversal() {
         if (mTraversalScheduled) {
             mTraversalScheduled = false;
@@ -1218,13 +1220,13 @@ public final class ViewRootImpl implements ViewParent,
     }
 
     /**
-     * 执行这个视图的绘制
-     * 1，获取Surface对象，用于图形绘制
+     * 执行这个视图的绘制流程
+     * 1，向WMS申请一个Surface，用于绘制
      * 2，测量performMeasure,performLayout,performDraw
-     *
      */
     private void performTraversals() {
         // cache mView since it is used so much below...
+        //即一开始我们设置进来的DecorView，下面使用得很频繁，先缓存一份防止串改
         final View host = mView;
 
         if (DBG) {
@@ -1236,7 +1238,7 @@ public final class ViewRootImpl implements ViewParent,
         if (host == null || !mAdded)
             return;
 
-        mIsInTraversal = true;
+        mIsInTraversal = true;//当前是否在遍历
         mWillDrawSoon = true;
         boolean windowSizeMayChange = false;
         boolean newSurface = false;
@@ -1259,6 +1261,7 @@ public final class ViewRootImpl implements ViewParent,
         CompatibilityInfo compatibilityInfo = mDisplayAdjustments.getCompatibilityInfo();
         if (compatibilityInfo.supportsScreen() == mLastInCompatMode) {
             params = lp;
+            //整个界面重绘
             mFullRedrawNeeded = true;
             mLayoutRequested = true;
             if (mLastInCompatMode) {
@@ -1271,8 +1274,9 @@ public final class ViewRootImpl implements ViewParent,
         }
 
         mWindowAttributesChangesFlag = 0;
-
+        //WMS算出的帧
         Rect frame = mWinFrame;
+        //是否第一次执行
         if (mFirst) {
             mFullRedrawNeeded = true;
             mLayoutRequested = true;
@@ -1294,6 +1298,7 @@ public final class ViewRootImpl implements ViewParent,
             // We used to use the following condition to choose 32 bits drawing caches:
             // PixelFormat.hasAlpha(lp.format) || lp.format == PixelFormat.RGBX_8888
             // However, windows are now always 32 bits by default, so choose 32 bits
+            //当DecorView被关联到PhoneWindow时，用来记录相关的信息
             mAttachInfo.mUse32BitDrawingCache = true;
             mAttachInfo.mHasWindowFocus = false;
             mAttachInfo.mWindowVisibility = viewVisibility;
@@ -1770,7 +1775,7 @@ public final class ViewRootImpl implements ViewParent,
                 boolean focusChangedDueToTouchMode = ensureTouchModeLocally((relayoutResult&WindowManagerGlobal.RELAYOUT_RES_IN_TOUCH_MODE) != 0);
                 if (focusChangedDueToTouchMode || mWidth != host.getMeasuredWidth()
                         || mHeight != host.getMeasuredHeight() || contentInsetsChanged) {
-                    //获取根视图(Window)宽和高的MeasureSpec
+                    //获取根视图(Window)宽和高的MeasureSpec，这个限定传给子View，子View根据这个限定和自身的要求测出合适大小
                     int childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);
                     int childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);
 
@@ -1846,8 +1851,8 @@ public final class ViewRootImpl implements ViewParent,
         boolean triggerGlobalLayoutListener = didLayout
                 || mAttachInfo.mRecomputeGlobalAttributes;
 
-        //上面performMeasure测量完毕，开始performLayout进行摆放
         if (didLayout) {
+            //上面performMeasure测量完毕，开始performLayout进行摆放
             performLayout(lp, desiredWindowWidth, desiredWindowHeight);
 
             // By this point all views have been sized and positioned
@@ -2017,6 +2022,7 @@ public final class ViewRootImpl implements ViewParent,
         mLayoutRequested = true;    // ask wm for a new surface next time.
     }
 
+    //直接调用View的measure，这时候测的是DecorView
     private void performMeasure(int childWidthMeasureSpec, int childHeightMeasureSpec) {
         Trace.traceBegin(Trace.TRACE_TAG_VIEW, "measure");
         try {
@@ -2077,6 +2083,7 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
+    //开启布局流程
     private void performLayout(WindowManager.LayoutParams lp, int desiredWindowWidth,
             int desiredWindowHeight) {
         mLayoutRequested = false;
@@ -2091,7 +2098,7 @@ public final class ViewRootImpl implements ViewParent,
 
         Trace.traceBegin(Trace.TRACE_TAG_VIEW, "layout");
         try {
-            //调用View的layout设置位置
+            //调用DecorView的layout设置位置
             host.layout(0, 0, host.getMeasuredWidth(), host.getMeasuredHeight());
 
             mInLayout = false;
@@ -2346,6 +2353,7 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
+    //开启绘制流程
     private void performDraw() {
         if (mAttachInfo.mDisplayState == Display.STATE_OFF && !mReportNextDraw) {
             return;
@@ -2402,6 +2410,7 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
+    //Surface相当一块画板，用于存储UI数据，分软硬件绘制
     private void draw(boolean fullRedrawNeeded) {
         //获取Surface
         Surface surface = mSurface;
@@ -2499,7 +2508,7 @@ public final class ViewRootImpl implements ViewParent,
             dirty.offset(surfaceInsets.left, surfaceInsets.right);
         }
 
-        //绘制刷星
+        //绘制刷新
         if (!dirty.isEmpty() || mIsAnimating) {
             //使用GPU绘制，即硬件加速，通常会使用下面的CPU绘制
             if (mAttachInfo.mHardwareRenderer != null && mAttachInfo.mHardwareRenderer.isEnabled()) {
@@ -2560,6 +2569,7 @@ public final class ViewRootImpl implements ViewParent,
     /**
      * @return true if drawing was successful, false if an error occurred
      */
+    //开始View的绘制
     private boolean drawSoftware(Surface surface, AttachInfo attachInfo, int xoff, int yoff,
             boolean scalingRequired, Rect dirty) {
 
@@ -2571,69 +2581,13 @@ public final class ViewRootImpl implements ViewParent,
             final int right = dirty.right;
             final int bottom = dirty.bottom;
 
-            //锁定指定区域的Canvas对象，用于Framework层绘制
+            //获得一个Canvas，Canvas相当于一块画布，类似PS的图层，可以有多个
+            //而Canvas的数据实际是通过Bitmap来存储的，这个Bitmap的内存空间交给本地Surface.cpp的类来分配
             canvas = mSurface.lockCanvas(dirty);
 
-            // The dirty rectangle can be modified by Surface.lockCanvas()
-            //noinspection ConstantConditions
-            if (left != dirty.left || top != dirty.top || right != dirty.right
-                    || bottom != dirty.bottom) {
-                attachInfo.mIgnoreDirtyState = true;
-            }
+            ......
 
-            // TODO: Do this in native
-            canvas.setDensity(mDensity);
-        } catch (Surface.OutOfResourcesException e) {
-            handleOutOfResourcesException(e);
-            return false;
-        } catch (IllegalArgumentException e) {
-            Log.e(TAG, "Could not lock surface", e);
-            // Don't assume this is due to out of memory, it could be
-            // something else, and if it is something else then we could
-            // kill stuff (or ourself) for no reason.
-            mLayoutRequested = true;    // ask wm for a new surface next time.
-            return false;
-        }
-
-        try {
-            if (DEBUG_ORIENTATION || DEBUG_DRAW) {
-                Log.v(TAG, "Surface " + surface + " drawing to bitmap w="
-                        + canvas.getWidth() + ", h=" + canvas.getHeight());
-                //canvas.drawARGB(255, 255, 0, 0);
-            }
-
-            // If this bitmap's format includes an alpha channel, we
-            // need to clear it before drawing so that the child will
-            // properly re-composite its drawing on a transparent
-            // background. This automatically respects the clip/dirty region
-            // or
-            // If we are applying an offset, we need to clear the area
-            // where the offset doesn't appear to avoid having garbage
-            // left in the blank areas.
-            if (!canvas.isOpaque() || yoff != 0 || xoff != 0) {
-                canvas.drawColor(0, PorterDuff.Mode.CLEAR);
-            }
-
-            dirty.setEmpty();
-            mIsAnimating = false;
-            attachInfo.mDrawingTime = SystemClock.uptimeMillis();
-            mView.mPrivateFlags |= View.PFLAG_DRAWN;
-
-            if (DEBUG_DRAW) {
-                Context cxt = mView.getContext();
-                Log.i(TAG, "Drawing: package:" + cxt.getPackageName() +
-                        ", metrics=" + cxt.getResources().getDisplayMetrics() +
-                        ", compatibilityInfo=" + cxt.getResources().getCompatibilityInfo());
-            }
-            try {
-                canvas.translate(-xoff, -yoff);
-                if (mTranslator != null) {
-                    mTranslator.translateCanvas(canvas);
-                }
-                canvas.setScreenDensity(scalingRequired ? mNoncompatDensity : 0);
-                attachInfo.mSetIgnoreDirtyState = false;
-
-                //从DecorView开始绘制，即整个Window根视图，会引起整个View树重绘
+                //经过上面空间的分配，从这里开始DecorView往Canvas的Bitmap所分配的内存空间写数据
                 mView.draw(canvas);
             } finally {
                 if (!attachInfo.mSetIgnoreDirtyState) {
@@ -2643,8 +2597,7 @@ public final class ViewRootImpl implements ViewParent,
             }
         } finally {
             try {
-                //释放Canvas锁，通知SurfaceFlinger更新这块区域，绘制完毕后，请求WMS显示该窗口上的内容，Activity，Dialog等组件便显示到屏幕上了
-
+                //数据写入完毕，通知SurfaceFlinger合成我们的画面，通过FrameBufferNativeWindow写入到GPU0硬件缓存区，以显示到物理屏幕
                 surface.unlockCanvasAndPost(canvas);
             } catch (IllegalArgumentException e) {
                 Log.e(TAG, "Could not unlock surface", e);
@@ -5806,12 +5759,14 @@ public final class ViewRootImpl implements ViewParent,
         }
     }
 
+    //一旦VSYNC信号来临，TraversalRunnable的run方法将被调用
     final class TraversalRunnable implements Runnable {
         @Override
         public void run() {
             doTraversal();
         }
     }
+
     final TraversalRunnable mTraversalRunnable = new TraversalRunnable();
 
     final class WindowInputEventReceiver extends InputEventReceiver {

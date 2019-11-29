@@ -142,7 +142,7 @@ public final class WindowManagerGlobal {
             return sWindowManagerService;
         }
     }
-
+    //获取IWindowSession
     public static IWindowSession getWindowSession() {
         synchronized (WindowManagerGlobal.class) {
             if (sWindowSession == null) {
@@ -263,7 +263,7 @@ public final class WindowManagerGlobal {
                 }
             }
 
-            //构建ViewRootImpl
+            //每个View对应一个ViewRootImpl
             root = new ViewRootImpl(view.getContext(), display);
             //给view设置布局参数
             view.setLayoutParams(wparams);

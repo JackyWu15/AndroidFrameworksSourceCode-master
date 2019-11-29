@@ -358,11 +358,13 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         return mContentScene;
     }
 
+    //开始DecorView的创建
     @Override
     public void setContentView(int layoutResID) {
         // Note: FEATURE_CONTENT_TRANSITIONS may be set in the process of installing the window
         // decor, when theme attributes and the like are crystalized. Do not check the feature
         // before this happens.
+        //mContentParent这个即我们自己写的布局的父布局，一开始为null
         if (mContentParent == null) {
             //构造DecorView,并将title区域和mContentParent放到DecorView中
             installDecor();
@@ -374,7 +376,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
             final Scene newScene = Scene.getSceneForLayout(mContentParent, layoutResID, getContext());
             transitionTo(newScene);
         } else {
-            //将添加的布局的Id加到mContentParent中
+            //构建我们的布局View，并把布局加到mContentParent中
             mLayoutInflater.inflate(layoutResID, mContentParent);
         }
         final Callback cb = getCallback();
@@ -3203,6 +3205,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         }
     }
 
+    //只是做了new操作
     protected DecorView generateDecor() {
         return new DecorView(getContext(), -1);
     }
@@ -3431,7 +3434,6 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         }
 
         // Inflate the window decor.
-        //layoutResource布局就是整个Activity的布局
         int layoutResource;
         int features = getLocalFeatures();
         // System.out.println("Features: 0x" + Integer.toHexString(features));
@@ -3493,12 +3495,12 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         }
 
         mDecor.startChanging();
-        //加载视图
+        //DecorView的根视图
         View in = mLayoutInflater.inflate(layoutResource, null);
         //将layoutResource的内容加到DecorView中
         decor.addView(in, new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT));
         mContentRoot = (ViewGroup) in;
-        //生成mContentParent，一个FrameLayout
+        //生成mContentParent
         ViewGroup contentParent = (ViewGroup)findViewById(ID_ANDROID_CONTENT);
         if (contentParent == null) {
             throw new RuntimeException("Window couldn't find content container view");
@@ -3559,6 +3561,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         mAlwaysReadCloseOnTouchAttr = true;
     }
 
+    //创建DecorView和mContentParent
     private void installDecor() {
         if (mDecor == null) {
             //构建DecorView
@@ -3570,7 +3573,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
             }
         }
         if (mContentParent == null) {
-            //获取ContentView容器
+            //创建mContentParent
             mContentParent = generateLayout(mDecor);
 
             // Set up decor part of UI to ignore fitsSystemWindows if appropriate.

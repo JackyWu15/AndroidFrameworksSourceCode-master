@@ -61,7 +61,7 @@ public interface ViewParent {
      * @param child The child which is dirty
      * @param r The area within the child that is invalid
      */
-    //无效化子视图
+    //无效化子视图,即造成重绘
     public void invalidateChild(View child, Rect r);
 
     /**

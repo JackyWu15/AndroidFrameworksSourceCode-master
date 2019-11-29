@@ -189,16 +189,14 @@ static inline SkColorType convertPixelFormat(PixelFormat format) {
 
 static jlong nativeLockCanvas(JNIEnv* env, jclass clazz,
         jlong nativeObject, jobject canvasObj, jobject dirtyRectObj) {
+        //本地层的Surface
     sp<Surface> surface(reinterpret_cast<Surface *>(nativeObject));
-
     if (!isSurfaceValid(surface)) {
         doThrowIAE(env);
         return 0;
     }
-
     Rect dirtyRect;
     Rect* dirtyRectPtr = NULL;
-
     if (dirtyRectObj) {
         dirtyRect.left   = env->GetIntField(dirtyRectObj, gRectClassInfo.left);
         dirtyRect.top    = env->GetIntField(dirtyRectObj, gRectClassInfo.top);
@@ -206,8 +204,9 @@ static jlong nativeLockCanvas(JNIEnv* env, jclass clazz,
         dirtyRect.bottom = env->GetIntField(dirtyRectObj, gRectClassInfo.bottom);
         dirtyRectPtr = &dirtyRect;
     }
-
+    //这个就是用来存储我们绘制的UI数据
     ANativeWindow_Buffer outBuffer;
+    //申请内存
     status_t err = surface->lock(&outBuffer, dirtyRectPtr);
     if (err < 0) {
         const char* const exception = (err == NO_MEMORY) ?
@@ -219,7 +218,7 @@ static jlong nativeLockCanvas(JNIEnv* env, jclass clazz,
 
     // Associate a SkCanvas object to this surface
     env->SetIntField(canvasObj, gCanvasClassInfo.mSurfaceFormat, outBuffer.format);
-
+    //以sk开头，都属于Skia工程
     SkImageInfo info = SkImageInfo::Make(outBuffer.width, outBuffer.height,
                                          convertPixelFormat(outBuffer.format),
                                          kPremul_SkAlphaType);
@@ -227,10 +226,11 @@ static jlong nativeLockCanvas(JNIEnv* env, jclass clazz,
         info.fAlphaType = kOpaque_SkAlphaType;
     }
 
-    SkBitmap bitmap;
+    SkBitmap bitmap;//获取到本地的bitmap，根据像素格式和单位分配空间
     ssize_t bpr = outBuffer.stride * bytesPerPixel(outBuffer.format);
     bitmap.setInfo(info, bpr);
     if (outBuffer.width > 0 && outBuffer.height > 0) {
+        //将内存区域绑定到bitmap上
         bitmap.setPixels(outBuffer.bits);
     } else {
         // be safe with an empty bitmap.

@@ -37,20 +37,20 @@ typedef struct ANativeWindow ANativeWindow;
 
 typedef struct ANativeWindow_Buffer {
     // The number of pixels that are show horizontally.
-    int32_t width;
+    int32_t width;//像素单位
 
     // The number of pixels that are shown vertically.
     int32_t height;
 
     // The number of *pixels* that a line in the buffer takes in
     // memory.  This may be >= width.
-    int32_t stride;
+    int32_t stride;//内存中buffer的每一行所占的像素值，可能大于等于width
 
     // The format of the buffer.  One of WINDOW_FORMAT_*
-    int32_t format;
+    int32_t format;//像素格式
 
     // The actual bits.
-    void* bits;
+    void* bits;//存储数据的内存
     
     // Do not touch.
     uint32_t reserved[6];

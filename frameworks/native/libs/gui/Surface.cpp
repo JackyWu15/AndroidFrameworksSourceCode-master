@@ -899,7 +899,7 @@ status_t Surface::unlockAndPost()
     int fd = -1;
     status_t err = mLockedBuffer->unlockAsync(&fd);
     ALOGE_IF(err, "failed unlocking buffer (%p)", mLockedBuffer->handle);
-
+    //mLockedBuffer入队，后续SurfaceFlinger会合成我们绘制的数据
     err = queueBuffer(mLockedBuffer.get(), fd);
     ALOGE_IF(err, "queueBuffer (handle=%p) failed (%s)",
             mLockedBuffer->handle, strerror(-err));

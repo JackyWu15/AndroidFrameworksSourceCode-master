@@ -6,7 +6,24 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9359eed3-d6f5-49b9-9bc0-02227e7628e8" name="Default Changelist" comment="" />
+    <list default="true" id="9359eed3-d6f5-49b9-9bc0-02227e7628e8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/view/Surface.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/view/Surface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewParent.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewParent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/view/WindowManagerGlobal.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/view/WindowManagerGlobal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/widget/FrameLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/widget/FrameLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/core/jni/android_view_Surface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/jni/android_view_Surface.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/WindowManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/WindowManagerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/native/include/android/native_window.h" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/include/android/native_window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,32 +36,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="2452" column="56" selection-start-line="2452" selection-start-column="33" selection-end-line="2452" selection-end-column="56" />
-              <folding>
-                <element signature="e#115584#115585#0" expanded="true" />
-                <element signature="e#115650#115651#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStack.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8449">
-              <caret line="1501" column="18" selection-start-line="1501" selection-start-column="18" selection-end-line="1501" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="279" column="40" lean-forward="true" selection-start-line="279" selection-start-column="40" selection-end-line="279" selection-end-column="40" />
+            <state relative-caret-position="346">
+              <caret line="267" column="22" lean-forward="true" selection-start-line="267" selection-start-column="22" selection-end-line="267" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -52,62 +47,112 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="212" lean-forward="true" selection-start-line="212" selection-end-line="212" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/native/libs/gui/SurfaceComposerClient.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="501" column="36" selection-start-line="501" selection-start-column="22" selection-end-line="501" selection-end-column="36" />
+            <state relative-caret-position="240">
+              <caret line="891" column="33" lean-forward="true" selection-start-line="891" selection-start-column="33" selection-end-line="891" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frameworks/native/libs/gui/SurfaceControl.cpp">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="183" column="30" lean-forward="true" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
+            <state relative-caret-position="580">
+              <caret line="2608" column="15" selection-start-line="2608" selection-start-column="15" selection-end-line="2608" selection-end-column="15" />
+              <folding>
+                <element signature="e#37277#37278#0" expanded="true" />
+                <element signature="e#37329#37330#0" expanded="true" />
+                <element signature="e#89248#89249#0" expanded="true" />
+                <element signature="e#119725#119726#0" expanded="true" />
+                <element signature="e#122618#122619#0" expanded="true" />
+                <element signature="e#210226#210227#0" expanded="true" />
+                <element signature="e#212003#212004#0" expanded="true" />
+                <element signature="e#222376#222377#0" expanded="true" />
+                <element signature="e#235824#235825#0" expanded="true" />
+                <element signature="e#244082#244083#0" expanded="true" />
+                <element signature="e#244119#244120#0" expanded="true" />
+                <element signature="e#247730#247731#0" expanded="true" />
+                <element signature="e#250783#250784#0" expanded="true" />
+                <element signature="e#252094#252095#0" expanded="true" />
+                <element signature="e#257035#257036#0" expanded="true" />
+                <element signature="e#257126#257127#0" expanded="true" />
+                <element signature="e#257240#257241#0" expanded="true" />
+                <element signature="e#257329#257330#0" expanded="true" />
+                <element signature="e#257418#257419#0" expanded="true" />
+                <element signature="e#257528#257529#0" expanded="true" />
+                <element signature="e#257617#257618#0" expanded="true" />
+                <element signature="e#257706#257707#0" expanded="true" />
+                <element signature="e#257816#257817#0" expanded="true" />
+                <element signature="e#260930#260931#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/native/services/surfaceflinger/SurfaceFlinger.cpp">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/graphics/java/android/graphics/Canvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="126" column="14" selection-start-line="126" selection-end-line="126" selection-end-column="14" />
+            <state relative-caret-position="-2244">
+              <folding>
+                <element signature="e#0#87404#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/native/services/surfaceflinger/SurfaceFlinger.h">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/Surface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8419">
-              <caret line="81" column="47" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="47" />
+            <state relative-caret-position="240">
+              <caret line="45" column="56" lean-forward="true" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#17798#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/native/include/gui/Surface.h">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/core/jni/android_view_Surface.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="254" column="39" selection-start-line="254" selection-start-column="39" selection-end-line="254" selection-end-column="39" />
+            <state relative-caret-position="1384">
+              <caret line="244" column="30" selection-start-line="244" selection-start-column="22" selection-end-line="244" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/native/include/ui/FramebufferNativeWindow.h">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-278">
-              <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+            <state relative-caret-position="-1462">
+              <caret line="4595" column="37" selection-start-line="4595" selection-start-column="22" selection-end-line="4595" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#275033#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="17448" lean-forward="true" selection-start-line="17448" selection-end-line="17448" />
+              <folding>
+                <element signature="e#0#814987#0" expanded="true" />
+                <element signature="e#453573#453574#0" expanded="true" />
+                <element signature="e#453605#453606#0" expanded="true" />
+                <element signature="e#469756#469757#0" expanded="true" />
+                <element signature="e#469796#469797#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frameworks/native/include/android/native_window.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="548">
+              <caret line="55" column="25" lean-forward="true" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -116,36 +161,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>attachApplication(</find>
-      <find>startpro</find>
-      <find>grDev</find>
-      <find>makeActive</find>
-      <find>attachApplication</find>
-      <find>attachApplicationLocked</find>
-      <find>scheduleLaunchActivity</find>
-      <find>ActivityRecord</find>
+      <find>addwindow(</find>
+      <find>checkThread</find>
+      <find>requestly</find>
+      <find>doTraversal</find>
+      <find>mThread</find>
+      <find>setLayoutp</find>
+      <find>invalidate</find>
+      <find>invalidate(</find>
+      <find>invalidateInternal</find>
+      <find>postinv</find>
+      <find>MSG_INVALIDATE</find>
+      <find>invalidate()</find>
       <find>LAUNCH_ACTIVITY</find>
-      <find>getComponent</find>
-      <find>CONTEXT_INCLUDE_CODE</find>
-      <find>onresume</find>
-      <find>mInstrumentation</find>
-      <find>BIND_APPLICATION</find>
-      <find>bindApplication</find>
-      <find>performResume</find>
-      <find>callActivityOnResume</find>
-      <find>startac</find>
-      <find>startactivity(</find>
-      <find>execStartActivity</find>
-      <find>handleme</find>
-      <find>startActivity</find>
-      <find>startActivityMayWait</find>
-      <find>startActivityLocked</find>
-      <find>resumeTopActivitiesLocked</find>
-      <find>resumeTopActivityLocked</find>
-      <find>getSelf</find>
-      <find>hook_dequeueBuffer</find>
-      <find>dequeueBuffer</find>
-      <find>mClient</find>
+      <find>mView</find>
+      <find>performtrave</find>
+      <find>mSurface</find>
+      <find>measure</find>
+      <find>measure(</find>
+      <find>measure(int</find>
+      <find>onmea</find>
+      <find>set</find>
+      <find>nativeLockCanvas</find>
+      <find>invalidateChild</find>
+      <find>lockCanvas</find>
+      <find>ANativeWindow_Buffer</find>
+      <find>setNativeBitmap</find>
+      <find>gCanvasClassInfo</find>
+      <find>unlockCanvasAndPost</find>
+      <find>clipRect</find>
+      <find>unlockAndPost</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,17 +200,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/native/libs/binder/ProcessState.cpp" />
-        <option value="$PROJECT_DIR$/av/media/mediaserver/main_mediaserver.cpp" />
-        <option value="$PROJECT_DIR$/native/libs/binder/IServiceManager.cpp" />
-        <option value="$PROJECT_DIR$/base/core/jni/android_hardware_Camera.cpp" />
-        <option value="$PROJECT_DIR$/av/camera/Camera.cpp" />
-        <option value="$PROJECT_DIR$/base/core/java/android/os/Binder.java" />
-        <option value="$PROJECT_DIR$/base/core/jni/android_util_Binder.cpp" />
-        <option value="$PROJECT_DIR$/base/services/core/java/com/android/server/am/ActiveServices.java" />
-        <option value="$PROJECT_DIR$/base/services/core/java/com/android/server/am/ActivityManagerService.java" />
-        <option value="$PROJECT_DIR$/base/core/java/android/app/ApplicationThreadNative.java" />
-        <option value="$PROJECT_DIR$/base/core/java/android/app/ActivityThread.java" />
         <option value="$PROJECT_DIR$/libnativehelper/JniInvocation.cpp" />
         <option value="$PROJECT_DIR$/base/core/jni/AndroidRuntime.cpp" />
         <option value="$PROJECT_DIR$/native/cmds/installd/commands.c" />
@@ -186,8 +220,6 @@
         <option value="$PROJECT_DIR$/frameworks/rs/server/StrongPointer.h" />
         <option value="$PROJECT_DIR$/frameworks/rs/cpp/util/RefBase.h" />
         <option value="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/BaseDraggingActivity.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/services/java/com/android/server/SystemServer.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java" />
         <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityManagerNative.java" />
         <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStack.java" />
         <option value="$PROJECT_DIR$/harware/libhardware/include/hardware/fb.h" />
@@ -199,13 +231,26 @@
         <option value="$PROJECT_DIR$/system/core/include/system/window.h" />
         <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ProcessRecord.java" />
         <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" />
         <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java" />
-        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" />
         <option value="$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp" />
         <option value="$PROJECT_DIR$/frameworks/native/include/gui/Surface.h" />
-        <option value="$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp" />
         <option value="$PROJECT_DIR$/frameworks/native/libs/gui/SurfaceComposerClient.cpp" />
+        <option value="$PROJECT_DIR$/frameworks/base/services/java/com/android/server/SystemServer.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindow.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/view/WindowManagerGlobal.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/Session.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/WindowManagerService.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewParent.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/widget/FrameLayout.java" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/view/Surface.java" />
+        <option value="$PROJECT_DIR$/frameworks/native/include/android/native_window.h" />
+        <option value="$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/jni/android_view_Surface.cpp" />
+        <option value="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java" />
       </list>
     </option>
   </component>
@@ -225,6 +270,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,51 +287,21 @@
               <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
               <item name="frameworks" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
               <item name="frameworks" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
               <item name="frameworks" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
-              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
-              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AndroidFrameworksSourceCode-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AndroidFrameworksSourceCode-master" type="462c0819:PsiDirectoryNode" />
-              <item name="frameworks" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="native" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
               <item name="android" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -329,7 +345,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -476,10 +491,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20362474" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20362474" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -487,7 +501,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Build Variants" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49946696" visible="true" weight="0.055314533" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="0" sideWeight="0.49946696" visible="true" weight="0.21800433" />
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50053304" side_tool="true" weight="0.164859" />
@@ -558,242 +572,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="SurfaceFlinger分析" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/model/LoaderResults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="327" column="32" lean-forward="true" selection-start-line="327" selection-start-column="32" selection-end-line="327" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#15621#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsTransitionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="157" column="26" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#4861#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/pm/LauncherActivityInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2679">
-          <folding>
-            <element signature="e#0#5866#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/model/LoaderTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="827" column="36" selection-start-line="827" selection-start-column="16" selection-end-line="827" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#43834#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/LauncherModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="454" column="22" lean-forward="true" selection-start-line="454" selection-start-column="22" selection-end-line="454" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#28021#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/LauncherAppState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="164" lean-forward="true" selection-start-line="164" selection-end-line="164" />
-          <folding>
-            <element signature="e#0#6984#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/ComponentName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11456#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/ComponentCallbacks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <folding>
-            <element signature="e#0#3193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsContainerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9746">
-          <caret line="513" column="19" selection-start-line="513" selection-start-column="19" selection-end-line="513" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsGridAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4488">
-          <caret line="251" column="56" selection-start-line="251" selection-start-column="40" selection-end-line="251" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/rs/server/RefBase.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1650" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/rs/cpp/util/RefBase.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="224" column="51" lean-forward="true" selection-start-line="224" selection-start-column="51" selection-end-line="224" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/rs/server/StrongPointer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="1675" column="61" selection-start-line="1675" selection-start-column="55" selection-end-line="1675" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/BaseDraggingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="181" column="36" selection-start-line="181" selection-start-column="30" selection-end-line="181" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/touch/ItemClickHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="225" column="60" lean-forward="true" selection-start-line="225" selection-start-column="60" selection-end-line="225" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/os/SystemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="95" column="55" lean-forward="true" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#4310#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/services/java/com/android/server/SystemServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4906">
-          <caret line="316" column="119" selection-start-line="316" selection-start-column="109" selection-end-line="316" selection-end-column="119" />
-          <folding>
-            <element signature="e#6811#6812#0" expanded="true" />
-            <element signature="e#6858#6859#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/SystemServiceManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="39" column="86" selection-start-line="39" selection-start-column="86" selection-end-line="39" selection-end-column="86" />
-          <folding>
-            <element signature="e#0#8380#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/SystemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3432">
-          <caret line="178" column="40" selection-start-line="178" selection-start-column="30" selection-end-line="178" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#7104#0" expanded="true" />
-            <element signature="e#6923#6924#0" expanded="true" />
-            <element signature="e#6976#6977#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityManagerNative.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="2392" column="29" selection-start-line="2392" selection-start-column="29" selection-end-line="2392" selection-end-column="29" />
-          <folding>
-            <element signature="e#2619#2620#0" expanded="true" />
-            <element signature="e#2656#2657#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/IApplicationThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="53" column="54" lean-forward="true" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#12583#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/os/Process.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="603" column="38" selection-start-line="603" selection-start-column="38" selection-end-line="603" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/harware/libhardware/modules/gralloc/gr.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-617" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/native/opengl/include/EGL/eglplatform.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="90" column="28" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/harware/libhardware/include/hardware/fb.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="164" column="74" selection-start-line="164" selection-start-column="74" selection-end-line="164" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/harware/libhardware/include/hardware/hardware.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/harware/libhardware/modules/gralloc/framebuffer.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -854,42 +632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-19/android.jar!/android/app/Activity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="545" column="16" selection-start-line="545" selection-start-column="16" selection-end-line="545" selection-end-column="16" />
-          <folding>
-            <element signature="e#15226#15227#0" expanded="true" />
-            <element signature="e#15277#15278#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-19/android.jar!/android/content/Context.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="232" column="25" selection-start-line="232" selection-start-column="25" selection-end-line="232" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="3755" column="82" selection-start-line="3755" selection-start-column="65" selection-end-line="3755" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="1488" column="30" selection-start-line="1488" selection-start-column="17" selection-end-line="1488" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-727">
-          <caret line="2194" column="21" selection-start-line="2194" selection-start-column="21" selection-end-line="2194" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -907,7 +653,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
+        <state relative-caret-position="51392">
           <caret line="2452" column="56" selection-start-line="2452" selection-start-column="33" selection-end-line="2452" selection-end-column="56" />
           <folding>
             <element signature="e#115584#115585#0" expanded="true" />
@@ -918,64 +664,390 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8449">
+        <state relative-caret-position="31020">
           <caret line="1501" column="18" selection-start-line="1501" selection-start-column="18" selection-end-line="1501" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/native/include/ui/FramebufferNativeWindow.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-278">
-          <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="279" column="40" lean-forward="true" selection-start-line="279" selection-start-column="40" selection-end-line="279" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/native/include/gui/Surface.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="254" column="39" selection-start-line="254" selection-start-column="39" selection-end-line="254" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/native/services/surfaceflinger/SurfaceFlinger.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="126" column="14" selection-start-line="126" selection-end-line="126" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/native/services/surfaceflinger/SurfaceFlinger.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8419">
-          <caret line="81" column="47" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="212" lean-forward="true" selection-start-line="212" selection-end-line="212" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/native/libs/gui/SurfaceComposerClient.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
+        <state relative-caret-position="11022">
           <caret line="501" column="36" selection-start-line="501" selection-start-column="22" selection-end-line="501" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/native/libs/gui/SurfaceControl.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="183" column="30" lean-forward="true" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
+        <state relative-caret-position="4114">
+          <caret line="187" column="64" selection-start-line="187" selection-start-column="64" selection-end-line="187" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/services/surfaceflinger/SurfaceFlinger.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2772">
+          <caret line="126" column="14" selection-start-line="126" selection-end-line="126" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/services/surfaceflinger/SurfaceFlinger.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="81" column="47" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#1760#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/services/java/com/android/server/SystemServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="480" column="36" lean-forward="true" selection-start-line="480" selection-start-column="36" selection-end-line="480" selection-end-column="36" />
+          <folding>
+            <element signature="e#6811#6812#0" expanded="true" />
+            <element signature="e#6858#6859#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/support/v7/appcompat/src/android/support/v7/app/ActionBarActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="58" column="55" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#20920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-19/android.jar!/android/app/Activity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2591">
+          <caret line="545" column="16" selection-start-line="545" selection-start-column="16" selection-end-line="545" selection-end-column="16" />
+          <folding>
+            <element signature="e#15226#15227#0" expanded="true" />
+            <element signature="e#15277#15278#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/support/v4/java/android/support/v4/app/FragmentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="74" column="48" lean-forward="true" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#31625#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/support/v7/appcompat/src/android/support/v7/app/ActionBarActivityDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="56" column="27" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#10819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/com/android/internal/policy/IPolicy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#1274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/com/android/internal/policy/PolicyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#2541#0" expanded="true" />
+            <element signature="e#2055#2056#0" expanded="true" />
+            <element signature="e#2108#2109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="460" column="42" selection-start-line="460" selection-start-column="28" selection-end-line="460" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#72677#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Instrumentation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21802">
+          <caret line="1059" column="7" selection-start-line="1059" selection-start-column="7" selection-end-line="1059" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24200">
+          <caret line="1217" column="28" selection-start-line="1217" selection-start-column="19" selection-end-line="1217" selection-end-column="28" />
+          <folding>
+            <element signature="e#39378#39379#0" expanded="true" />
+            <element signature="e#39408#39409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/tools/preload/Policy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#2924#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/content/ContextWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="62" column="36" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#20178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ContextImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#96726#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="369" column="12" selection-start-line="369" selection-start-column="12" selection-end-line="369" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="3044" column="26" selection-start-line="3044" selection-start-column="21" selection-end-line="3044" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/IWindowSession.aidl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="40" column="20" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="162" column="13" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/wm/WindowManagerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3959">
+          <caret line="2534" lean-forward="true" selection-start-line="2534" selection-end-line="2534" />
+          <folding>
+            <element signature="e#0#499329#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewParent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#25370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/WindowManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="50" column="50" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#88996#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/WindowManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="64" column="61" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#3295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/WindowManagerGlobal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1594">
+          <caret line="190" column="56" selection-start-line="190" selection-start-column="56" selection-end-line="190" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#20463#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/widget/FrameLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="471" column="63" selection-start-line="471" selection-start-column="63" selection-end-line="471" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#28306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/include/ui/FramebufferNativeWindow.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/libs/ui/FramebufferNativeWindow.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="267" column="22" lean-forward="true" selection-start-line="267" selection-start-column="22" selection-end-line="267" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/include/android/native_window.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="55" column="25" lean-forward="true" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1462">
+          <caret line="4595" column="37" selection-start-line="4595" selection-start-column="22" selection-end-line="4595" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#275033#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/include/gui/Surface.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="174" column="29" selection-start-line="174" selection-start-column="16" selection-end-line="174" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="17448" lean-forward="true" selection-start-line="17448" selection-end-line="17448" />
+          <folding>
+            <element signature="e#0#814987#0" expanded="true" />
+            <element signature="e#453573#453574#0" expanded="true" />
+            <element signature="e#453605#453606#0" expanded="true" />
+            <element signature="e#469756#469757#0" expanded="true" />
+            <element signature="e#469796#469797#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/native/libs/gui/Surface.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="891" column="33" lean-forward="true" selection-start-line="891" selection-start-column="33" selection-end-line="891" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/Surface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="45" column="56" lean-forward="true" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#17798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/graphics/java/android/graphics/Canvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2244">
+          <folding>
+            <element signature="e#0#87404#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/jni/android/graphics/SkiaCanvas.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="83" column="25" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/jni/android_view_Surface.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1384">
+          <caret line="244" column="30" selection-start-line="244" selection-start-column="22" selection-end-line="244" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="2608" column="15" selection-start-line="2608" selection-start-column="15" selection-end-line="2608" selection-end-column="15" />
+          <folding>
+            <element signature="e#37277#37278#0" expanded="true" />
+            <element signature="e#37329#37330#0" expanded="true" />
+            <element signature="e#89248#89249#0" expanded="true" />
+            <element signature="e#119725#119726#0" expanded="true" />
+            <element signature="e#122618#122619#0" expanded="true" />
+            <element signature="e#210226#210227#0" expanded="true" />
+            <element signature="e#212003#212004#0" expanded="true" />
+            <element signature="e#222376#222377#0" expanded="true" />
+            <element signature="e#235824#235825#0" expanded="true" />
+            <element signature="e#244082#244083#0" expanded="true" />
+            <element signature="e#244119#244120#0" expanded="true" />
+            <element signature="e#247730#247731#0" expanded="true" />
+            <element signature="e#250783#250784#0" expanded="true" />
+            <element signature="e#252094#252095#0" expanded="true" />
+            <element signature="e#257035#257036#0" expanded="true" />
+            <element signature="e#257126#257127#0" expanded="true" />
+            <element signature="e#257240#257241#0" expanded="true" />
+            <element signature="e#257329#257330#0" expanded="true" />
+            <element signature="e#257418#257419#0" expanded="true" />
+            <element signature="e#257528#257529#0" expanded="true" />
+            <element signature="e#257617#257618#0" expanded="true" />
+            <element signature="e#257706#257707#0" expanded="true" />
+            <element signature="e#257816#257817#0" expanded="true" />
+            <element signature="e#260930#260931#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -160,6 +160,7 @@ final class Session extends IWindowSession.Stub
                 outContentInsets, outInputChannel);
     }
 
+    //WMS添加窗口
     @Override
     public int addToDisplay(IWindow window, int seq, WindowManager.LayoutParams attrs,
             int viewVisibility, int displayId, Rect outContentInsets,

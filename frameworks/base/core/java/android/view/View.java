@@ -11354,6 +11354,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      *
      * @param params The layout parameters for this view, cannot be null
      */
+    //设置布局属性
     public void setLayoutParams(ViewGroup.LayoutParams params) {
         if (params == null) {
             throw new NullPointerException("Layout parameters cannot be null");
@@ -11363,6 +11364,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
         if (mParent instanceof ViewGroup) {
             ((ViewGroup) mParent).onSetLayoutParams(this, params);
         }
+        //会遍历整个View树
         requestLayout();
     }
 
@@ -11634,6 +11636,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * This must be called from a UI thread. To call from a non-UI thread, call
      * {@link #postInvalidate()}.
      */
+    //无效化当前的界面，开始重绘
     public void invalidate() {
         invalidate(true);
     }
@@ -11660,7 +11663,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
             mGhostView.invalidate(invalidateCache);
             return;
         }
-
+        //判断当前界面是否要忽略这个重绘，比如界面隐藏则没有必要执行
         if (skipInvalidate()) {
             return;
         }
@@ -11687,6 +11690,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
             if (p != null && ai != null && l < r && t < b) {
                 final Rect damage = ai.mTmpInvalRect;
                 damage.set(l, t, r, b);
+                //交由父View重绘，ViewParent可能是ViewGroup，也可能是ViewRoot，前置从下往上收集重绘区域，后者从上往下遍历
                 p.invalidateChild(this, damage);
             }
 
@@ -12068,6 +12072,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * @see #invalidate()
      * @see #postInvalidateDelayed(long)
      */
+    //实际不过是通过Handler再调invalidate()
     public void postInvalidate() {
         postInvalidateDelayed(0);
     }
@@ -17448,7 +17453,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                     mMeasureCache.indexOfKey(key);
             if (cacheIndex < 0 || sIgnoreMeasureCache) {
                 // measure ourselves, this should set the measured dimension flag back
-               // 调用onMeasure()
+               // 调用onMeasure()，这个方法会被重载，而DecorView是一个FrameLayout
                 onMeasure(widthMeasureSpec, heightMeasureSpec);
                 mPrivateFlags3 &= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
             } else {

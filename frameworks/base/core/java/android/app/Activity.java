@@ -2154,7 +2154,10 @@ public class Activity extends ContextThemeWrapper
      * @see #setContentView(android.view.View)
      * @see #setContentView(android.view.View, android.view.ViewGroup.LayoutParams)
      */
+
+    //获取Window,在attach已创建完成
     public void setContentView(int layoutResID) {
+        //setContentView开始DecorView的创建
         getWindow().setContentView(layoutResID);
         initWindowDecorActionBar();
     }
@@ -5885,6 +5888,7 @@ public class Activity extends ContextThemeWrapper
         mParent = parent;
     }
 
+    //Activity构造后初始化并创建PhoneWindow
     final void attach(Context context, ActivityThread aThread,
             Instrumentation instr, IBinder token, int ident,
             Application application, Intent intent, ActivityInfo info,
@@ -5892,12 +5896,12 @@ public class Activity extends ContextThemeWrapper
             NonConfigurationInstances lastNonConfigurationInstances,
             Configuration config, IVoiceInteractor voiceInteractor) {
         //关联Context，Activity继承ContextThemeWrapper，ContextThemeWrapper继承ContextWrapper
-        //ContextWrapper 成员变量mBase(即ContextImpl)C
-        //这里将ContextImpl赋值给mBase引用，那么Activity相当于一个代理者，activity.startActivity()等在ContextWrapper中调用，mBase.startActivity()，因此实际实现则在ContextImpl中
+        //这些都是包装类，最终赋值给ContextImpl
         attachBaseContext(context);
 
         mFragments.attachActivity(this, mContainer, null);
 
+        //得到PhoneWindow，每个Activity有且只有一个
         mWindow = PolicyManager.makeNewWindow(this);
         mWindow.setCallback(this);
         mWindow.setOnWindowDismissedCallback(this);

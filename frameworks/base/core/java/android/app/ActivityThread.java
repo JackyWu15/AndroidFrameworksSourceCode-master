@@ -2252,7 +2252,7 @@ public final class ActivityThread {
                 Configuration config = new Configuration(mCompatConfiguration);
                 if (DEBUG_CONFIGURATION) Slog.v(TAG, "Launching activity "
                         + r.activityInfo.name + " with config " + config);
-                //将appContext，Application等对象绑定到Activity中
+                //将appContext，Application等对象保存到Activity的成员变量中，并且获取PhoneWindow保存到mWindow
                 activity.attach(appContext, this, getInstrumentation(), r.token,
                                 r.ident, app, r.intent, r.activityInfo, title, r.parent,
                                 r.embeddedID, r.lastNonConfigurationInstances, config,
@@ -2370,7 +2370,7 @@ public final class ActivityThread {
     }
 
 
-    //开始创建Activity流程
+    //整个Activity的开启和展示由这个方法开始
     private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) {
         // If we are getting ready to gc after going to the background, well
         // we are back active so skip it.
@@ -2395,7 +2395,7 @@ public final class ActivityThread {
             r.createdConfig = new Configuration(mConfiguration);
             Bundle oldState = r.state;
 
-            //调用了onResume，表示当前激活的Activity
+            //调用onResume，并开始DecorView的渲染过程
             handleResumeActivity(r.token, false, r.isForward, !r.activity.mFinished && !r.startsNotResumed);
 
             if (!r.activity.mFinished && r.startsNotResumed) {
@@ -3007,20 +3007,18 @@ public final class ActivityThread {
         r.mPendingRemoveWindowManager = null;
     }
 
+    //View树的显示过程
     final void handleResumeActivity(IBinder token,
             boolean clearHide, boolean isForward, boolean reallyResume) {
         // If we are getting ready to gc after going to the background, well
         // we are back active so skip it.
         unscheduleGcIdler();
         mSomeActivitiesChanged = true;
-
         // TODO Push resumeArgs into the activity for consideration
-        //最终调用onResume()
+       //这里会执行到onResume()
         ActivityClientRecord r = performResumeActivity(token, clearHide);
-
         if (r != null) {
             final Activity a = r.activity;
-
             if (localLOGV) Slog.v(
                 TAG, "Resume " + r + " started activity: " +
                 a.mStartedActivity + ", hideForNow: " + r.hideForNow
@@ -3028,7 +3026,6 @@ public final class ActivityThread {
 
             final int forwardBit = isForward ?
                     WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION : 0;
-
             // If the window hasn't yet been added to the window manager,
             // and this guy didn't finish itself or start another activity,
             // then go ahead and add the window.
@@ -3040,12 +3037,13 @@ public final class ActivityThread {
                 } catch (RemoteException e) {
                 }
             }
+            //开始DecorView渲染流程
             if (r.window == null && !a.mFinished && willBeVisible) {
-                //获取Activity的Window
+                //获取PhoneWindow
                 r.window = r.activity.getWindow();
-                //获取Window的DecorView
+                //获取PhoneWindow的DecorView
                 View decor = r.window.getDecorView();
-                //将DecorView隐藏
+                //先将DecorView隐藏
                 decor.setVisibility(View.INVISIBLE);
                 //获取WindowManager
                 ViewManager wm = a.getWindowManager();
