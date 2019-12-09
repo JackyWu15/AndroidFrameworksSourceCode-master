@@ -7101,6 +7101,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
         }
 
         if (needsRefresh) {
+            //刷新背景
             refreshDrawableState();
         }
         dispatchSetPressed(pressed);
@@ -8378,13 +8379,14 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
 
         if (onFilterTouchEventForSecurity(event)) {
             //noinspection SimplifiableIfStatement
-            ListenerInfo li = mListenerInfo;
+            ListenerInfo li = mListenerInfo;//ListenerInfo封装了手势监听，触摸监听等监听接口
+            //从这里可以看到，mOnTouchListener优先级比onTouchEvent高,如果返回true，就消费掉了，不会再往下发
             if (li != null && li.mOnTouchListener != null
                     && (mViewFlags & ENABLED_MASK) == ENABLED
                     && li.mOnTouchListener.onTouch(this, event)) {
                 result = true;
             }
-
+            //如果上面result不为result，执行onTouchEvent
             if (!result && onTouchEvent(event)) {
                 result = true;
             }
@@ -8574,7 +8576,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      * @hide
      */
     public final boolean dispatchPointerEvent(MotionEvent event) {
-        if (event.isTouchEvent()) {
+        if (event.isTouchEvent()) {//是触摸事件执行dispatchTouchEvent
             return dispatchTouchEvent(event);
         } else {
             return dispatchGenericMotionEvent(event);
@@ -9359,7 +9361,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                             setPressed(true, x, y);
                        }
 
-                        if (!mHasPerformedLongPress) {
+                        if (!mHasPerformedLongPress) {//长按则不响应点击事件
                             // This is a tap, so remove the longpress check
                             removeLongPressCallback();
 
@@ -9371,6 +9373,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                                 if (mPerformClick == null) {
                                     mPerformClick = new PerformClick();
                                 }
+                                //点击事件进入队列执行
                                 if (!post(mPerformClick)) {
                                     performClick();
                                 }
@@ -9392,9 +9395,9 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                         removeTapCallback();
                     }
                     break;
-
+                //按下
                 case MotionEvent.ACTION_DOWN:
-                    mHasPerformedLongPress = false;
+                    mHasPerformedLongPress = false;//是否长按
 
                     if (performButtonActionOnTouchDown(event)) {
                         break;
@@ -9415,8 +9418,8 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                         postDelayed(mPendingCheckForTap, ViewConfiguration.getTapTimeout());
                     } else {
                         // Not inside a scrolling container, so show the feedback right away
-                        setPressed(true, x, y);
-                        checkForLongClick(0);
+                        setPressed(true, x, y);//状态改为按下，比如button这时会变背景，需要刷新ui
+                        checkForLongClick(0);//检查并保存是否长按状态
                     }
                     break;
 
@@ -9430,14 +9433,14 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                     drawableHotspotChanged(x, y);
 
                     // Be lenient about moving outside of buttons
-                    if (!pointInView(x, y, mTouchSlop)) {
+                    if (!pointInView(x, y, mTouchSlop)) {//是否超出View的范围
                         // Outside button
                         removeTapCallback();
                         if ((mPrivateFlags & PFLAG_PRESSED) != 0) {
                             // Remove any future long press/tap checks
-                            removeLongPressCallback();
+                            removeLongPressCallback();//移除长按的监听
 
-                            setPressed(false);
+                            setPressed(false);//不是按下转台
                         }
                     }
                     break;

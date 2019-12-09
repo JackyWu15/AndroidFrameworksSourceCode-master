@@ -16,13 +16,6 @@
 
 package com.android.server.wm;
 
-import android.view.IWindowId;
-import android.view.IWindowSessionCallback;
-import com.android.internal.view.IInputContext;
-import com.android.internal.view.IInputMethodClient;
-import com.android.internal.view.IInputMethodManager;
-import com.android.server.wm.WindowManagerService.H;
-
 import android.content.ClipData;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -39,12 +32,19 @@ import android.os.UserHandle;
 import android.util.Slog;
 import android.view.Display;
 import android.view.IWindow;
+import android.view.IWindowId;
 import android.view.IWindowSession;
+import android.view.IWindowSessionCallback;
 import android.view.InputChannel;
 import android.view.Surface;
 import android.view.SurfaceControl;
 import android.view.SurfaceSession;
 import android.view.WindowManager;
+
+import com.android.internal.view.IInputContext;
+import com.android.internal.view.IInputMethodClient;
+import com.android.internal.view.IInputMethodManager;
+import com.android.server.wm.WindowManagerService.H;
 
 import java.io.PrintWriter;
 

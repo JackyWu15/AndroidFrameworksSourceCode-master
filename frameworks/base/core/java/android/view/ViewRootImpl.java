@@ -32,7 +32,6 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Region;
 import android.graphics.drawable.Drawable;
@@ -3854,6 +3853,7 @@ public final class ViewRootImpl implements ViewParent,
 
     /**
      * Delivers post-ime input events to the view hierarchy.
+     * 事件传递源头
      */
     final class ViewPostImeInputStage extends InputStage {
         public ViewPostImeInputStage(InputStage next) {
@@ -3863,18 +3863,18 @@ public final class ViewRootImpl implements ViewParent,
         @Override
         protected int onProcess(QueuedInputEvent q) {
             if (q.mEvent instanceof KeyEvent) {
-                return processKeyEvent(q);
+                return processKeyEvent(q);//按键事件
             } else {
                 // If delivering a new non-key event, make sure the window is
                 // now allowed to start updating.
                 handleDispatchDoneAnimating();
                 final int source = q.mEvent.getSource();
-                if ((source & InputDevice.SOURCE_CLASS_POINTER) != 0) {
+                if ((source & InputDevice.SOURCE_CLASS_POINTER) != 0) {//pointer事件,即触摸事件
                     return processPointerEvent(q);
-                } else if ((source & InputDevice.SOURCE_CLASS_TRACKBALL) != 0) {
+                } else if ((source & InputDevice.SOURCE_CLASS_TRACKBALL) != 0) {//trackball事件
                     return processTrackballEvent(q);
                 } else {
-                    return processGenericMotionEvent(q);
+                    return processGenericMotionEvent(q);//motion事件
                 }
             }
         }
@@ -4000,11 +4000,11 @@ public final class ViewRootImpl implements ViewParent,
             return FORWARD;
         }
 
+        //触摸事件
         private int processPointerEvent(QueuedInputEvent q) {
             final MotionEvent event = (MotionEvent)q.mEvent;
-
             mAttachInfo.mUnbufferedDispatchRequested = false;
-            boolean handled = mView.dispatchPointerEvent(event);
+            boolean handled = mView.dispatchPointerEvent(event);//DecorView开始分发
             if (mAttachInfo.mUnbufferedDispatchRequested && !mUnbufferedInputDispatch) {
                 mUnbufferedInputDispatch = true;
                 if (mConsumeBatchedInputScheduled) {
