@@ -109,17 +109,15 @@ public final class Looper {
      * Run the message queue in this thread. Be sure to call
      * {@link #quit()} to end the loop.
      */
-    //取出消息队列的消息
+    //循环消息队列
     public static void loop() {
         //获取当前线程的Looper
         final Looper me = myLooper();
         if (me == null) {
             throw new RuntimeException("No Looper; Looper.prepare() wasn't called on this thread.");
         }
-
         //获取消息队列
         final MessageQueue queue = me.mQueue;
-
         // Make sure the identity of this thread is that of the local process,
         // and keep track of what that identity token actually is.
         Binder.clearCallingIdentity();
@@ -127,6 +125,7 @@ public final class Looper {
 
         //死循环获取
         for (;;) {
+            //没有消息则阻塞
             Message msg = queue.next(); // might block
             if (msg == null) {
                 // No message indicates that the message queue is quitting.

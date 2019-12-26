@@ -5111,7 +5111,7 @@ public final class ActivityThread {
             final IActivityManager mgr = ActivityManagerNative.getDefault();
             try {
                 //mAppThread为ApplicationThread类型，同样不是一个线程，而是Binder,用于与AMS进行通讯
-                //主要做了两个操作：1，是告知AMS，程序已经启动，2，将ApplicationThread和AMS进行关联
+                //这里主要做了两个操作：1，告知AMS，程序已经启动，2，将ApplicationThread和AMS进行关联
                 mgr.attachApplication(mAppThread);
             } catch (RemoteException ex) {
                 // Ignore
@@ -5240,6 +5240,8 @@ public final class ActivityThread {
             dropBox.addText(tag, data);
         }
     }
+
+
     //zygote孵化新进程后，加载ActivityThread，并调用main方法
     public static void main(String[] args) {
         SamplingProfilerIntegration.start();

@@ -617,7 +617,7 @@ import static android.system.OsConstants.S_ISDIR;
          * A file denoting a zip file (in case of a resource jar or a dex jar), or a directory
          * (only when dexFile is null).
          */
-        private final File path;
+        private final File path;//dex的路径
 
         private final DexFile dexFile;//dex文件对象
 
