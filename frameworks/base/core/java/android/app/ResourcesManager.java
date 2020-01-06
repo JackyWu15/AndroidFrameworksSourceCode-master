@@ -154,6 +154,7 @@ public class ResourcesManager {
             String[] overlayDirs, String[] libDirs, int displayId,
             Configuration overrideConfiguration, CompatibilityInfo compatInfo, IBinder token) {
         final float scale = compatInfo.applicationScale;
+        //resDir资源目录
         ResourcesKey key = new ResourcesKey(resDir, displayId, overrideConfiguration, scale, token);
         Resources r;
         synchronized (this) {
@@ -178,13 +179,13 @@ public class ResourcesManager {
         //    Slog.w(TAG, "Throwing away out-of-date resources!!!! "
         //            + r + " " + resDir);
         //}
-        //未加载过，则构建AssetManager
+        //构建AssetManager
         AssetManager assets = new AssetManager();
         // resDir can be null if the 'android' package is creating a new Resources object.
         // This is fine, since each AssetManager automatically loads the 'android' package
         // already.
         if (resDir != null) {
-            //调用native层加载apk或zip类型的文件
+            //通过AssetManager来加载资源目录
             if (assets.addAssetPath(resDir) == 0) {
                 return null;
             }

@@ -2214,6 +2214,7 @@ class ContextImpl extends Context {
                 packageInfo, null, null, false, null, null);
     }
 
+    //创建上下文
     static ContextImpl createActivityContext(ActivityThread mainThread,
             LoadedApk packageInfo, IBinder activityToken) {
         if (packageInfo == null) throw new IllegalArgumentException("packageInfo");
@@ -2236,7 +2237,7 @@ class ContextImpl extends Context {
         }
         mUser = user;
 
-        //获取包信息
+        //获取包对象
         mPackageInfo = packageInfo;
         //获取资源管理器
         mResourcesManager = ResourcesManager.getInstance();
