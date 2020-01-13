@@ -192,6 +192,7 @@ public class ResourcesManager {
         }
 
         if (splitResDirs != null) {
+
             for (String splitResDir : splitResDirs) {
                 if (assets.addAssetPath(splitResDir) == 0) {
                     return null;
