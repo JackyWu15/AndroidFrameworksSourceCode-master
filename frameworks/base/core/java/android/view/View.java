@@ -8386,7 +8386,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                     && li.mOnTouchListener.onTouch(this, event)) {
                 result = true;
             }
-            //如果上面result不为result，执行onTouchEvent
+            //如果上面result不为true，执行onTouchEvent
             if (!result && onTouchEvent(event)) {
                 result = true;
             }

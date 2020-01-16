@@ -2133,12 +2133,13 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
                             }
 
                             resetCancelNextUpFlag(child);
-                            //1，如果子View是ViewGroup，会递归调用此dispatchTouchEvent往下分发，如果返回某个View返回true，则说明被消费了，否则没有消费，继续下发，直到最后一个是View，即2的情况
+                            //1，如果子View是ViewGroup，会递归调用此dispatchTouchEvent往下分发，如果某个View返回true，则说明被消费了，否则没有消费，继续下发，直到最后一个是View，即2的情况
                             //2，如果子View不包含子View了，dispatchTransformedTouchEvent会调用View的dispatchTouchEvent方法，进而调用onTouchEvent如果返回true，说明被消费了，否则没有消费
                             if (dispatchTransformedTouchEvent(ev, false, child, idBitsToAssign)) {
                                 // Child wants to receive touch within its bounds.
                                 //子View接收到事件的时间戳
                                 mLastTouchDownTime = ev.getDownTime();
+                                //找到在列表中的角标
                                 if (preorderedList != null) {
                                     // childIndex points into presorted list, find original index
                                     for (int j = 0; j < childrenCount; j++) {
@@ -2150,6 +2151,7 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
                                 } else {
                                     mLastTouchDownIndex = childIndex;
                                 }
+                                //保存触摸坐标
                                 mLastTouchDownX = ev.getX();
                                 mLastTouchDownY = ev.getY();
                                 //如果子view消费了，把消费了事件的View对应的消费节点，赋值给newTouchTarget
