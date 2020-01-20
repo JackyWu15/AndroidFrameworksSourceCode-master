@@ -160,7 +160,7 @@ public:
         data.writeInterfaceToken(IServiceManager::getInterfaceDescriptor());
         data.writeString16(name);//ServiceManger全限定吗
         data.writeStrongBinder(service);//服务对象的序列化
-        data.writeInt32(allowIsolated ? 1 : 0);
+        data.writeInt32(allowIsolated ? 1 : 0);//默认0
         status_t err = remote()->transact(ADD_SERVICE_TRANSACTION, data, &reply);//将服务添加到列表中
         return err == NO_ERROR ? reply.readExceptionCode() : err;//接收添加后的应答状态
     }

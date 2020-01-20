@@ -136,7 +136,9 @@ int main(int argc __unused, char** argv)
         AudioPolicyService::instantiate();
         SoundTriggerHwService::instantiate();
         registerExtensions();
+        //启动线程池
         ProcessState::self()->startThreadPool();
+        //加入线程池
         IPCThreadState::self()->joinThreadPool();
     }
 }
