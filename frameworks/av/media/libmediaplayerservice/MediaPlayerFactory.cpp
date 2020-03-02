@@ -146,7 +146,7 @@ sp<MediaPlayerBase> MediaPlayerFactory::createPlayer(
     }
 
     factory = sFactoryMap.valueFor(playerType);
-    CHECK(NULL != factory);
+    CHECK(NULL != factory);createPlayer
 
     //通过IFactory内部类的不同实现类，创建不同的MediaPlayer
     p = factory->createPlayer();

@@ -361,6 +361,7 @@ int main(int argc, char **argv)
         return -1;
     }
 
+    //linux是否启动
     selinux_enabled = is_selinux_enabled();
     sehandle = selinux_android_service_context_handle();
 

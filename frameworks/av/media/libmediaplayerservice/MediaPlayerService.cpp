@@ -643,7 +643,7 @@ sp<MediaPlayerBase> MediaPlayerService::Client::createPlayer(player_type playerT
     // determine if we have the right player type
     sp<MediaPlayerBase> p = mPlayer;
     if ((p != NULL) && (p->playerType() != playerType)) {
-        ALOGV("delete player");
+        ALOGV("delete player");MediaPlayerService
         p.clear();
     }
     if (p == NULL) {
