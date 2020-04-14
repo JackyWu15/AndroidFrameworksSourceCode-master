@@ -11,16 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9359eed3-d6f5-49b9-9bc0-02227e7628e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/app/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/app/ActivityThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frameworks/base/services/java/com/android/server/SystemServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/frameworks/base/services/java/com/android/server/SystemServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher2" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/model/LoaderTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apps/Launcher3/src/com/android/launcher3/model/LoaderTask.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="15653" column="7" selection-start-line="15653" selection-start-column="7" selection-end-line="15653" selection-end-column="7" />
+            <state relative-caret-position="422">
+              <caret line="15647" column="22" lean-forward="true" selection-start-line="15647" selection-start-column="22" selection-end-line="15647" selection-end-column="22" />
               <folding>
                 <element signature="e#0#815591#0" expanded="true" />
                 <element signature="e#453983#453984#0" expanded="true" />
@@ -50,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="100738">
               <caret line="4679" selection-start-line="4679" selection-end-line="4679" />
               <folding>
                 <element signature="e#0#275404#0" expanded="true" />
@@ -59,16 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="26">
               <caret line="2087" column="17" selection-start-line="2087" selection-start-column="17" selection-end-line="2087" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#283794#0" expanded="true" />
-                <element signature="e#241932#241933#0" expanded="true" />
-                <element signature="e#241969#241970#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -76,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewParent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1320">
+            <state>
               <folding>
                 <element signature="e#0#25376#0" expanded="true" />
               </folding>
@@ -280,9 +265,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -465,6 +447,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -670,11 +655,18 @@
       <option name="project" value="LOCAL" />
       <updated>1583553204209</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="应用的启动">
+      <created>1586857660404</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1586857660404</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -1159,6 +1151,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="15647" column="22" lean-forward="true" selection-start-line="15647" selection-start-column="22" selection-end-line="15647" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#815591#0" expanded="true" />
+            <element signature="e#453983#453984#0" expanded="true" />
+            <element signature="e#454015#454016#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100738">
+          <caret line="4679" selection-start-line="4679" selection-end-line="4679" />
+          <folding>
+            <element signature="e#0#275404#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewParent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#25376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/com/android/internal/os/ZygoteConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19910">
@@ -1231,25 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewParent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1320">
-          <folding>
-            <element signature="e#0#25376#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="4679" selection-start-line="4679" selection-end-line="4679" />
-          <folding>
-            <element signature="e#0#275404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/ViewRootImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
@@ -1258,18 +1262,6 @@
             <element signature="e#0#283794#0" expanded="true" />
             <element signature="e#241932#241933#0" expanded="true" />
             <element signature="e#241969#241970#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/base/core/java/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="15653" column="7" selection-start-line="15653" selection-start-column="7" selection-end-line="15653" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#815591#0" expanded="true" />
-            <element signature="e#453983#453984#0" expanded="true" />
-            <element signature="e#454015#454016#0" expanded="true" />
           </folding>
         </state>
       </provider>
