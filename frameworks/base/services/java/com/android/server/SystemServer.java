@@ -362,7 +362,7 @@ public final class SystemServer {
         // Initialize attribute cache used to cache resources from packages.
         AttributeCache.init(mSystemContext);
 
-        // Set up the Application instance for the system process and get started.
+        //将AMS注册到ServiceManager中
         mActivityManagerService.setSystemProcess();
     }
 

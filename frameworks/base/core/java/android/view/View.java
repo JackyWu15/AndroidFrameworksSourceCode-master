@@ -11693,7 +11693,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
             if (p != null && ai != null && l < r && t < b) {
                 final Rect damage = ai.mTmpInvalRect;
                 damage.set(l, t, r, b);
-                //交由父View重绘，ViewParent可能是ViewGroup，也可能是ViewRoot，前置从下往上收集重绘区域，后者从上往下遍历
+                //交由父View重绘，ViewParent可能是ViewGroup，也可能是ViewRoot，前者从下往上收集重绘区域，后者从上往下遍历
                 p.invalidateChild(this, damage);
             }
 

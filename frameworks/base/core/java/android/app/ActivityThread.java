@@ -1353,7 +1353,7 @@ public final class ActivityThread {
                 case BIND_APPLICATION:
                     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "bindApplication");
                     AppBindData data = (AppBindData)msg.obj;
-                    //绑定Application，构建
+                    //绑定Application，构建Instrumentation
                     handleBindApplication(data);
                     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
                     break;

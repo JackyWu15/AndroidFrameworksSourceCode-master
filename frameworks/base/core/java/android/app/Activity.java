@@ -5934,7 +5934,7 @@ public class Activity extends ContextThemeWrapper
                         Looper.myLooper());
             }
         }
-
+        //获取WMS保存到mWindow中
         mWindow.setWindowManager(
                 (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),
                 mToken, mComponent.flattenToString(),
@@ -5942,6 +5942,7 @@ public class Activity extends ContextThemeWrapper
         if (mParent != null) {
             mWindow.setContainer(mParent.getWindow());
         }
+        //WMS保存到成员变量mWindowManager
         mWindowManager = mWindow.getWindowManager();
         mCurrentConfig = config;
     }

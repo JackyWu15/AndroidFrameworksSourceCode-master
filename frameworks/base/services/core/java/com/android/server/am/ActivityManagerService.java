@@ -3262,6 +3262,7 @@ public final class ActivityManagerService extends ActivityManagerNative
             synchronized (mPidsSelfLocked) {
                 this.mPidsSelfLocked.put(startResult.pid, app);
                 if (isActivityProcess) {
+                    //时间超时则启动
                     Message msg = mHandler.obtainMessage(PROC_START_TIMEOUT_MSG);
                     msg.obj = app;
                     mHandler.sendMessageDelayed(msg, startResult.usingWrapper

@@ -907,6 +907,7 @@ public final class ViewRootImpl implements ViewParent,
 
     @Override
     public ViewParent invalidateChildInParent(int[] location, Rect dirty) {
+        //检查线程是不是主线程
         checkThread();
         if (DEBUG_DRAW) Log.v(TAG, "Invalidate child: " + dirty);
 
@@ -948,6 +949,7 @@ public final class ViewRootImpl implements ViewParent,
             localDirty.setEmpty();
         }
         if (!mWillDrawSoon && (intersected || mIsAnimating)) {
+            //遍历刷新
             scheduleTraversals();
         }
 
@@ -1031,7 +1033,7 @@ public final class ViewRootImpl implements ViewParent,
         if (!mTraversalScheduled) {
             mTraversalScheduled = true;
             mTraversalBarrier = mHandler.getLooper().postSyncBarrier();
-            //发送消息调用doTraversal
+            //注册了刷新监听，mTraversalRunnable会收到刷新消息
             mChoreographer.postCallback( Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
             if (!mUnbufferedInputDispatch) {
                 scheduleConsumeBatchedInput();
